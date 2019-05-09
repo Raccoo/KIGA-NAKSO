@@ -1,6 +1,6 @@
 # KIGA-NAKSO  
 
-## 概要  
+## 📌概要  
 飢餓をなくすためのプロジェクト  
 「世界から飢餓をなくすことに貢献」したい  
 「自炊している一人暮らしの下宿生」向けの  
@@ -10,9 +10,10 @@
 「他の献立アプリやサービス」とは違って、  
 「無駄に廃棄する食材を最小限にする機能」が備わっている。  
 
-## install & build
+## 🔧install & build
 
-```powershell
-$ git clone git@github.com:Raccoo/KIGA-NAKSO.git
+```shell
+$ git clone git@github.com:Raccoo/KIGA-NAKSO.git # gitからダウンロード
+
 ```
 
