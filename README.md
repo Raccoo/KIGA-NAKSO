@@ -17,3 +17,17 @@ $ git clone git@github.com:Raccoo/KIGA-NAKSO.git # gitからダウンロード
 
 ```
 
+Vagrantfileがあるファイル上で  
+
+```shell
+$ vagrant up
+```
+でバーってなるので終わったら、127.0.0.1:8080/phpにアクセスしてページが表示されたら完了  
+失敗したらしらん。  
+
+```shell
+$ vagrant halt
+```
+
+でシャットダウンできます  
+
