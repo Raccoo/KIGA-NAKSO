@@ -20,7 +20,7 @@ $ git clone git@github.com:Raccoo/KIGA-NAKSO.git # gitからダウンロード
 Vagrantfileがあるファイル上で  
 
 ```shell
-$ vagrant up
+$ vagrant up --provision
 ```
 でバーってなるので終わったら、127.0.0.1:8080/KIGA-NAKSOにアクセスしてページが表示されたら完了  
 失敗したらしらん。  
@@ -30,4 +30,10 @@ $ vagrant halt
 ```
 
 でシャットダウンできます  
+
+```shell
+$ vagrant up
+```
+2回目以降の起動はこのコマンドで起動できます  
+シャットダウンは上のままでOK
 
