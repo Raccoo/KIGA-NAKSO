@@ -1,0 +1,21 @@
+- hosts: all
+  become: True
+  tasks:
+  - name: install apache
+    apt:
+      name: "{{ item }}"
+    with_items:
+    - apache2
+    - mysql-server
+    - phpmyadmin
+  - name: start apache2
+    service:
+      name: apache2
+      enabled: True
+      state: started
+  - name: start mysql
+    service:
+      name: mysql-server
+      enabled: True
+      state: started
+  
