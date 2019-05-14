@@ -12,14 +12,14 @@ sudo systemctl start apache2
 sudo systemctl enabled apache2
 
 # 作業用ディレクトリを作成
-cd /var/www/html/php
+cd /var/www/html/KIGA-NAKSO
 
-sudo mkdir php/menu
-sudo mkdir php/food
-sudo mkdir php/user
+sudo mkdir KIGA-NAKSO/menu
+sudo mkdir KIGA-NAKSO/food
+sudo mkdir KIGA-NAKSO/user
 
-sudo touch php/menu/index.php
-sudo touch php/food/index.php
-sudo touch php/user/index.php
-sudo touch php/header.php
-sudo touch php/footer.php
+sudo touch KIGA-NAKSO/menu/index.php
+sudo touch KIGA-NAKSO/food/index.php
+sudo touch KIGA-NAKSO/user/index.php
+sudo touch KIGA-NAKSO/header.php
+sudo touch KIGA-NASO/footer.php
