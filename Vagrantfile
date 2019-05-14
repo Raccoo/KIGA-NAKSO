@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-   config.vm.synced_folder "./php", "/var/www/html/php", mount_options: ['dmode=777','fmode=755']
+   config.vm.synced_folder "./KIGA-NAKSO", "/var/www/html/KIGA-NAKSO", mount_options: ['dmode=777','fmode=755']
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
