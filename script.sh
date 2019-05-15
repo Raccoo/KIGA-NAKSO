@@ -1,17 +1,19 @@
 #!/bin/sh
 id
-# Vagrant‹N“®‚Éupdate
+# Vagrantï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½update
 sudo apt update
 
-# Vagrant‹N“®‚É”XƒCƒ“ƒXƒg[ƒ‹
+# Vagrantï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½Xï¿½Cï¿½ï¿½ï¿½Xï¿½gï¿½[ï¿½ï¿½
 sudo apt-get install -y apache2
 sudo apt-get install -y mysql-server
+sudo apt-get install -y php7.0 php7.0-mysql php7.0-dev php libapache2-mod-php
 
-# Vagrant‹N“®‚É”X‹N“®
-sudo systemctl start apache2
-sudo systemctl enabled apache2
+# Vagrantï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½Xï¿½Nï¿½ï¿½
+#sudo systemctl start apache2
+#sudo systemctl enabled apache2
+sudo systemctl restart apache2.service
 
-# ì‹Æ—pƒfƒBƒŒƒNƒgƒŠ‚ğì¬
+# ï¿½ï¿½Æ—pï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ì¬
 cd /var/www/html/KIGA-NAKSO
 
 sudo mkdir KIGA-NAKSO/menu
