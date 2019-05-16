@@ -1,0 +1,37 @@
+# データベースkiga_naksoの作成
+set names utf8;
+drop database if exists kiga_nakso;
+create database kiga_nakso character set utf8 collate utf8_general_ci;
+
+# ユーザーminiに、パスワードshopを設定し、データベースkiga_naksoに対するすべての権限を付与
+grant all privileges on kiga_nakso.* to nakso@localhost identified by 'kiga';
+
+# データベースkiga_naksoを使用する
+use kiga_nakso;
+
+# テーブルuserの作成
+create table user(
+	u_id	int not null primary key,
+	u_name	varchar(50) not null,
+	password	char(50) not null,
+  address text not null
+);
+
+# テーブルrecipeの作成
+create table recipe(
+	r_id int not null auto_increment primary key,
+  r_name varchar(50)not null,
+  f_id_01 int,
+  f_id_02 int,
+  f_id_03 int,
+  f_id_04 int,
+  f_id_05 int
+);
+
+# テーブルmaster_foodの作成
+create table master_food(
+	f_id int not null primary key auto_increment,
+	f_name	varchar(50) not null,
+	expiry_date	int not null,
+  note text
+);
