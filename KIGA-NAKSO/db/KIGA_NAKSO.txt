@@ -1,3 +1,38 @@
+﻿# データベースkiga_naksoの作成
+set names utf8;
+drop database if exists kiga_nakso;
+create database kiga_nakso character set utf8 collate utf8_general_ci;
+
+# ユーザーminiに、パスワードshopを設定し、データベースkiga_naksoに対するすべての権限を付与
+grant all privileges on kiga_nakso.* to nakso@localhost identified by 'kiga';
+
+# データベースkiga_naksoを使用する
+use kiga_nakso;
+
+# テーブルuserの作成
+create table user(
+	u_id	int not null primary key,
+	u_name	varchar(50) not null,
+	password	char(50) not null,
+  address text not null
+);
+
+# テーブルrecipeの作成
+create table recipe(
+	r_id int not null auto_increment primary key,
+  r_name varchar(50),
+  f_id_01 int,
+  f_id_02 int,
+  f_id_03 int,
+  f_id_04 int,
+  f_id_05 int,
+  f_id_06 int,
+  f_id_07 int,
+  f_id_08 int,
+  f_id_09 int,
+  f_id_10 int
+);
+
 # データベースkiga_naksoの作成
 set names utf8;
 drop database if exists kiga_nakso;
@@ -20,12 +55,17 @@ create table user(
 # テーブルrecipeの作成
 create table recipe(
 	r_id int not null auto_increment primary key,
-  r_name varchar(50)not null,
+  r_name varchar(50),
   f_id_01 int,
   f_id_02 int,
   f_id_03 int,
   f_id_04 int,
-  f_id_05 int
+  f_id_05 int,
+  f_id_06 int,
+  f_id_07 int,
+  f_id_08 int,
+  f_id_09 int,
+  f_id_10 int
 );
 
 # テーブルmaster_foodの作成
@@ -35,3 +75,44 @@ create table master_food(
 	expiry_date	int not null,
   note text
 );
+
+# テーブルrecipeへデータを入力
+insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
+	values('ドレスオムライス',1,2,3,4,5,6);
+
+insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
+	values('普通のカレーレイス',7,8,9,10,11,12);
+
+# テーブルmaster_foodへデータを入力
+insert into master_food(f_name, expiry_date,note)
+	values('卵',10,'冬場なら50日以上持ちます');
+
+insert into master_food(f_name, expiry_date,note)
+	values('片栗粉',999,'調味料');
+
+insert into master_food(f_name, expiry_date,note)
+	values('バター',180,'調味料');
+
+insert into master_food(f_name, expiry_date,note)
+	values('チキンライス',1,'事前に作ってください');
+
+insert into master_food(f_name, expiry_date,note)
+	values('ケチャップ',180,'調味料');
+
+insert into master_food(f_name, expiry_date,note)
+	values('牛乳',7,'開封後はお早めに');
+
+insert into master_food(f_name, expiry_date,note)
+	values('じゃがいも',7,'芽が出る前にお早めに');
+
+insert into master_food(f_name, expiry_date,note)
+	values('たまねぎ',7,'基本一週間');
+
+insert into master_food(f_name, expiry_date,note)
+	values('にんじん',14,'にんじんは2週間');
+
+insert into master_food(f_name, expiry_date,note)
+	values('カレールー',999,'市販で結構');
+
+insert into master_food(f_name, expiry_date,note)
+	values('ライス',1,'事前に用意');
