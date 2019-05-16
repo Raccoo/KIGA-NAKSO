@@ -1,0 +1,21 @@
+/* footer styles--------------------- */
+.footer {
+  /*相対位置指定*/
+  position: fixed;
+  bottom: 0;
+  /* 横幅 */
+  width: 100%;
+  /* フッダーの固定の高さ */
+  height: 120px;
+  /* 背景色 */
+  background-color: #fafafa;
+}
+ 
+ .f-contents {
+  width: auto;
+  max-width: 500px;
+  padding: 0 60px;
+}
+.f-contents .text-muted {
+  margin: 15px 0;
+}

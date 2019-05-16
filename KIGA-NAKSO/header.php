@@ -5,6 +5,7 @@
 
   <!-- bootstrapの読み込みはページ最下部の方がよい -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/KIGA-NAKSO.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 </head>
@@ -42,5 +43,3 @@
     </div>
 
   </nav>
-</body>
-</html>
