@@ -9,8 +9,8 @@ sudo apt-get install -y mysql-server
 sudo apt-get install -y php7.0 php7.0-mysql php7.0-dev php libapache2-mod-php
 
 # Vagrant�N�����ɏ��X�N��
-#sudo systemctl start apache2
-#sudo systemctl enabled apache2
+sudo systemctl start apache2
+sudo systemctl enabled apache2
 sudo systemctl restart apache2.service
 
 # ��Ɨp�f�B���N�g�����쐬
