@@ -1,13 +1,13 @@
+<?php
+  require_once __DIR__ . '/../header.php';
+  //require_once __DIR__ . '/../db/dbdata.php';
+?>
 
-<!DOCTYPE html>
-<html lang="ja">
 <head>
 	<title>レシピ</title>
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
 	<script src="../js/bootstrap.min.js"></script>
 	<script defer src="../js/all.min.js"></script>
-
-
 </head>
 <body>
 	<div class="container">
@@ -22,6 +22,21 @@
 			</div>
 		<div class="row">
 			<div class="col-4">
+				<?php
+				echo 'aaa';
+					$dbc = new mysqli('localhost','kiga','nakso','kiga_nakso'); //or die('Error connectiong to mysql server');
+					//mysqli_set_charaset($dbc,'utf8');
+					$query = "SELECT * FROM recipe";
+					$result = mysqli_query($dbc,$query); //or die('Error querying database');
+					while ($row = mysqli_fetch_array($result)){
+						echo 'vvvv';
+						$recipe_name = $row['r_name'];
+						echo $recipe_name;
+					}
+				?>
+				<?php
+				echo 'bbb';
+				?>
 				<div class="card" style="width: 18rem;">
   					<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
   					<div class="card-body">
