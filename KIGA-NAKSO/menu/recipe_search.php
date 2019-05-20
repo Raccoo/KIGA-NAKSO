@@ -1,6 +1,6 @@
 <?php
   require_once __DIR__ . '/../components/header.php';
-  //require_once __DIR__ . '/../db/dbdata.php';
+  require_once __DIR__ . '/../db/dbdata.php';
 ?>
 
 	<div class="container">
@@ -14,22 +14,27 @@
 				</div>
 			</div>
 		<div class="row">
-			<div class="col-4">
-				<?php
-				echo 'aaa';
-					$dbc = new mysqli('localhost','kiga','nakso','kiga_nakso'); //or die('Error connectiong to mysql server');
-					//mysqli_set_charaset($dbc,'utf8');
-					$query = "SELECT * FROM recipe";
-					$result = mysqli_query($dbc,$query); //or die('Error querying database');
-					while ($row = mysqli_fetch_array($result)){
-						echo 'vvvv';
-						$recipe_name = $row['r_name'];
-						echo $recipe_name;
-					}
-				?>
-				<?php
-				echo 'bbb';
-				?>
+			<?php
+				$dbc = new DbData();
+				//mysqli_set_charaset($dbc,'utf8');
+				$query = "SELECT * FROM recipe";
+				$result = $dbc->query($query);
+					
+				foreach($result as $row) {
+					echo '
+					<div class="col-4">
+						<div class="card" style="width: 18rem;">
+							<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
+							<div class="card-body">
+								<h5 class="card-title">' . $row['r_name'] . '</h5>
+								<p class="card-text" >鶏肉、たまねぎ、ピーマン...</p>
+								<a href="#" class="btn btn-primary">材料を見る。</a>
+							</div>
+						</div>
+					</div>';
+				}
+			?>
+				<!--
 				<div class="card" style="width: 18rem;">
   					<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
   					<div class="card-body">
@@ -59,6 +64,7 @@
  					 </div>
 				</div>
 			</div>
+			-->
 		</div>
 	</div>
 
