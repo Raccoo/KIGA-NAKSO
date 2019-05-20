@@ -15,25 +15,29 @@
 			</div>
 			<?php
 				$dbc = new DbData();
-				$query = "SELECT * FROM recipe";
-				$result = $dbc->searchRecipe($query);
+				$all_recipe_query = "SELECT * FROM recipe";
+				$result = $dbc->searchRecipe($all_recipe_query);
 				
 				foreach($result as $row) {
 					echo '
 					<div class="col-4">
 						<div class="card" style="width: 18rem;">
-							<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
+							<img class="card-img-top" src="';
+					
+					echo "../img/omuraisu.jpg";
+					
+					echo '" alt="カードの画像" style="height: 14rem;">
 							<div class="card-body">
 								<h5 class="card-title">' . $row['r_name'] . '</h5>
 								<p class="card-text" >';
 					
-					$query = 'SELECT DISTINCT master_food.f_name 
+					$foods_name_query = 'SELECT DISTINCT master_food.f_name 
 						FROM recipe_food, recipe, master_food 
 						WHERE recipe_food.r_id = '
 						 . $row['r_id'] . 
 						' AND recipe_food.f_id = master_food.f_id';
 				
-					$items = $dbc->searchRecipe($query);
+					$items = $dbc->searchRecipe($foods_name_query);
 					
 					foreach($items as $a) {
 						echo $a['f_name'] . '<br>';
