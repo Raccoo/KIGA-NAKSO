@@ -13,7 +13,6 @@
 					</button>
 				</div>
 			</div>
-		<div class="row">
 			<?php
 				$dbc = new DbData();
 				//mysqli_set_charaset($dbc,'utf8');
@@ -34,15 +33,17 @@
 					</div>';
 				}
 			?>
-				<!--
-				<div class="card" style="width: 18rem;">
-  					<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
-  					<div class="card-body">
-    					<h5 class="card-title">ドレスオムライス</h5>
-    					<p class="card-text" >鶏肉、たまねぎ、ピーマン...</p>
-    					<a href="#" class="btn btn-primary">材料を見る。</a>
-  					</div>
-				</div>
+			<!--
+			<div class="card" style="width: 18rem;">
+  			<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
+  			<div class="card-body">
+    			<h5 class="card-title">ドレスオムライス</h5>
+    			<p class="card-text" >鶏肉、たまねぎ、ピーマン...</p>
+    			<a href="#" class="btn btn-primary">材料を見る。</a>
+  			</div>
+			</div>
+			-->
+			<!--
 			</div>
 			<div class="col-4">
 				<div class="card" style="width: 18rem;">
