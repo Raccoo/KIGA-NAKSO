@@ -17,15 +17,14 @@ class  DbData {    // DbDataクラスの宣言
     }       
   }       
       
-  public function query ($sql) {  // SELECT文実行用のメソッド
+  public function searchRecipe($sql) {  // SELECT文実行用のメソッド
+    /*
     $stmt = $this->pdo->query($sql);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
     return $items;
-  }       
-      
-  protected function exec ( $sql,  $array_params ) {  // INSERT、UPDATE、DELETE文実行用のメソッド
-    $stmt = $this->pdo->prepare( $sql );      
-    return  $stmt->execute( $array_params );  // 成功：true、失敗：false
+    */
+    $stmt = $this->pdo->query($sql);
+    
+    return $stmt;
   }
 }       
