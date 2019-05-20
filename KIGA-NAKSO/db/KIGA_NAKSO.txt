@@ -40,11 +40,11 @@ create table recipe_food(
 );
 
 # テーブルrecipeへデータを入力
-insert into recipe(r_name)
-	values('ドレスオムライス');
+insert into recipe(r_name, r_picture)
+	values('ドレスオムライス', '../img/omuraisu.jpg');
 
-insert into recipe(r_name)
-	values('普通のカレーレイス');
+insert into recipe(r_name, r_picture)
+	values('普通のカレーレイス', '../img/kare-.jpg');
 
 # テーブルmaster_foodへデータを入力
 insert into master_food(f_name, expiry_date,note)
