@@ -20,7 +20,8 @@ create table user(
 # テーブルrecipeの作成
 create table recipe(
 	r_id int not null auto_increment primary key,
-  r_name varchar(50)
+  r_name varchar(50),
+	cuisine text
 );
 
 # テーブルmaster_foodの作成
