@@ -22,11 +22,7 @@
 					echo '
 					<div class="col-4">
 						<div class="card" style="width: 18rem;">
-							<img class="card-img-top" src="';
-					
-					echo "../img/omuraisu.jpg";
-					
-					echo '" alt="カードの画像" style="height: 14rem;">
+							<img class="card-img-top" src="' . $row['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
 							<div class="card-body">
 								<h5 class="card-title">' . $row['r_name'] . '</h5>
 								<p class="card-text" >';
