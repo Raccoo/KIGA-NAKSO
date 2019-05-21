@@ -17,8 +17,15 @@
 	$_SESSION['user_id'] = 1;
 	
 	$user_id = $_SESSION['user_id'];
-	$query = '';
-	$result = $dbc->searchRecipe($query);
+	$query = 'SELECT * FROM recipe_food, refrigerator, recipe 
+		WHERE recipe_food.f_id = refrigerator.f_id 
+		AND recipe.r_id = recipe_food.r_id
+		AND refrigerator.u_id = ' . $user_id;
+	
+	$recipes = $dbc->searchRecipe($query);
+	foreach ( $recipes as $recipe ) {
+
+	}
 ?>
 	</div>
 
