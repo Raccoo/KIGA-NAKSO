@@ -68,7 +68,10 @@
 
 						echo'	
 									</p>
-									<a href="#" class="btn btn-primary">材料を見る</a>
+									<form method="POST" action="recipe_view.php">
+										<input type="hidden" name="recipe" value="' . $row['r_id'] . '" />
+										<button class="btn btn-primary">材料を見る</button>
+									</form>
 								</div>
 							</div>
 						</div>';
