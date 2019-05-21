@@ -21,3 +21,7 @@
 .f-contents .text {
   margin: 15px 0;
 }
+
+.card-body {
+  background-color: #AEFFBD;
+}
