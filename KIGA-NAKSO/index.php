@@ -1,7 +1,8 @@
 <?php
-  require_once __DIR__ . '/header.php';
+  require_once __DIR__ . '/components/header.php';
 ?>
 
+<<<<<<< HEAD
 <html>
 	<head>
 		<title>ホーム画面</title>
@@ -19,3 +20,8 @@
 	</body>
 </html>
 
+=======
+<?php
+  require_once __DIR__ . '/components/footer.php';
+?>
+>>>>>>> 263b2b57fd785b627b7f984fbcafb97df865c1c4

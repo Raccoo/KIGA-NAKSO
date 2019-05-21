@@ -21,51 +21,8 @@ create table user(
 create table recipe(
 	r_id int not null auto_increment primary key,
   r_name varchar(50),
-  f_id_01 int,
-  f_id_02 int,
-  f_id_03 int,
-  f_id_04 int,
-  f_id_05 int,
-  f_id_06 int,
-  f_id_07 int,
-  f_id_08 int,
-  f_id_09 int,
-  f_id_10 int
-);
-
-# データベースkiga_naksoの作成
-set names utf8;
-drop database if exists kiga_nakso;
-create database kiga_nakso character set utf8 collate utf8_general_ci;
-
-# ユーザーminiに、パスワードshopを設定し、データベースkiga_naksoに対するすべての権限を付与
-grant all privileges on kiga_nakso.* to nakso@localhost identified by 'kiga';
-
-# データベースkiga_naksoを使用する
-use kiga_nakso;
-
-# テーブルuserの作成
-create table user(
-	u_id	int not null primary key,
-	u_name	varchar(50) not null,
-	password	char(50) not null,
-  address text not null
-);
-
-# テーブルrecipeの作成
-create table recipe(
-	r_id int not null auto_increment primary key,
-  r_name varchar(50),
-  f_id_01 int,
-  f_id_02 int,
-  f_id_03 int,
-  f_id_04 int,
-  f_id_05 int,
-  f_id_06 int,
-  f_id_07 int,
-  f_id_08 int,
-  f_id_09 int,
-  f_id_10 int
+	r_picture varchar(50),
+	cuisine text
 );
 
 # テーブルmaster_foodの作成
@@ -76,12 +33,19 @@ create table master_food(
   note text
 );
 
-# テーブルrecipeへデータを入力
-insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
-	values('ドレスオムライス',1,2,3,4,5,6);
+# テーブルrecipe_foodの作成
+create table recipe_food(
+  r_id int,
+  f_id int,
+	f_volume
+);
 
-insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
-	values('普通のカレーレイス',7,8,9,10,11,12);
+# テーブルrecipeへデータを入力
+insert into recipe(r_name, r_picture)
+	values('ドレスオムライス', '../img/omuraisu.jpg');
+
+insert into recipe(r_name, r_picture)
+	values('普通のカレーレイス', '../img/kare-.jpg');
 
 # テーブルmaster_foodへデータを入力
 insert into master_food(f_name, expiry_date,note)
@@ -116,3 +80,18 @@ insert into master_food(f_name, expiry_date,note)
 
 insert into master_food(f_name, expiry_date,note)
 	values('ライス',1,'事前に用意');
+
+insert into recipe_food(r_id, f_id)
+	values(1, 1);
+
+insert into recipe_food(r_id, f_id)
+	values(1, 2);
+
+insert into recipe_food(r_id, f_id)
+	values(1, 3);
+
+insert into recipe_food(r_id, f_id)
+	values(1, 4);
+
+insert into recipe_food(r_id, f_id)
+	values(1, 5);
