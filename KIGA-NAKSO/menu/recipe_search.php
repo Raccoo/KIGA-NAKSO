@@ -58,12 +58,12 @@
 						
 						// process to display ingredients.
 						$counter = 0;
-						foreach($items as $a) {
+						foreach($items as $item) {
 							if( $counter >= 3 ){
 								echo '...';
 								break;
 							}
-							echo $a['f_name'] . '、';
+							echo $item['f_name'] . '、';
 							$counter += 1;
 						}
 
