@@ -36,7 +36,8 @@ create table master_food(
 # テーブルrecipe_foodの作成
 create table recipe_food(
   r_id int,
-  f_id int
+  f_id int,
+	f_volume
 );
 
 # テーブルrecipeへデータを入力

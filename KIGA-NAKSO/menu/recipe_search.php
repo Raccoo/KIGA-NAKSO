@@ -35,8 +35,14 @@
 				
 					$items = $dbc->searchRecipe($foods_name_query);
 					
+					$counter = 0;
 					foreach($items as $a) {
+						if( $counter >= 3 ){
+							echo '...';
+							break;
+						}
 						echo $a['f_name'] . '<br>';
+						$counter += 1;
 					}
 
 					echo'	
