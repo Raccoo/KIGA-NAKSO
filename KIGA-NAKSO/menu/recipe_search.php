@@ -27,6 +27,7 @@
 								<h5 class="card-title">' . $row['r_name'] . '</h5>
 								<p class="card-text" >';
 					
+					// Get the ingredients used in the recipe from db.
 					$foods_name_query = 'SELECT DISTINCT master_food.f_name 
 						FROM recipe_food, recipe, master_food 
 						WHERE recipe_food.r_id = '
@@ -35,6 +36,7 @@
 				
 					$items = $dbc->searchRecipe($foods_name_query);
 					
+					// process to display ingredients.
 					$counter = 0;
 					foreach($items as $a) {
 						if( $counter >= 3 ){
