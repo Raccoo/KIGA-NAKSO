@@ -19,3 +19,7 @@
 .f-contents .text-muted {
   margin: 15px 0;
 }
+
+.card-body {
+  background-color: #AEFFBD;
+}
