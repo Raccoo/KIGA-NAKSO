@@ -40,6 +40,13 @@ create table recipe_food(
 	f_volume text
 );
 
+# テーブルREFRIGERATORの作成
+create table refrigerator(
+	refrige_id int not null primary key auto_increment,
+	u_id int,
+	f_id int
+);
+
 # テーブルrecipeへデータを入力
 insert into recipe(r_name, r_picture)
 	values('ドレスオムライス', '../img/omuraisu.jpg');
