@@ -23,19 +23,19 @@
 		<div class="row">
 			<div class="col-4">
 				<?php
-				echo 'aaa';
-					$dbc = new mysqli('localhost','kiga','nakso','kiga_nakso'); //or die('Error connectiong to mysql server');
+				//echo 'aaa';
+					//$dbc = new mysqli('localhost','kiga','nakso','kiga_nakso'); //or die('Error connectiong to mysql server');
 					//mysqli_set_charaset($dbc,'utf8');
-					$query = "SELECT * FROM recipe";
-					$result = mysqli_query($dbc,$query); //or die('Error querying database');
-					while ($row = mysqli_fetch_array($result)){
-						echo 'vvvv';
-						$recipe_name = $row['r_name'];
-						echo $recipe_name;
-					}
+					//$query = "SELECT * FROM recipe";
+					//$result = mysqli_query($dbc,$query); //or die('Error querying database');
+					//while ($row = mysql_fetch_array($result)){
+					//	echo 'vvvv';
+					//	$recipe_name = $row['r_name'];
+					//	echo $recipe_name;
+					//}
 				?>
 				<?php
-				echo 'bbb';
+				//echo 'bbb';
 				?>
 				<div class="card" style="width: 18rem;">
   					<img class="card-img-top" src="../img/omuraisu.jpg" alt="カードの画像" style="height: 14rem;">
@@ -46,7 +46,7 @@
   					</div>
 				</div>
 			</div>
-			<div class="col-4">
+			<div czlass="col-4">
 				<div class="card" style="width: 18rem;">
   					<img class="card-img-top" src="../img/kare-.jpg" alt="カードの画像" style="height: 14rem;">
   					<div class="card-body">
