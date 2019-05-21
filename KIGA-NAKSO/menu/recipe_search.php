@@ -6,12 +6,16 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-10">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="レシピ検索">
-					<button>
-						<i class="fa fa-search"></i>
-					</button>
-				</div>
+				<!-- <div class="input-group"> -->
+					<form class="input-group action="" methods="POST" name="search_word">
+						<input type="text" class="form-control" placeholder="レシピ検索">
+						<div class="submit">
+							<button type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</form>
+				<!-- </div> -->
 			</div>
 			<?php
 				$dbc = new DbData();
