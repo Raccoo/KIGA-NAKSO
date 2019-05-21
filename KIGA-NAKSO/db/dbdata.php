@@ -17,14 +17,9 @@ class  DbData {    // DbDataクラスの宣言
     }       
   }       
       
-  public function searchRecipe($sql) {  // SELECT文実行用のメソッド
-    /*
+  public function searchRecipe($sql) {
     $stmt = $this->pdo->query($sql);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $items;
-    */
-    $stmt = $this->pdo->query($sql);
-    
-    return $stmt;
   }
 }       
