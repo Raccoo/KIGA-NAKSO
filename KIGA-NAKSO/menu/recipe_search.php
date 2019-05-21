@@ -12,9 +12,17 @@
 		<div class="row justify-content-center">
 			<?php
 			// $search_word
-			if( !empty($search_word) ) {
+			if ( !empty($search_word) ) {
 				echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'
 					. $search_word . '」 </a>で検索しました</div>';
+				$dbc = new DbData();
+				$all_recipe_query = 'SELECT * FROM recipe WHERE r_name LIKE "%' . $search_word . '%"';
+				$result = $dbc->searchRecipe($all_recipe_query);
+			}
+			else {
+				$dbc = new DbData();
+				$all_recipe_query = "SELECT * FROM recipe";
+				$result = $dbc->searchRecipe($all_recipe_query);
 			}
 		?>
 		<br>
@@ -29,10 +37,6 @@
 			</div>
 			<?php
 
-				$dbc = new DbData();
-				$all_recipe_query = "SELECT * FROM recipe";
-				$result = $dbc->searchRecipe($all_recipe_query);
-				
 				foreach($result as $row) {
 					echo '
 					<div class="col-4">
