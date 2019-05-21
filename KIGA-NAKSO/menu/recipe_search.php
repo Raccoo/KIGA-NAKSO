@@ -9,6 +9,7 @@
 	<title>レシピ検索ページ</title>
 </head>
 <body>
+	<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<?php
