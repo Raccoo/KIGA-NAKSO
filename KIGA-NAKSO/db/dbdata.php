@@ -13,7 +13,7 @@ class  DbData {    // DbDataクラスの宣言
       $this->pdo = new PDO($dsn, $user, $password);       
     } catch(Exception  $e){
       echo 'Error:' . $e->getMessage();
-      die( );       
+      die();       
     }       
   }       
       
