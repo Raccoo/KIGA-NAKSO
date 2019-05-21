@@ -37,7 +37,7 @@ create table master_food(
 create table recipe_food(
   r_id int,
   f_id int,
-	f_volume
+	f_volume text
 );
 
 # テーブルrecipeへデータを入力
