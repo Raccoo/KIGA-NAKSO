@@ -36,7 +36,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="../menu/recipe_search.php">レシピ</a>
-            <a class="dropdown-item" href="#">おすすめ</a>
+            <a class="dropdown-item" href="../menu/recommended.php">おすすめ</a>
           </div>
         </li>
       </ul>
