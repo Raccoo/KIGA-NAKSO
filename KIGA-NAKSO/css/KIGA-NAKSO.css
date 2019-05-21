@@ -8,7 +8,9 @@
   /* フッダーの固定の高さ */
   height: 120px;
   /* 背景色 */
-  background-color: #fafafa;
+  background-color: #444444;
+  /*文字色*/
+  color: white;
 }
  
  .f-contents {
@@ -16,6 +18,6 @@
   max-width: 500px;
   padding: 0 60px;
 }
-.f-contents .text-muted {
+.f-contents .text {
   margin: 15px 0;
 }
