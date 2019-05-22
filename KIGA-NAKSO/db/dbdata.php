@@ -13,18 +13,13 @@ class  DbData {    // DbDataクラスの宣言
       $this->pdo = new PDO($dsn, $user, $password);       
     } catch(Exception  $e){
       echo 'Error:' . $e->getMessage();
-      die( );       
+      die();       
     }       
   }       
       
-  public function searchRecipe($sql) {  // SELECT文実行用のメソッド
-    /*
+  public function searchRecipe($sql) {
     $stmt = $this->pdo->query($sql);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $items;
-    */
-    $stmt = $this->pdo->query($sql);
-    
-    return $stmt;
   }
 }       

@@ -9,6 +9,7 @@
 	<title>レシピ検索ページ</title>
 </head>
 <body>
+	<br>
 	<div class="container">
 		<div class="row justify-content-center">
 			<?php
@@ -57,18 +58,21 @@
 						
 						// process to display ingredients.
 						$counter = 0;
-						foreach($items as $a) {
+						foreach($items as $item) {
 							if( $counter >= 3 ){
 								echo '...';
 								break;
 							}
-							echo $a['f_name'] . '、';
+							echo $item['f_name'] . '、';
 							$counter += 1;
 						}
 
 						echo'	
 									</p>
-									<a href="#" class="btn btn-primary">材料を見る</a>
+									<form method="POST" action="recipe_view.php">
+										<input type="hidden" name="recipe" value="' . $row['r_id'] . '" />
+										<button class="btn btn-primary">材料を見る</button>
+									</form>
 								</div>
 							</div>
 						</div>';
