@@ -1,7 +1,23 @@
-/* footer styles--------------------- */
+/*　body,html　--------------------------*/
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+/*コンテナについて　----------------------------*/
+.container {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+/* フッターについて　--------------------- */
 .footer {
   /*相対位置指定*/
-  position: fixed;
+  position: relative;
   bottom: 0;
   /* 横幅 */
   width: 100%;
@@ -19,9 +35,24 @@
   padding: 0 60px;
 }
 .f-contents .text {
-  margin: 15px 0;
+  margin: 15px 0 0 0 15px;
 }
 
+
+/* カードについて -------------------------------*/
 .card-body {
   background-color: #AEFFBD;
+}
+
+#simple-card{
+  margin-top:40px; 
+}
+
+#simple-card-body{
+  background: white;
+}
+
+/* テキストについて -------------------------------*/
+.center {
+  text-align: center;
 }
