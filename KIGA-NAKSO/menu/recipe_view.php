@@ -43,7 +43,6 @@
 			foreach($items as $item) {
 				echo ' * ' . $item['f_name'] . ' : ' . $item['f_volume'] . '<br><br>';
 			}
-    
       echo $recipe['cuisine'];
     ?>
   </div>
