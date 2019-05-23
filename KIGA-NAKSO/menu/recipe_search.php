@@ -97,8 +97,8 @@
 				?>
 			</div>
 			<br>
-			<nav class="navbar-light">
-				<ul class="pagination">
+			<nav>
+				<ul class="pagination justify-content-center">
 				<?php
 					$prev = $now - 1;
 					$next = $now + 1;
