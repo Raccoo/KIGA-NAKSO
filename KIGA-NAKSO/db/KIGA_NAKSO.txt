@@ -1,38 +1,5 @@
-﻿# データベースkiga_naksoの作成
-set names utf8;
-drop database if exists kiga_nakso;
-create database kiga_nakso character set utf8 collate utf8_general_ci;
-
-# ユーザーminiに、パスワードshopを設定し、データベースkiga_naksoに対するすべての権限を付与
-grant all privileges on kiga_nakso.* to nakso@localhost identified by 'kiga';
-
-# データベースkiga_naksoを使用する
-use kiga_nakso;
-
-# テーブルuserの作成
-create table user(
-	u_id	int not null primary key,
-	u_name	varchar(50) not null,
-	password	char(50) not null,
-  address text not null
-);
-
-# テーブルrecipeの作成
-create table recipe(
-	r_id int not null auto_increment primary key,
-  r_name varchar(50),
-  f_id_01 int,
-  f_id_02 int,
-  f_id_03 int,
-  f_id_04 int,
-  f_id_05 int,
-  f_id_06 int,
-  f_id_07 int,
-  f_id_08 int,
-  f_id_09 int,
-  f_id_10 int
-);
-
+﻿
+ 
 # データベースkiga_naksoの作成
 set names utf8;
 drop database if exists kiga_nakso;
@@ -49,23 +16,15 @@ create table user(
 	u_id	int not null primary key,
 	u_name	varchar(50) not null,
 	password	char(50) not null,
-  address text not null
+  	address text not null
 );
 
 # テーブルrecipeの作成
-create table recipe(
-	r_id int not null auto_increment primary key,
+CREATE TABLE recipe (
+  r_id int NOT NULL PRIMARY KEY auto_increment,
   r_name varchar(50),
-  f_id_01 int,
-  f_id_02 int,
-  f_id_03 int,
-  f_id_04 int,
-  f_id_05 int,
-  f_id_06 int,
-  f_id_07 int,
-  f_id_08 int,
-  f_id_09 int,
-  f_id_10 int
+  r_picture varchar(50),
+  cuisine text
 );
 
 # テーブルmaster_foodの作成
@@ -73,46 +32,391 @@ create table master_food(
 	f_id int not null primary key auto_increment,
 	f_name	varchar(50) not null,
 	expiry_date	int not null,
-  note text
+	note text
 );
 
-# テーブルrecipeへデータを入力
-insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
-	values('ドレスオムライス',1,2,3,4,5,6);
+# テーブルrecipe_foodの作成
+CREATE TABLE recipe_food (
+  r_id int,
+  f_id int,
+  f_volume varchar(10)
+);
 
-insert into recipe(r_name, f_id_01, f_id_02, f_id_03, f_id_04, f_id_05, f_id_06)
-	values('普通のカレーレイス',7,8,9,10,11,12);
+
+# テーブルrecipeへデータを入力
+insert into recipe(r_name,cuisine)
+	values('ドレスオムライス',
+		'1,チキンライスを作っておいてください。<br>
+		 2,茶碗にチキンライスを入れ型を取り、大きな平皿に盛り付けておきます。<br>
+		 3,ボウルに卵を溶き、水溶き片栗粉を加え混ぜます。水溶き片栗粉を入れることで、形を保ちやすくします。<br>
+		 4,温めたフライパンにバターを入れ、弱めの中火にして卵液を流しこみます。<br>
+		 5,卵の周りが固まってきたら、卵の端から菜箸を入れ、中央に寄せていきます。この時にプリーツができていきます。<br>
+		 6,反対側も同じように、中央に寄せる。<br>
+		 7,菜箸を中央で固定したまま、フライパンを時計回りに回します。<br>
+		 8,一周回したらご飯の上にスライドさせるように載せます。<br>
+		 9,お好みでソースをかけて完成です。'
+);
+
+insert into recipe(r_name,cuisine)
+	values('普通のカレー',
+		'1,玉ねぎは皮をむいて半分に切った後、1cm幅に切っておきます♪にんじんも皮をむき、一口大の乱切りに、肉は、一口大に切っておきます(^-^)/。<br>
+		 2,じゃがいもは皮をむいて一口大に切った後、水で3分ほどさらしてアクを抜き、水から上げておきます♪。<br>
+		 3,フライパンを強火で熱してサラダ油をひき、玉ねぎ、にんじんから炒めていきます♪玉ねぎがしんなりとしたら中火にして肉を入れ、さらに炒めますo(^▽^)o。<br>
+		 4,鍋に水を入れて「3」とローレルを入れ、強火にかけて、水から炊いていきます♪沸騰が近づくとアクが出るので、丁寧にアクをすくって捨てていきます♪。<br>
+		 5,アクが取れたら、「2」を入れ、ざっくりと混ぜてフタをし、弱火で15分煮込みます♪時々フタを開けて、アクが出ているようなら取り、グラグラと沸きすぎていたら、さらに弱火にします♪。<br>
+		 6,グラグラ沸きすぎて煮込むと、じゃがいもが煮崩れますので、弱火でフツフツと煮込んでください♪「5」に市販カレールーを割り入れ、さらにAを合わせて入れ、塩コショウして、よく混ぜます♪。<br>
+		 7,「6」を、とろ火で5分煮込みます♪時々、鍋の底から混ぜて、焦げないように気をつけ、味が馴染んだら、出来上がりです☆ご飯にかけて、召し上がれo(^▽^)o。<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('肉じゃが',
+		'1,じゃがいもは、皮をむき１/４個に切ります。人参は、皮をむき乱切りにします。玉ねぎは、くし型に切ります。<br>
+		 2,フライパンにごま油を敷いて、玉ねぎ、人参、豚肉を入れて焦がさないように炒めます。Ａを小皿に入れて混ぜておきます。<br>
+		 3,油がまわったら、Ａを入れて炒め合わせ、味をつけます。<br>
+		 4,じゃがいも、水を加えて、蓋をして、中火で1２分ほど煮込みます。<br>
+		 5,味がしみ込むように、ざっくり混ぜて、蓋をして１０分ほど煮込みます。<br>
+		 6,反対側も同じように、中央に寄せる。<br>
+		 7,冷めるまで置きます。食べるときにかるく温めてください。<br>'
+);
+
+
+insert into recipe(r_name,cuisine)
+	values('味噌汁',
+		'1,玉ねぎを薄切りにします。鍋に水と玉ねぎを入れて玉ねぎが透き通るまで煮ます。<br>
+		 2,厚揚げを横半分、7mm程度の暑さに切っておきます。<br>
+		 3,鍋に厚揚げを加え沸騰するまで煮ます。<br>
+		 4,火を止めて、味噌を溶かせば完成♪お好みであさつきなど散らしてくださいね☆<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('鮭のムニエル',
+		'1,鮭の両面に、塩・コショウをし、小麦粉を軽く全体にまぶす<br>
+		 2,フライパンにオリーブオイルとバターを溶かし、鮭の両面を中火で焼き、弱火で蓋をして蒸し焼きにします<br>
+		 3,鮭が焼けたらお皿によそり、レモンをくし型に切って添えたら出来上がり♪<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('ナポリタン',
+		'1,まず、お鍋にたっぷりのお湯を沸し、塩とオリーブオイル（分量外）を少し加えてパスタを茹でます。ベーコン、ピーマン、タマネギ、マッシュルームは食べやすい大きさに切ります。<br>
+		 2,強火にかけたフライパンにバターを落とし、ベーコン、ピーマン、タマネギ、マッシュルームを全部入れて炒め、塩胡椒で下味を付け、茹で上がったパスタを入れて混ぜます。<br>
+		 3,火を弱火にし、●を混ぜたものを全体に馴染ませ出来上がり！お好みで粉チーズ、パセリ、タバスコなどをかけてお召し上がりください。<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('唐揚げ',
+		'1,肉を一口サイズに切って、ポリ袋に●の下味の調味料と一緒に入れ、揉み込みます。30分冷蔵庫で寝かします。冷蔵庫から出したら、卵を入れて、再び揉み込みこんで30分冷蔵庫で寝かします。<br>
+		 2,次に、ボールに小麦粉と片栗粉を入れてよく混ぜ、汁を切った肉を入れてまぶしていきます。余分な粉をはたいたら、準備完了！<br>
+		 3,170度の油の中に6個ずつ入れていきます。たくさん入れすぎると、温度が急激に下がって、うまく加熱がいきわたらないので、気を付けます！1分半たったら、空気に触れさせながら裏返します。<br>
+		 4,全部で4分半くらい加熱したら、油からあげます。しっかり油をきって、2分くらい余熱でおいたら、どうぞお召し上がりください♥<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('たこ焼き',
+		'1,こねぎ、キャベツ、紅しょうがはみじん切りにします。山芋はすりおろします。ボウルに天かす、具以外の材料をすべていれ、良く混ぜ合わせておきます。<br>
+		 2,たこ、エビなどは1cm角に切っておきます。あとは焼く時に、油、合わせておいた生地、具、天かすをのせて焼けば出来上がりです！<br>
+		 3,だしの素はヤマキのだしの素を使っています。<br>'
+);
+
+insert into recipe(r_name,cuisine)
+	values('お好み焼き',
+		'1,大和芋は皮を剥いてすりおろす。(山芋でもOK！)<br>
+		 2,大きめのボールに生地の材料を入れて混ぜ合わせる<br>
+		 3,ネギを洗い大きめの小口切りにする。(ザクザク大雑把でok)<br>
+		 4,キャベツも大きめのみじん切りにする<br>
+		 5,生地の入ったボールにキャベツ、ねぎ、天かす、鰹節(細かくする)を入れる。(焼く直前に入れて下さい)<br>
+		 6,スプーンで生地と野菜がしっかり絡まるまで混ぜる。<br>
+		 7,フライパンを熱して油を敷き、生地(1/2ずつ)を程よい厚みで形良く乗せ、すぐに豚肉を乗せる。(強めの中火)<br>
+		 8,綺麗な焼き色が着いたら裏返し、豚肉に火が通るまで中火で3位分焼く。<br>
+		 9,豚肉に火が通ったらもう一度裏返し、中火で2分位焼く。その間にソース、マヨネーズ、青のり、鰹節などをかける。'
+);
+
+
 
 # テーブルmaster_foodへデータを入力
-insert into master_food(f_name, expiry_date,note)
-	values('卵',10,'冬場なら50日以上持ちます');
+insert into master_food(f_name, expiry_date )
+	values('豚こま',2);
+insert into master_food(f_name, expiry_date )
+	values('ジャガイモ',14);
+insert into master_food(f_name, expiry_date )
+	values('にんじん',14);
+insert into master_food(f_name, expiry_date )
+	values('たまねぎ',14);
+insert into master_food(f_name, expiry_date )
+	values('ごま油',999);
+insert into master_food(f_name, expiry_date )
+	values('砂糖',999);
+insert into master_food(f_name, expiry_date )
+	values('味醂',999);
+insert into master_food(f_name, expiry_date )
+	values('醤油',999);
+insert into master_food(f_name, expiry_date )
+	values('水',999);
+insert into master_food(f_name, expiry_date )
+	values('薄切り肉',2);
+insert into master_food(f_name, expiry_date )
+	values('サラダ油',999);
+insert into master_food(f_name, expiry_date )
+	values('カレールー',999);
+insert into master_food(f_name, expiry_date )
+	values('塩',999);
+insert into master_food(f_name, expiry_date )
+	values('胡椒',999);
+insert into master_food(f_name, expiry_date )
+	values('ローレル',999);
+insert into master_food(f_name, expiry_date )
+	values('ケチャップ',999);
+insert into master_food(f_name, expiry_date )
+	values('ウスターソース',999);
+insert into master_food(f_name, expiry_date )
+	values('とんかつソース',999);
+insert into master_food(f_name, expiry_date )
+	values('ご飯',1);
+insert into master_food(f_name, expiry_date )
+	values('厚揚げ',7);
+insert into master_food(f_name, expiry_date )
+	values('味噌',999);
+insert into master_food(f_name, expiry_date )
+	values('生銀鮭',2);
+insert into master_food(f_name, expiry_date )
+	values('小麦粉',999);
+insert into master_food(f_name, expiry_date )
+	values('オリーブオイル',999);
+insert into master_food(f_name, expiry_date )
+	values('バター',14);
+insert into master_food(f_name, expiry_date )
+	values('レモン',7);
+insert into master_food(f_name, expiry_date )
+	values('パスタ',999);
+insert into master_food(f_name, expiry_date )
+	values('ベーコン',14);
+insert into master_food(f_name, expiry_date )
+	values('ピーマン',7);
+insert into master_food(f_name, expiry_date )
+	values('マッシュルーム',14);
+insert into master_food(f_name, expiry_date )
+	values('牛乳',7);
+insert into master_food(f_name, expiry_date )
+	values('鶏もも肉',2);
+insert into master_food(f_name, expiry_date )
+	values('にんにくチューブ',30);
+insert into master_food(f_name, expiry_date )
+	values('生姜チューブ',30);
+insert into master_food(f_name, expiry_date )
+	values('酒',999);
+insert into master_food(f_name, expiry_date )
+	values('ラー油',999);
+insert into master_food(f_name, expiry_date )
+	values('卵',7);
+insert into master_food(f_name, expiry_date )
+	values('片栗粉',999);
+insert into master_food(f_name, expiry_date )
+	values('たこ焼きの粉',999);
+insert into master_food(f_name, expiry_date )
+	values('だしの素',999);
+insert into master_food(f_name, expiry_date )
+	values('山芋',7);
+insert into master_food(f_name, expiry_date )
+	values('こねぎ',7);
+insert into master_food(f_name, expiry_date )
+	values('キャベツ',7);
+insert into master_food(f_name, expiry_date )
+	values('紅ショウガ',7);
+insert into master_food(f_name, expiry_date )
+	values('天かす',999);
+insert into master_food(f_name, expiry_date )
+	values('青ネギ',7);
+insert into master_food(f_name, expiry_date )
+	values('豚バラ薄切り',2);
+insert into master_food(f_name, expiry_date )
+	values('鰹節',999);
+insert into master_food(f_name, expiry_date )
+	values('天ぷら粉',999);
+insert into master_food(f_name, expiry_date )
+	values('昆布茶',999);
+insert into master_food(f_name, expiry_date )
+	values('中農ソース',999);
+insert into master_food(f_name, expiry_date )
+	values('マヨネーズ',999);
+insert into master_food(f_name, expiry_date )
+	values('青のり',999);
+insert into master_food(f_name, expiry_date )
+	values('チキンライス',1);
+insert into master_food(f_name, expiry_date )
+	values('薄力粉',999);
 
-insert into master_food(f_name, expiry_date,note)
-	values('片栗粉',999,'調味料');
+# テーブルrecipe_foodへデータを入力
+insert into recipe_food(r_id,f_id,f_volume)
+	values(1,54,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(1,37,'2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(1,25,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,1,'300g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,2,'3個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,3,'1/2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,4,'1個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,5,'大さじ2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,6,'大さじ1.5');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,7,'大さじ1.5');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,8,'大さじ3');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(3,9,'1カップ');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,10,'200g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,3,'3個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,3,'1と1/2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,2,'3個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,11,'小さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,12,'140g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,9,'1100cc');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,13,'少々');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,14,'少々');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,15,'1枚');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,16,'大さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,17,'大さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,18,'大さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(2,19,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(4,20,'1枚');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(4,4,'1/2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(4,9,'500㏄');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(4,7,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,22,'1切れ');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,13,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,14,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,23,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,24,'中さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,25,'5g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(5,26,'1/6個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,27,'160g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,25,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,28,'4枚');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,29,'1個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,2,'1/2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,13,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,14,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,16,'100cc');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,31,'大さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(6,18,'小さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,32,'300g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,33,'2cm');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,34,'1cm');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,35,'大さじ2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,8,'大さじ1と1/2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,5,'小さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,36,'小さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,37,'1/2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,23,'大さじ3');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(7,38,'大さじ3');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,39,'120g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,40,'小さじ1/2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,41,'5cmくらい');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,37,'1個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,8,'小さじ1/2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,9,'450cc');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,42,'20g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,43,'100g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,44,'40g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(8,45,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,43,'350g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,46,'50g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,47,'100g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,45,'10g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,48,'5g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,23,'80g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,37,'2個');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,41,'100g');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,40,'小さじ1');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,50,'小さじ1/2');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,18,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,51,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,52,'適量');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,53,'お好みで');
+insert into recipe_food(r_id,f_id,f_volume)
+	values(9,48,'お好みで');
 
-insert into master_food(f_name, expiry_date,note)
-	values('バター',180,'調味料');
 
-insert into master_food(f_name, expiry_date,note)
-	values('チキンライス',1,'事前に作ってください');
 
-insert into master_food(f_name, expiry_date,note)
-	values('ケチャップ',180,'調味料');
 
-insert into master_food(f_name, expiry_date,note)
-	values('牛乳',7,'開封後はお早めに');
 
-insert into master_food(f_name, expiry_date,note)
-	values('じゃがいも',7,'芽が出る前にお早めに');
 
-insert into master_food(f_name, expiry_date,note)
-	values('たまねぎ',7,'基本一週間');
 
-insert into master_food(f_name, expiry_date,note)
-	values('にんじん',14,'にんじんは2週間');
 
-insert into master_food(f_name, expiry_date,note)
-	values('カレールー',999,'市販で結構');
 
-insert into master_food(f_name, expiry_date,note)
-	values('ライス',1,'事前に用意');
+
+
