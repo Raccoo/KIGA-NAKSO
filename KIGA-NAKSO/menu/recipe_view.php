@@ -16,12 +16,19 @@
 ?>
 <head>
 	<title>レシピ検索ページ</title>
+  <style type="text/css">
+    img.food {
+      height: 50%;
+      width:50%;
+    }
+  </style>
 </head>
 <body>
 	<div class="container">
     <?php 
       echo '<h1>' . $recipe['r_name'] . '</h1>';
-      echo '<image src="' . $recipe['r_picture'] . '">';
+      echo '<div class="row">';
+      echo '<image class="food" src="' . $recipe['r_picture'] . '">';
       
       // Get the ingredients used in the recipe from db.
 			$foods_name_query = 'SELECT DISTINCT master_food.f_name 
@@ -34,11 +41,12 @@
 
 			// process to display ingredients.
 			foreach($items as $a) {
-				echo ' * ' . $a['f_name'] . ' : ' . $a['f_volume'] . '<br>';
+				echo ' * ' . $a['f_name'] . ' : ' . $a['f_volume'] . '<br><br>';
 			}
-    
       echo '<image src="' . $recipe['cuisine'] . '">';
+      '</div>'
     ?>
+  </div>
   </div>
   <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
 <?php
