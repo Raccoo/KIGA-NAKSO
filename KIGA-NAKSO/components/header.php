@@ -6,7 +6,7 @@
   <!-- bootstrapの読み込みはページ最下部の方がよい -->
   <link href="/../css/bootstrap.min.css" rel="stylesheet">
   <link href="/../css/KIGA-NAKSO.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <script src="/../js/jquery.min.js"></script>
   <script src="/../js/bootstrap.min.js"></script>
 </head>

@@ -37,25 +37,35 @@
 			</div>
 			<br>
 			<div class="row justify-content-center">
-			<?php
-				foreach($result as $row) {
+				<?php
+					define('MAX', '9');
+					$result_count = count($result);
+					$max_page = ceil($result_count / MAX);
+					if(!isset($_GET['page_id'])){
+							$now = 1;
+					}else{
+							$now = $_GET['page_id'];
+					}
+					$start_no = ($now - 1) * MAX;
+					$disp_data = array_slice($result, $start_no, MAX, true);
+					foreach($disp_data as $val){
 					echo '
 						<div class="col-4">
 							<div class="card" style="width: 18rem;">
-								<img class="card-img-top" src="' . $row['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
+								<img class="card-img-top" src="' . $val['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
 								<div class="card-body">
-									<h5 class="card-title">' . $row['r_name'] . '</h5>
+									<h5 class="card-title">' . $val['r_name'] . '</h5>
 									<p class="card-text">';
-						
-						// Get the ingredients used in the recipe from db.
-						$foods_name_query = 'SELECT DISTINCT master_food.f_name 
-							FROM recipe_food, recipe, master_food 
-							WHERE recipe_food.r_id = '
-							. $row['r_id'] . 
-							' AND recipe_food.f_id = master_food.f_id';
-					
+										
+					// Get the ingredients used in the recipe from db.
+					$foods_name_query = 'SELECT DISTINCT master_food.f_name 
+						FROM recipe_food, recipe, master_food 
+						WHERE recipe_food.r_id = '
+						. $val['r_id'] . 
+						' AND recipe_food.f_id = master_food.f_id';
+									
 						$items = $dbc->searchRecipe($foods_name_query);
-						
+										
 						// process to display ingredients.
 						$counter = 0;
 						foreach($items as $item) {
@@ -68,26 +78,40 @@
 						}
 
 						echo'	
-									</p>
-									<form method="POST" action="recipe_view.php">
-										<input type="hidden" name="recipe" value="' . $row['r_id'] . '" />
-										<button class="btn btn-primary">材料を見る</button>
-									</form>
+										</p>
+										<form method="POST" action="recipe_view.php">
+											<input type="hidden" name="recipe" value="' . $row['r_id'] . '" />
+											<button class="btn btn-primary">材料を見る</button>
+										</form>
+									</div>
 								</div>
-							</div>
-						</div>';
+							</div>';
 					}
 				?>
-				<div class="col-4">
-					<div class="card" style="width: 18rem;">
-							<img class="card-img-top" src="../img/monburan.jpg" alt="カードの画像" style="height: 14rem;">
-							<div class="card-body">
-								<h5 class="card-title">ざるそばモンブラン</h5>
-								<p class="card-text" >栗、グラニュー糖、生クリーム</p>
-								<a href="#" class="btn btn-primary">材料を見る</a>
-						</div>
-					</div>
-				</div>
+			</div>
+			<br>
+			<nav class="navbar-light">
+				<ul class="pagination">
+				<?php
+					$prev = $now - 1;
+					$next = $now + 1;
+					if ( $now != 1 ) {
+						echo '<li class="page-item"><a class="page-link" href="./recipe_search.php?page_id=' . $prev . '"><i class="fas fa-angle-left"></i></a></li>';
+					}
+					for( $i = 1; $i <= $max_page; $i++ ){
+						if ( $i != $now ) {
+							echo '<li class="page-item"><a class="page-link" href="./recipe_search.php?page_id='. $i. '">'. $i. '</a></li>';
+						}
+						else {
+							echo '<li class="page-item" active><a class="page-link" href="./recipe_search.php?page_id='. $i. '">'. $i. '</a></li>';
+						}
+					}
+					if ( $now != $max_page ) {
+						echo '<li class="page-item"><a class="page-link" href="./recipe_search.php?page_id='. $next . '"><i class="fas fa-angle-right"></i></a></li>';
+					}
+				?>
+				</ul>
+			</nav>
 			</div>
 		</div>
 	</div>
