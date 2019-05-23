@@ -37,7 +37,7 @@
 				echo ' * ' . $a['f_name'] . ' : ' . $a['f_volume'] . '<br>';
 			}
     
-      echo '<image src="' . $recipe['cuisine'] . '">';
+      echo $recipe['cuisine'];
     ?>
   </div>
   <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
