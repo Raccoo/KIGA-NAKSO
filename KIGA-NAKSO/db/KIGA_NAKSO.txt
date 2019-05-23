@@ -47,6 +47,15 @@ create table refrigerator(
 	f_id int
 );
 
+# テーブルrefrigeratorへテストデータを入力
+insert into refrigerator(refrige_id, u_id, f_id)
+	values(1, 1, 10);
+
+insert into refrigerator(refrige_id, u_id, f_id)
+	values(2, 1, 999);
+
+
+
 # テーブルrecipeへデータを入力
 insert into recipe(r_name, r_picture)
 	values('ドレスオムライス', '../img/omuraisu.jpg');
@@ -101,4 +110,4 @@ insert into recipe_food(r_id, f_id)
 	values(1, 4);
 
 insert into recipe_food(r_id, f_id)
-	values(1, 5);
+	values(1, 10);
