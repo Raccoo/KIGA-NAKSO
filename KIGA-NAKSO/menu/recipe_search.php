@@ -48,21 +48,23 @@
 					}
 					$start_no = ($now - 1) * MAX;
 					$disp_data = array_slice($result, $start_no, MAX, true);
+					
+					$cards_count = 0;
 					foreach($disp_data as $val){
-					echo '
-						<div class="col-4">
-							<div class="card" style="width: 18rem;">
-								<img class="card-img-top" src="' . $val['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
-								<div class="card-body">
-									<h5 class="card-title">' . $val['r_name'] . '</h5>
-									<p class="card-text">';
-										
-					// Get the ingredients used in the recipe from db.
-					$foods_name_query = 'SELECT DISTINCT master_food.f_name 
-						FROM recipe_food, recipe, master_food 
-						WHERE recipe_food.r_id = '
-						. $val['r_id'] . 
-						' AND recipe_food.f_id = master_food.f_id';
+						echo '
+							<div class="col-4">
+								<div class="card" style="width: 18rem;">
+									<img class="card-img-top" src="' . $val['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
+									<div class="card-body">
+										<h5 class="card-title">' . $val['r_name'] . '</h5>
+										<p class="card-text">';
+											
+						// Get the ingredients used in the recipe from db.
+						$foods_name_query = 'SELECT DISTINCT master_food.f_name 
+							FROM recipe_food, recipe, master_food 
+							WHERE recipe_food.r_id = '
+							. $val['r_id'] . 
+							' AND recipe_food.f_id = master_food.f_id';
 									
 						$items = $dbc->searchRecipe($foods_name_query);
 										
@@ -80,12 +82,17 @@
 						echo'	
 										</p>
 										<form method="POST" action="recipe_view.php">
-											<input type="hidden" name="recipe" value="' . $row['r_id'] . '" />
+											<input type="hidden" name="recipe" value="' . $val['r_id'] . '" />
 											<button class="btn btn-primary">材料を見る</button>
 										</form>
 									</div>
 								</div>
 							</div>';
+
+						$cards_count += 1;
+						if ( $cards_count % 3 == 0 ) {
+							echo '';
+						}
 					}
 				?>
 			</div>

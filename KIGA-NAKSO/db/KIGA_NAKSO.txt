@@ -49,11 +49,7 @@ create table refrigerator(
 
 # テーブルREFRIGERATORへデータを入力
 insert into refrigerator(refrige_id, u_id, f_id)
-	values(1, 1, 10);
-
-# テーブルrecipe_foodへデータを入力
-insert into recipe_food(r_id, f_id)
-	values(1, 10);
+	values(1, 1, 4);
 
 # テーブルrecipeへデータを入力
 insert into recipe(r_name,r_picture,cuisine)
