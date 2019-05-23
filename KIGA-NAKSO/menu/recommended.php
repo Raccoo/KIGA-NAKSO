@@ -10,6 +10,9 @@
 <body>
 	<br>
 	<div class="container">
+		<h1>おすすめのメニュー</h1>
+		<br>
+		<div class="row justify-content-center">	
 <?php
 	session_start();
 	
@@ -24,9 +27,26 @@
 	
 	$recipes = $dbc->searchRecipe($query);
 	foreach ( $recipes as $recipe ) {
-
+		echo '
+			<div class="col-4">
+			<div class="card" style="width: 18rem;">
+			<img class="card-img-top" src="' . $recipe['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
+			<div class="card-body">
+			<h5 class="card-title">' . $recipe['r_name'] . '</h5>
+			<p class="card-text">';
+		
+		echo'	
+			</p>
+			<form method="POST" action="recipe_view.php">
+			<input type="hidden" name="recipe" value="' . $recipe['r_id'] . '" />
+			<button class="btn btn-primary">材料を見る</button>
+			</form>
+			</div>
+			</div>
+			</div>';
 	}
 ?>
+		</div>
 	</div>
 
 <?php
