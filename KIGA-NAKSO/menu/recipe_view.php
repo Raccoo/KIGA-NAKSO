@@ -43,13 +43,10 @@
 			foreach($items as $a) {
 				echo ' * ' . $a['f_name'] . ' : ' . $a['f_volume'] . '<br><br>';
 			}
-<<<<<<< HEAD
       echo '<image src="' . $recipe['cuisine'] . '">';
       '</div>'
-=======
+
     
-      echo $recipe['cuisine'];
->>>>>>> 0986a17e856bc1b088b09331c149b32a7cc08d0e
     ?>
   </div>
   </div>
