@@ -82,8 +82,9 @@ insert into recipe(r_name,r_picture,cuisine)
 		 7,「6」を、とろ火で5分煮込みます♪時々、鍋の底から混ぜて、焦げないように気をつけ、味が馴染んだら、出来上がりです☆ご飯にかけて、召し上がれo(^▽^)o。<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('肉じゃが',
+		'../img/nikujaga.jpg',
 		'1,じゃがいもは、皮をむき１/４個に切ります。人参は、皮をむき乱切りにします。玉ねぎは、くし型に切ります。<br>
 		 2,フライパンにごま油を敷いて、玉ねぎ、人参、豚肉を入れて焦がさないように炒めます。Ａを小皿に入れて混ぜておきます。<br>
 		 3,油がまわったら、Ａを入れて炒め合わせ、味をつけます。<br>
@@ -94,45 +95,51 @@ insert into recipe(r_name,cuisine)
 );
 
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('味噌汁',
+		'../img/misosiru.jpg',
 		'1,玉ねぎを薄切りにします。鍋に水と玉ねぎを入れて玉ねぎが透き通るまで煮ます。<br>
 		 2,厚揚げを横半分、7mm程度の暑さに切っておきます。<br>
 		 3,鍋に厚揚げを加え沸騰するまで煮ます。<br>
 		 4,火を止めて、味噌を溶かせば完成♪お好みであさつきなど散らしてくださいね☆<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('鮭のムニエル',
+		'../img/munieru.jpg',
 		'1,鮭の両面に、塩・コショウをし、小麦粉を軽く全体にまぶす<br>
 		 2,フライパンにオリーブオイルとバターを溶かし、鮭の両面を中火で焼き、弱火で蓋をして蒸し焼きにします<br>
 		 3,鮭が焼けたらお皿によそり、レモンをくし型に切って添えたら出来上がり♪<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('ナポリタン',
+		'../img/naporitan.jpg',
 		'1,まず、お鍋にたっぷりのお湯を沸し、塩とオリーブオイル（分量外）を少し加えてパスタを茹でます。ベーコン、ピーマン、タマネギ、マッシュルームは食べやすい大きさに切ります。<br>
 		 2,強火にかけたフライパンにバターを落とし、ベーコン、ピーマン、タマネギ、マッシュルームを全部入れて炒め、塩胡椒で下味を付け、茹で上がったパスタを入れて混ぜます。<br>
 		 3,火を弱火にし、●を混ぜたものを全体に馴染ませ出来上がり！お好みで粉チーズ、パセリ、タバスコなどをかけてお召し上がりください。<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('唐揚げ',
+		'../img/karaage.jpg',
 		'1,肉を一口サイズに切って、ポリ袋に●の下味の調味料と一緒に入れ、揉み込みます。30分冷蔵庫で寝かします。冷蔵庫から出したら、卵を入れて、再び揉み込みこんで30分冷蔵庫で寝かします。<br>
 		 2,次に、ボールに小麦粉と片栗粉を入れてよく混ぜ、汁を切った肉を入れてまぶしていきます。余分な粉をはたいたら、準備完了！<br>
 		 3,170度の油の中に6個ずつ入れていきます。たくさん入れすぎると、温度が急激に下がって、うまく加熱がいきわたらないので、気を付けます！1分半たったら、空気に触れさせながら裏返します。<br>
 		 4,全部で4分半くらい加熱したら、油からあげます。しっかり油をきって、2分くらい余熱でおいたら、どうぞお召し上がりください♥<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('たこ焼き',
+		'../img/takoyaki.jpg',
 		'1,こねぎ、キャベツ、紅しょうがはみじん切りにします。山芋はすりおろします。ボウルに天かす、具以外の材料をすべていれ、良く混ぜ合わせておきます。<br>
 		 2,たこ、エビなどは1cm角に切っておきます。あとは焼く時に、油、合わせておいた生地、具、天かすをのせて焼けば出来上がりです！<br>
 		 3,だしの素はヤマキのだしの素を使っています。<br>'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('お好み焼き',
+		'../img/okonomiyaki.jpg',
 		'1,大和芋は皮を剥いてすりおろす。(山芋でもOK！)<br>
 		 2,大きめのボールに生地の材料を入れて混ぜ合わせる<br>
 		 3,ネギを洗い大きめの小口切りにする。(ザクザク大雑把でok)<br>
