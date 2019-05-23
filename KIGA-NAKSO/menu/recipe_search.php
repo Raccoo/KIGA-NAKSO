@@ -28,7 +28,7 @@
 			<div class="col-10">
 				<form class="input-group" action="recipe_search.php" method="POST">
 					<input type="text" name="search_word" class="form-control" placeholder="レシピ検索">
-					<button type="submit">
+					<button type="submit" class="btn btn-success">
 						<i class="fa fa-search"></i>
 						検索
 					</button>
