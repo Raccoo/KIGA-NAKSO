@@ -97,8 +97,8 @@
 				?>
 			</div>
 			<br>
-			<nav class="navbar-light">
-				<ul class="pagination">
+			<nav>
+				<ul class="pagination justify-content-center">
 				<?php
 					$prev = $now - 1;
 					$next = $now + 1;
@@ -110,7 +110,7 @@
 							echo '<li class="page-item"><a class="page-link" href="./recipe_search.php?page_id='. $i. '">'. $i. '</a></li>';
 						}
 						else {
-							echo '<li class="page-item" active><a class="page-link" href="./recipe_search.php?page_id='. $i. '">'. $i. '</a></li>';
+							echo '<li class="page-item active"><a class="page-link" href="./recipe_search.php?page_id='. $i. '">'. $i. '</a></li>';
 						}
 					}
 					if ( $now != $max_page ) {
