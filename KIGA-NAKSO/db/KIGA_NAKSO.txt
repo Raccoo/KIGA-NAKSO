@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-﻿
- 
 # データベースkiga_naksoの作成
-=======
-﻿# データベースkiga_naksoの作成
->>>>>>> 64f5c7959b6d5b0d5ee6ce1dadd6f5386a147803
 set names utf8;
 drop database if exists kiga_nakso;
 create database kiga_nakso character set utf8 collate utf8_general_ci;
@@ -20,7 +14,6 @@ create table user(
 	u_id	int not null primary key,
 	u_name	varchar(50) not null,
 	password	char(50) not null,
-<<<<<<< HEAD
   	address text not null
 );
 
@@ -30,17 +23,6 @@ CREATE TABLE recipe (
   r_name varchar(50),
   r_picture varchar(50),
   cuisine text
-=======
-  address text not null
-);
-
-# テーブルrecipeの作成
-create table recipe(
-	r_id int not null auto_increment primary key,
-  r_name varchar(50),
-	r_picture varchar(50),
-	cuisine text
->>>>>>> 64f5c7959b6d5b0d5ee6ce1dadd6f5386a147803
 );
 
 # テーブルmaster_foodの作成
@@ -58,11 +40,25 @@ CREATE TABLE recipe_food (
   f_volume varchar(10)
 );
 
-<<<<<<< HEAD
+# テーブルREFRIGERATORの作成
+create table refrigerator(
+	refrige_id int not null primary key auto_increment,
+	u_id int,
+	f_id int
+);
+
+# テーブルREFRIGERATORへデータを入力
+insert into refrigerator(refrige_id, u_id, f_id)
+	values(1, 1, 10);
+
+# テーブルrecipe_foodへデータを入力
+insert into recipe_food(r_id, f_id)
+	values(1, 10);
 
 # テーブルrecipeへデータを入力
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('ドレスオムライス',
+		'../img/omuraisu.jpg',
 		'1,チキンライスを作っておいてください。<br>
 		 2,茶碗にチキンライスを入れ型を取り、大きな平皿に盛り付けておきます。<br>
 		 3,ボウルに卵を溶き、水溶き片栗粉を加え混ぜます。水溶き片栗粉を入れることで、形を保ちやすくします。<br>
@@ -74,8 +70,9 @@ insert into recipe(r_name,cuisine)
 		 9,お好みでソースをかけて完成です。'
 );
 
-insert into recipe(r_name,cuisine)
+insert into recipe(r_name,r_picture,cuisine)
 	values('普通のカレー',
+		'../img/kare-.jpg',
 		'1,玉ねぎは皮をむいて半分に切った後、1cm幅に切っておきます♪にんじんも皮をむき、一口大の乱切りに、肉は、一口大に切っておきます(^-^)/。<br>
 		 2,じゃがいもは皮をむいて一口大に切った後、水で3分ほどさらしてアクを抜き、水から上げておきます♪。<br>
 		 3,フライパンを強火で熱してサラダ油をひき、玉ねぎ、にんじんから炒めていきます♪玉ねぎがしんなりとしたら中火にして肉を入れ、さらに炒めますo(^▽^)o。<br>
@@ -148,37 +145,6 @@ insert into recipe(r_name,cuisine)
 );
 
 
-=======
-# テーブルrecipe_foodの作成
-create table recipe_food(
-  r_id int,
-  f_id int,
-	f_volume text
-);
-
-# テーブルREFRIGERATORの作成
-create table refrigerator(
-	refrige_id int not null primary key auto_increment,
-	u_id int,
-	f_id int
-);
-
-# テーブルrefrigeratorへテストデータを入力
-insert into refrigerator(refrige_id, u_id, f_id)
-	values(1, 1, 10);
-
-insert into refrigerator(refrige_id, u_id, f_id)
-	values(2, 1, 999);
-
-
-
-# テーブルrecipeへデータを入力
-insert into recipe(r_name, r_picture)
-	values('ドレスオムライス', '../img/omuraisu.jpg');
-
-insert into recipe(r_name, r_picture)
-	values('普通のカレーレイス', '../img/kare-.jpg');
->>>>>>> 64f5c7959b6d5b0d5ee6ce1dadd6f5386a147803
 
 # テーブルmaster_foodへデータを入力
 insert into master_food(f_name, expiry_date )
@@ -468,23 +434,3 @@ insert into recipe_food(r_id,f_id,f_volume)
 
 
 
-<<<<<<< HEAD
-=======
-insert into master_food(f_name, expiry_date,note)
-	values('ライス',1,'事前に用意');
-
-insert into recipe_food(r_id, f_id)
-	values(1, 1);
-
-insert into recipe_food(r_id, f_id)
-	values(1, 2);
-
-insert into recipe_food(r_id, f_id)
-	values(1, 3);
-
-insert into recipe_food(r_id, f_id)
-	values(1, 4);
-
-insert into recipe_food(r_id, f_id)
-	values(1, 10);
->>>>>>> 64f5c7959b6d5b0d5ee6ce1dadd6f5386a147803
