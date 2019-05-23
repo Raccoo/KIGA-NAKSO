@@ -10,8 +10,10 @@
 <body>
 	<br>
 	<div class="container">
-		<h1>おすすめのメニュー</h1>
-		<br>
+		<div class="mx-auto text-center">
+			<h1>おすすめのメニュー</h1>
+		</div>
+		<hr><br>
 		<div class="row justify-content-center">	
 <?php
 	session_start();
