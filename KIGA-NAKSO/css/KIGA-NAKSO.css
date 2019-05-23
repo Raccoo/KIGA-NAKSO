@@ -1,14 +1,36 @@
-/* footer styles--------------------- */
+/*　import css　--------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+
+/*　body,html　--------------------------*/
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/*コンテナについて　----------------------------*/
+.container {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+/* フッターについて　--------------------- */
 .footer {
   /*相対位置指定*/
-  position: fixed;
+  position: relative;
   bottom: 0;
   /* 横幅 */
   width: 100%;
   /* フッダーの固定の高さ */
   height: 120px;
   /* 背景色 */
-  background-color: #fafafa;
+  background-color: #444444;
+  /*文字色*/
+  color: white;
 }
  
  .f-contents {
@@ -16,6 +38,25 @@
   max-width: 500px;
   padding: 0 60px;
 }
-.f-contents .text-muted {
-  margin: 15px 0;
+.f-contents .text {
+  margin: 15px 0 0 0 15px;
+}
+
+
+/* カードについて -------------------------------*/
+.card-body {
+  background-color: #AEFFBD;
+}
+
+#simple-card{
+  margin-top:40px; 
+}
+
+#simple-card-body{
+  background: white;
+}
+
+/* テキストについて -------------------------------*/
+.center {
+  text-align: center;
 }
