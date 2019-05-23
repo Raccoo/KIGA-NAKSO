@@ -31,7 +31,7 @@
       echo '<image class="food" src="' . $recipe['r_picture'] . '">';
       
       // Get the ingredients used in the recipe from db.
-			$foods_name_query = 'SELECT DISTINCT master_food.f_name 
+			$foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume 
 			FROM recipe_food, recipe, master_food 
 			WHERE recipe_food.r_id = '
 				. $recipe['r_id'] . 
@@ -40,16 +40,11 @@
 			$items = $dbc->searchRecipe($foods_name_query);
 
 			// process to display ingredients.
-			foreach($items as $a) {
-				echo ' * ' . $a['f_name'] . ' : ' . $a['f_volume'] . '<br><br>';
+			foreach($items as $item) {
+				echo ' * ' . $item['f_name'] . ' : ' . $item['f_volume'] . '<br><br>';
 			}
-<<<<<<< HEAD
-      echo '<image src="' . $recipe['cuisine'] . '">';
-      '</div>'
-=======
     
       echo $recipe['cuisine'];
->>>>>>> 0986a17e856bc1b088b09331c149b32a7cc08d0e
     ?>
   </div>
   </div>
