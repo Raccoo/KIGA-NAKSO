@@ -29,9 +29,18 @@
       echo '<h1>' . $recipe['r_name'] . '</h1>';
       echo '<div class="row">';
       echo '<div class="col-sm-7">';
-      echo '<image class="food" src="' . $recipe['r_picture'] . '">';
+      echo '<image class="food rounded" src="' . $recipe['r_picture'] . '">';
       echo '</div>';
       echo '<div class="col-sm-5">';
+      echo '<table class="table">';
+      echo '<thead>
+              <tr class="bg-warning">
+                  <th>食材</th>
+                  <th>使用料</th>
+              </tr>
+          </thead>
+          <tbody>';
+      
       // Get the ingredients used in the recipe from db.
 			$foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume 
 			FROM recipe_food, recipe, master_food 
@@ -43,20 +52,21 @@
 
 			// process to display ingredients.
 			foreach($items as $item) {
-				echo ' * ' . $item['f_name'] . ' : ' . $item['f_volume'] . '<br><br>';
-			}echo '</div><br>';
+				echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>' . $item['f_volume'] . '</th></tr>';
+      };
+      echo '</tbody></table>';
+      echo '</div></div><br>';
       echo $recipe['cuisine'];
     ?>
-</div>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-   <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <button class="btn btn-warning">作った！</button>
+      </div>
+    </div>
   </div>
-  <div class="col-md-2 col-md-offset-1">
-    <button class="btn btn-warning">作った！</button>
-  </div></div>
-</div>
-</div>
 <?php
   require_once __DIR__ . '/../components/footer.php'
 ?>
