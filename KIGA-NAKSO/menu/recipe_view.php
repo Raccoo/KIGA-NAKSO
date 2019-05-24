@@ -50,13 +50,17 @@
 
 			$items = $dbc->searchRecipe($foods_name_query);
 
+      echo '<div class="card-body border-primary bg-white">';
+      echo '<p class="card-text">';
 			// process to display ingredients.
 			foreach($items as $item) {
 				echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>' . $item['f_volume'] . '</th></tr>';
       };
       echo '</tbody></table>';
       echo '</div></div><br>';
+
       echo $recipe['cuisine'];
+      echo '</div></div></div><br>';
     ?>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
