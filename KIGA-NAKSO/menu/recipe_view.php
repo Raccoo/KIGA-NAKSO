@@ -32,6 +32,8 @@
       echo '<image class="food" src="' . $recipe['r_picture'] . '">';
       echo '</div>';
       echo '<div class="col-sm-5">';
+      echo '<div class="card border-primary">';
+      echo '<div class="card-header">必要な材料</div>';
       // Get the ingredients used in the recipe from db.
 			$foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume 
 			FROM recipe_food, recipe, master_food 
@@ -41,11 +43,16 @@
 
 			$items = $dbc->searchRecipe($foods_name_query);
 
+      echo '<div class="card-body border-primary bg-white">';
+      echo '<p class="card-text">';
 			// process to display ingredients.
 			foreach($items as $item) {
 				echo ' * ' . $item['f_name'] . ' : ' . $item['f_volume'] . '<br><br>';
-			}echo '</div><br>';
+			}echo '</p></div>';
+      echo '</div></div><br>';
+      echo '<div class="card border-success"><div class="card-header">作り方</div><div class="card-body bg-white">';
       echo $recipe['cuisine'];
+      echo '</div></div></div><br>';
     ?>
 </div>
 <div class="row">
