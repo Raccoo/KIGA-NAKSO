@@ -1,1 +1,0 @@
-{"virtualbox":{"/var/www/html":{"mount_options":["dmode=777","fmode=755","uid=1000","gid=1000"],"guestpath":"/var/www/html","hostpath":"C:/Users/Sonic Logic/KIGA-NAKSO/KIGA-NAKSO","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/Sonic Logic/KIGA-NAKSO","disabled":false,"__vagrantfile":true}}}
