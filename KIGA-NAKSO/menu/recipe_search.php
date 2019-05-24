@@ -13,7 +13,6 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<?php
-				// $search_word
 				if ( !empty($search_word) ) {
 					echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'
 						. $search_word . '」 </a>で検索しました</div>';
@@ -39,6 +38,7 @@
 			<div class="row justify-content-center">
 				<?php
 					define('MAX', '6');
+
 					$result_count = count($result);
 					$max_page = ceil($result_count / MAX);
 					if(!isset($_GET['page_id'])){
@@ -83,7 +83,7 @@
 										</p>
 										<form method="POST" action="recipe_view.php">
 											<input type="hidden" name="recipe" value="' . $val['r_id'] . '" />
-											<button class="btn btn-primary">材料を見る</button>
+											<button class="btn btn-primary">レシピを見る</button>
 										</form>
 									</div>
 								</div>
