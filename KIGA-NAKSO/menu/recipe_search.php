@@ -39,6 +39,7 @@
 			<div class="row justify-content-center">
 				<?php
 					define('MAX', '6');
+
 					$result_count = count($result);
 					$max_page = ceil($result_count / MAX);
 					if(!isset($_GET['page_id'])){
