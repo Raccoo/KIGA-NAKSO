@@ -44,12 +44,12 @@ CREATE TABLE recipe_food (
 create table refrigerator(
 	u_id int,
 	f_id int,
-	ref_expiry_date int
+	ref_expiry_date date not null
 );
 
 # テーブルREFRIGERATORへデータを入力
-insert into refrigerator(u_id, f_id)
-	values(1, 4);
+insert into refrigerator(u_id, f_id, ref_expiry_date)
+	values(1, 4, '2019-06-01');
 
 # テーブルrecipeへデータを入力
 insert into recipe(r_name,r_picture,cuisine)
