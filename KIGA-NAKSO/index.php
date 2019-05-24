@@ -5,9 +5,6 @@
 <html>
 	<head>
 		<title>ホーム画面</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<script src="js/bootstrap.min.js"></script>
-		<script defer src="js/all.min.js"></script>
 	</head>
 	<body>
 		<br><br>
