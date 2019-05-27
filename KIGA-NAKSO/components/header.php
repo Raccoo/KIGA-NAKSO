@@ -27,13 +27,19 @@
           </li>
           
           <!-- Foodstuff page -->
-          <li class="nav-item">
-            <a class="nav-link" href="#">食材</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="../food/search_food.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              食材
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="../food/search_food.php">検索</a>
+              <a class="dropdown-item" href="../food/add_food.php">追加</a>
+            </div>
           </li>
           
           <!-- Search page -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="../menu/recipe_search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               検索
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -49,6 +55,7 @@
   // security check
   ini_set('display_errors', 0);
   header("X-FRAME-OPTIONS: DENY");
+  header("X-Content-Type-Options: nosniff");
 
   if( !isset($_SESSION['user_id']) ) {
     echo '<li class="nav-item"><a class="nav-link" href="../user/create-user.php">新規作成</a></li>';
