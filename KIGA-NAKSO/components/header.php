@@ -46,6 +46,10 @@
       <div class="navbar-collapse collapse order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
 <?php
+  // security check
+  ini_set('display_errors', 0);
+  header("X-FRAME-OPTIONS: DENY");
+
   if( !isset($_SESSION['user_id']) ) {
     echo '<li class="nav-item"><a class="nav-link" href="../user/create-user.php">新規作成</a></li>';
     echo '<li class="nav-item"><a class="nav-link" href="../user/login.php">ログイン</a></li>';
