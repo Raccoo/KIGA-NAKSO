@@ -26,7 +26,12 @@
           $results = $dbc->searchRecipe($all_refrigerator_food);
         }
         else {
-          $all_refrigerator_food = "SELECT * FROM refrigerator, master_food WHERE refrigerator.f_id = master_food.f_id";
+          $all_refrigerator_food = 
+            'SELECT master_food.f_id, master_food.f_name, DATE_FORMAT((refrigerator.ref_expiry_date + master_food.expiry_date), "%Y-%m-%d") AS ex_date 
+            FROM refrigerator, master_food 
+            WHERE refrigerator.f_id = master_food.f_id 
+            ORDER BY ex_date';
+
           $results = $dbc->searchRecipe($all_refrigerator_food);
         }
       ?>
@@ -42,23 +47,30 @@
     </div><br>
     <div class="row justify-content-md-center text-center">
       <div class="col-md-7">
-        <table class="table">
-          <thead>
-            <tr class="bg-warning">
-              <th>食材</th>
-              <th>保存料</th>
-              <th>消費期限</th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php
+        <?php
+          if ( !empty( $results ) ) {
+            echo '
+              <table class="table">
+                <thead>
+                  <tr class="bg-warning">
+                    <th>食材</th>
+                    <th>保存料</th>
+                    <th>消費期限</th>
+                  </tr>
+                </thead>
+                <tbody>';
             foreach( $results as $result ) {
               // 食材名, 保存料, 消費期限を表示
               echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . $result[''] . '</th><th>' . $result['ex_date'] . '</th></tr>';
             }
-          ?>
-          </tbody>
-        </table>
+            echo '
+                </tbody>
+              </table>';
+          }
+          else {
+            echo '<div class="col-9 text-center alert alert-danger" role="alert"><a class="alert-link">冷蔵庫には入っていませんでした</div>';
+          }
+        ?>
       </div>
     </div>
   </div>
