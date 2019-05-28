@@ -19,18 +19,18 @@
           
           // refrigerator query
           $all_refrigerator_food = 
-            'SELECT master_food.f_id, master_food.f_name, DATE_FORMAT((refrigerator.ref_expiry_date + master_food.expiry_date), "%Y-%m-%d") AS ex_date 
+            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day 
             FROM refrigerator, master_food 
             WHERE master_food.f_name LIKE "%' . $search_word . '%" AND refrigerator.f_id = master_food.f_id 
-            ORDER BY ex_date';
+            ORDER BY end_day';
           $results = $dbc->searchRecipe($all_refrigerator_food);
         }
         else {
           $all_refrigerator_food = 
-            'SELECT master_food.f_id, master_food.f_name, DATE_FORMAT((refrigerator.ref_expiry_date + master_food.expiry_date), "%Y-%m-%d") AS ex_date 
+            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day 
             FROM refrigerator, master_food 
             WHERE refrigerator.f_id = master_food.f_id 
-            ORDER BY ex_date';
+            ORDER BY end_day';
 
           $results = $dbc->searchRecipe($all_refrigerator_food);
         }
@@ -54,14 +54,14 @@
                 <thead>
                   <tr class="bg-warning">
                     <th>食材</th>
-                    <th>保存料</th>
+                    <th>保存量</th>
                     <th>消費期限</th>
                   </tr>
                 </thead>
                 <tbody>';
             foreach( $results as $result ) {
-              // 食材名, 保存料, 消費期限を表示
-              echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . /*$result['ref_int'] . */'</th><th>' . $result['ex_date'] . 'まで</th></tr>';
+              // 食材名, 保存量, 消費期限を表示
+              echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . $result['ref_int'] . '</th><th>' . $result['end_day'] . 'まで</th></tr>';
             }
             echo '
                 </tbody>

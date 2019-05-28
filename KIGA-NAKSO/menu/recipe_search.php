@@ -11,6 +11,10 @@
 <body>
 	<br>
 	<div class="container">
+		<div class="mx-auto text-center">
+			<h1>レシピ一覧</h1>
+		</div>
+		<hr><br>
 		<div class="row justify-content-center">
 			<?php
 				if ( !empty($search_word) ) {
