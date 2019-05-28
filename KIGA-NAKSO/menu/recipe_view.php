@@ -50,14 +50,12 @@
 
 			$items = $dbc->searchRecipe($foods_name_query);
 
-      echo '<div class="card-body border-primary bg-white">';
-      echo '<p class="card-text">';
-			// process to display ingredients.
-			foreach($items as $item) {
+      // process to display ingredients.
+			foreach ($items as $item) {
         echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
         
         // regtigetor not in food
-        if ( empty($item['ref_int']) ) {
+        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
@@ -65,17 +63,23 @@
         }
         echo '</th></tr>';
       };
-      echo '</tbody></table>';
-      echo '</div></div><br>';
+      echo '</tbody></table>※ ';
+
+      foreach ($items as $item) {
+        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
+          echo $item['f_name'] . ', ';
+        }
+      }
+
+      echo ' が足りません</div></div><br>';
 
       echo $recipe['cuisine'];
-      echo '</div></div></div><br>';
+      echo '</div></div><br>';
     ?>
-    <div class="row">
-      <div class="col-md-12 text-center">
+    <div class="row justify-content-md-center">
         <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
+        <div class="pl-5"></div>
         <button class="btn btn-warning">作った！</button>
-      </div>
     </div>
     <br>
   </div>
