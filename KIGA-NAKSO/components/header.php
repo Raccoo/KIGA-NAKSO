@@ -29,10 +29,10 @@
           <!-- Foodstuff page -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="../food/search_food.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              食材
+              冷蔵庫
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../food/search_food.php">検索</a>
+              <a class="dropdown-item" href="../food/stock_food.php">一覧</a>
               <a class="dropdown-item" href="../food/add_food.php">追加</a>
             </div>
           </li>
