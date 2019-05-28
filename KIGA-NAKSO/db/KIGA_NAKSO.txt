@@ -1,4 +1,4 @@
-# データベースkiga_naksoの作成
+﻿# データベースkiga_naksoの作成
 set names utf8;
 drop database if exists kiga_nakso;
 create database kiga_nakso character set utf8 collate utf8_general_ci;
@@ -37,19 +37,37 @@ create table master_food(
 CREATE TABLE recipe_food (
   r_id int,
   f_id int,
-  f_volume varchar(10)
+  f_volume varchar(10),
+  f_volume_int int
 );
 
 # テーブルREFRIGERATORの作成
 create table refrigerator(
 	u_id int,
 	f_id int,
-	ref_expiry_date date not null
+	buy_day date,
+	end_day date,
+	ref_int int
 );
 
 # テーブルREFRIGERATORへデータを入力
-insert into refrigerator(u_id, f_id, ref_expiry_date)
-	values(1, 4, '2019-06-01');
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,1 ,400);
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,2 ,6 );
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,3 ,4);
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,5 ,500 );
+#insert into refrigerator(u_id, f_id, ref_int)
+#	values( , , );
+
+
+
+
+# テーブルrecipe_foodへデータを入力
+#insert into recipe_food(r_id, f_id)
+#	values(1, 10);
 
 # テーブルrecipeへデータを入力
 insert into recipe(r_name,r_picture,cuisine)
@@ -262,178 +280,167 @@ insert into master_food(f_name, expiry_date )
 	values('薄力粉',999);
 
 # テーブルrecipe_foodへデータを入力
-insert into recipe_food(r_id,f_id,f_volume)
-	values(1,54,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(1,37,'2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(1,25,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,1,'300g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,2,'3個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,3,'1/2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,4,'1個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,5,'大さじ2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,6,'大さじ1.5');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,7,'大さじ1.5');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,8,'大さじ3');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(3,9,'1カップ');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,10,'200g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,3,'3個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,3,'1と1/2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,2,'3個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,11,'小さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,12,'140g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,9,'1100cc');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,13,'少々');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,14,'少々');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,15,'1枚');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,16,'大さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,17,'大さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,18,'大さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(2,19,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(4,20,'1枚');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(4,4,'1/2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(4,9,'500㏄');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(4,7,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,22,'1切れ');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,13,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,14,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,23,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,24,'中さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,25,'5g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(5,26,'1/6個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,27,'160g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,25,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,28,'4枚');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,29,'1個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,2,'1/2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,13,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,14,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,16,'100cc');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,31,'大さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(6,18,'小さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,32,'300g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,33,'2cm');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,34,'1cm');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,35,'大さじ2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,8,'大さじ1と1/2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,5,'小さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,36,'小さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,37,'1/2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,23,'大さじ3');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(7,38,'大さじ3');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,39,'120g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,40,'小さじ1/2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,41,'5cmくらい');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,37,'1個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,8,'小さじ1/2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,9,'450cc');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,42,'20g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,43,'100g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,44,'40g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(8,45,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,43,'350g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,46,'50g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,47,'100g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,45,'10g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,48,'5g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,23,'80g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,37,'2個');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,41,'100g');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,40,'小さじ1');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,50,'小さじ1/2');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,18,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,51,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,52,'適量');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,53,'お好みで');
-insert into recipe_food(r_id,f_id,f_volume)
-	values(9,48,'お好みで');
-
-
-
-
-
-
-
-
-
-
-
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(1,54,'適量',250);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(1,37,'2個',2);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(1,25,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,1,'300g',300);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,2,'3個',3);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,3,'1/2個',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,4,'1個',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,5,'大さじ2',30);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,6,'大さじ1.5',22.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,7,'大さじ1.5',22.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,8,'大さじ3',45);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(3,9,'1カップ',200);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,10,'200g',200);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,3,'3個',3);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,3,'1と1/2個',1.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,2,'3個',3);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,11,'小さじ1',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,12,'140g',140);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,9,'1100cc',-2);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,13,'少々',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,14,'少々',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,15,'1枚',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,16,'大さじ1',15);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,17,'大さじ1',15);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,18,'大さじ1',15);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(2,19,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(4,20,'1枚',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(4,4,'1/2個',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(4,9,'500㏄',500);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(4,7,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,22,'1切れ',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,13,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,14,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,23,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,24,'中さじ1',10);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,25,'5g',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(5,26,'1/6個',0.16);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,27,'160g',160);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,25,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,28,'4枚',4);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,29,'1個',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,2,'1/2個',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,13,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,14,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,16,'100cc',100);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,31,'大さじ1',15);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(6,18,'小さじ1',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,32,'300g',300);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,33,'2cm',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,34,'1cm',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,35,'大さじ2',30);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,8,'大さじ1と1/2',22.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,5,'小さじ1',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,36,'小さじ1',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,37,'1/2個',0.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,23,'大さじ3',45);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(7,38,'大さじ3',45);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,39,'120g',120);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,40,'小さじ1/2',2.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,41,'50g',50);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,37,'1個',1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,8,'小さじ1/2',2.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,9,'450cc',450);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,42,'20g',20);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,43,'100g',100);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,44,'40g',40);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(8,45,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,43,'350g',350);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,46,'50g',50);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,47,'100g',100);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,45,'10g',10);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,48,'5g',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,23,'80g',80);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,37,'2個',2);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,41,'100g',2);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,40,'小さじ1',5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,50,'小さじ1/2',2.5);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,18,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,51,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,52,'適量',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,53,'お好みで',-1);
+insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
+	values(9,48,'お好みで',-1);
