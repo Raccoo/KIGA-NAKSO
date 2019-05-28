@@ -40,36 +40,48 @@
               </tr>
           </thead>
           <tbody>';
-      
+
       // Get the ingredients used in the recipe from db.
-			$foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume 
-			FROM recipe_food, recipe, master_food 
-			WHERE recipe_food.r_id = '
-				. $recipe['r_id'] . 
-			  ' AND recipe_food.f_id = master_food.f_id';
+      $foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, refrigerator.ref_int 
+        FROM (recipe_food, master_food, recipe) LEFT OUTER JOIN refrigerator ON refrigerator.f_id = recipe_food.f_id
+        WHERE recipe_food.r_id = ' 
+        . $recipe['r_id'] . 
+        ' AND recipe_food.f_id = master_food.f_id';
 
 			$items = $dbc->searchRecipe($foods_name_query);
 
-      echo '<div class="card-body border-primary bg-white">';
-      echo '<p class="card-text">';
-			// process to display ingredients.
-			foreach($items as $item) {
-				echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>' . $item['f_volume'] . '</th></tr>';
+      // process to display ingredients.
+			foreach ($items as $item) {
+        echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
+        
+        // regtigetor not in food
+        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
+          echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
+        }
+        else {
+          echo $item['f_volume'];
+        }
+        echo '</th></tr>';
       };
-      echo '</tbody></table>';
-      echo '</div></div><br>';
+      echo '</tbody></table>※ ';
+
+      foreach ($items as $item) {
+        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
+          echo $item['f_name'] . ', ';
+        }
+      }
+
+      echo ' が足りません</div></div><br>';
 
       echo $recipe['cuisine'];
-      echo '</div></div></div><br>';
+      echo '</div></div><br>';
     ?>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-      <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
-      </div>
-      <div class="col-md-2 col-md-offset-1">
+    <div class="row justify-content-md-center">
+        <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
+        <div class="pl-5"></div>
         <button class="btn btn-warning">作った！</button>
-      </div>
     </div>
+    <br>
   </div>
 <?php
   require_once __DIR__ . '/../components/footer.php'
