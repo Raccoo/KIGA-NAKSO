@@ -36,8 +36,8 @@
         }
       ?>
       <div class="col-10">
-				<form class="input-group" action="search_food.php" method="POST">
-					<input type="text" name="search_word" class="form-control" placeholder="レシピ検索">
+				<form class="input-group" action="stock_food.php" method="POST">
+					<input type="text" name="search_word" class="form-control" placeholder="食材検索">
 					<button type="submit" class="btn btn-success">
 						<i class="fa fa-search"></i>
 						検索
@@ -61,7 +61,7 @@
                 <tbody>';
             foreach( $results as $result ) {
               // 食材名, 保存料, 消費期限を表示
-              echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . $result[''] . '</th><th>' . $result['ex_date'] . '</th></tr>';
+              echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . /*$result['ref_int'] . */'</th><th>' . $result['ex_date'] . 'まで</th></tr>';
             }
             echo '
                 </tbody>
