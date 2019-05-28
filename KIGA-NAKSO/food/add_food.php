@@ -26,10 +26,9 @@ $results = $dbc->showFood($food_query);
 
 
         <?php
-        echo '<input type="text" name="vol" placeholder="数量を入力">';
+        echo '<input type="number" name="vol" placeholder="数量を入力">';
         echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で登録してください。<br>';
         $fid = $_POST['food'];
-        echo $fid;
         $sql = "select f_name, expiry_date from master_food where f_id ='" . $fid ."'";
         $show = $dbc->showFood($sql);
         if ($fid != '') {
