@@ -27,8 +27,9 @@ $results = $dbc->showFood($food_query);
 
         <?php
         echo '<input type="text" name="vol" placeholder="数量を入力">';
+        echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で登録してください。<br>';
         $fid = $_POST['food'];
-        $sql = 'select f_name, expiry_date from master_food where f_id =' . $fid;
+        $sql = "select f_name, expiry_date from master_food where f_id ='" . $fid ."'";
         $show = $dbc->showFood($sql);
         if ($fid != '') {
             echo "<br>" . $show[0]['f_name'] . "の";
@@ -38,8 +39,20 @@ $results = $dbc->showFood($food_query);
         }
 
         ?>
-
         <input type="submit" name='submit' value="登録する">
+        <?php
+        $vol = $_POST['vol'];
+        $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (1,:fid,:food_end_day,:ref_int)';
+        $stmt = $dbc->set_food($ref_insert);
+        $stmt->bindValue(':fid', $fid, PDO::PARAM_INT);
+        $stmt->bindValue(':food_end_day', $food_end_day, PDO::PARAM_INT);
+        $stmt->bindValue('ref_int', $vol, PDO::PARAM_INT);
+        if(!$stmt->execute()){
+            $errors['error'] = "食材登録に失敗しました。";
+            $a = $_POST['food_end_day'];
+            }
+            echo '<p>登録が完了しました。</p>';
+        ?>
     </form>
     </body>
 <?php
