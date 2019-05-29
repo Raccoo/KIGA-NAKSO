@@ -38,7 +38,7 @@ CREATE TABLE recipe_food (
   r_id int,
   f_id int,
   f_volume varchar(10),
-  f_volume_int int
+  f_volume_int float
 );
 
 # テーブルREFRIGERATORの作成
@@ -47,7 +47,7 @@ create table refrigerator(
 	f_id int,
 	buy_day date,
 	end_day date,
-	ref_int int
+	ref_int float
 );
 
 # テーブルREFRIGERATORへデータを入力
@@ -306,8 +306,6 @@ insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
 	values(3,9,'1カップ',200);
 insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
 	values(2,10,'200g',200);
-insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
-	values(2,3,'3個',3);
 insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
 	values(2,3,'1と1/2個',1.5);
 insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
