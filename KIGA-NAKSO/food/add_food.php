@@ -11,10 +11,17 @@ $results = $dbc->showFood($food_query);
         <title>食材登録</title>
     </head>
     <body>
-
+    <div class="container">
+    <div class="form-group">
+        <br>
+        <div class="mx-auto text-center">
+			<h1>冷蔵庫に食材を追加</h1>
+		</div>
+		<hr><br>
+        <div class="row justify-content-center">
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
         <label>
-            <select name="food">
+            <select class="form-control" name="food" id="input_vol">
                 <option selected value="">登録する食材を選択してください</option>
                 <?php
                 foreach ($results as $result) {
@@ -26,8 +33,10 @@ $results = $dbc->showFood($food_query);
 
 
         <?php
-        echo '<input type="number" name="vol" placeholder="数量を入力">';
-        echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で登録してください。<br>';
+        //echo '<input type="number" name="vol" placeholder="数量を入力">';
+        echo '<input type="number" id="input_vol" class="form-control" name="vol" placeholder="数量を入力">';
+        //echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で登録してください。<br>';
+        echo '<small class="text-muted">※肉はグラム 魚は切り身 液体はmL 単位で登録してください。</small><br>';
         $fid = $_POST['food'];
         $sql = "select f_name, expiry_date from master_food where f_id ='" . $fid ."'";
         $show = $dbc->showFood($sql);
@@ -42,7 +51,10 @@ $results = $dbc->showFood($food_query);
         }
 
         ?>
-        <input type="submit" name='submit' value="登録する">
+        <!-- <input type="submit" name='submit' value="登録する"> -->
+         <br>
+         <button type="submit" class="btn btn-outline-success btn-block">登録する</button>
+         <br>
         <?php
         $vol = $_POST['vol'];
         $uid = 1; // $_SESSION['$uid']; debug用の仮のuser_id
@@ -59,6 +71,9 @@ $results = $dbc->showFood($food_query);
             echo '<p>登録が完了しました。</p>';
         ?>
     </form>
+    </div>
+    </div>
+    </div>
     </body>
 <?php
 require_once __DIR__ . ' /../components/footer.php';
