@@ -51,18 +51,14 @@ create table refrigerator(
 );
 
 # テーブルREFRIGERATORへデータを入力
-insert into refrigerator(u_id, f_id, ref_int)
-	values(1000 ,1 ,400);
-insert into refrigerator(u_id, f_id, ref_int)
-	values(1000 ,2 ,6 );
-insert into refrigerator(u_id, f_id, ref_int)
-	values(1000 ,3 ,4);
-insert into refrigerator(u_id, f_id, ref_int)
-	values(1000 ,5 ,500 );
-#insert into refrigerator(u_id, f_id, ref_int)
-#	values( , , );
-
-
+insert into refrigerator(u_id, f_id, end_day, ref_int)
+	values(1, 1, "2019-6-15", 400);
+insert into refrigerator(u_id, f_id, end_day, ref_int)
+	values(1, 2, "2019-6-15", 6);
+insert into refrigerator(u_id, f_id, end_day, ref_int)
+	values(1, 3, "2019-6-15", 4);
+insert into refrigerator(u_id, f_id, end_day, ref_int)
+	values(1, 5, "2019-6-15", 500);
 
 
 # テーブルrecipe_foodへデータを入力

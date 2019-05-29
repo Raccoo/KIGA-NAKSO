@@ -11,7 +11,7 @@
   <script src="/../js/bootstrap.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <a class="navbar-brand" href="../index.php">KIGA-NAKSO</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
       </div>
       <div class="navbar-collapse collapse order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+
 <?php
   // security check
   ini_set('display_errors', 0);
@@ -67,4 +68,9 @@
 ?>
         </ul>
       </div>
-  </nav>
+  </nav><br><br>
+</div>
+</nav>
+</body>
+
+
