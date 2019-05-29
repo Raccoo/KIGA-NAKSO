@@ -46,17 +46,20 @@ $results = $dbc->showFood($food_query);
         <?php
         $vol = $_POST['vol'];
         $uid = 1; // $_SESSION['$uid']; debug用の仮のuser_id
-        $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (:uid,:fid,:food_end_day,:ref_int)';
-        $stmt = $dbc->set_food($ref_insert);
-        $stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
-        $stmt->bindValue(':fid', $fid, PDO::PARAM_INT);
-        $stmt->bindValue(':food_end_day', $food_end_day, PDO::PARAM_STR);
-        $stmt->bindValue(':ref_int', $vol, PDO::PARAM_INT);
-        if(!$stmt->execute()){
-            $errors['error'] = "食材登録に失敗しました。";
-            $a = $_POST['food_end_day'];
+
+        if($uid != Null && $fid != Null && $food_end_day && $vol !=Null && $vol) {
+            $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (:uid,:fid,:food_end_day,:ref_int)';
+            $stmt = $dbc->set_food($ref_insert);
+            $stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
+            $stmt->bindValue(':fid', $fid, PDO::PARAM_INT);
+            $stmt->bindValue(':food_end_day', $food_end_day, PDO::PARAM_STR);
+            $stmt->bindValue(':ref_int', $vol, PDO::PARAM_INT);
+            if (!$stmt->execute()) {
+                $errors['error'] = "食材登録に失敗しました。";
+                $a = $_POST['food_end_day'];
             }
             echo '<p>登録が完了しました。</p>';
+        }
         ?>
     </form>
     </body>
