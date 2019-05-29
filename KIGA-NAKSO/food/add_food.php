@@ -11,10 +11,17 @@ $results = $dbc->showFood($food_query);
         <title>食材登録</title>
     </head>
     <body>
-
+    <div class="container">
+    <div class="form-group">
+        <br>
+        <div class="mx-auto text-center">
+			<h1>冷蔵庫に食材を追加</h1>
+		</div>
+		<hr><br>
+        <div class="row justify-content-center">
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>">
         <label>
-            <select name="food">
+            <select class="form-control" name="food" id="input_vol">
                 <option selected value="">登録する食材を選択してください</option>
                 <?php
                 foreach ($results as $result) {
@@ -26,12 +33,15 @@ $results = $dbc->showFood($food_query);
 
 
         <?php
-        echo '<input type="number" name="vol" placeholder="数量を入力">';
-        echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で 「正の数」で 登録してください。<br>';
+        //echo '<input type="number" name="vol" placeholder="数量を入力">';
+        echo '<input type="number" id="input_vol" class="form-control" name="vol" placeholder="数量を入力">';
+        //echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で 「正の数」で 登録してください。<br>';
+        echo '<small class="text-muted">※肉はグラム 魚は切り身 液体はmL 単位で 「正の数」で 登録してください。</small><br>';
         $fid = $_POST['food'];
         $sql = "select f_name, expiry_date from master_food where f_id ='" . $fid . "'";
         $show = $dbc->showFood($sql);
 
+        
         if ($fid != '') {
             echo '<br>' . $show[0]['f_name'] . 'を　' . $_POST['vol'] . '　登録します。';
             echo "<br>" . $show[0]['f_name'] . "の";
@@ -42,11 +52,11 @@ $results = $dbc->showFood($food_query);
             $food_end_day = date('Y-m-d', mktime(0, 0, 0, date('n'), date('j') + $show[0]['expiry_date'], date('Y')));
             echo $food_end_day . "です。";
 
+        }else{
+            //<input type="submit" name='submit' value="登録する">
+            echo '<br><button type="submit" class="btn btn-outline-success btn-block">登録する</button><br>';
         }
 
-        ?>
-        <input type="submit" name='submit' value="登録する">
-        <?php
         if ($_POST['vol'] > 0) {
             $vol = $_POST['vol'];
             $uid = 1; // $_SESSION['$uid']; debug用の仮のuser_id
@@ -61,10 +71,18 @@ $results = $dbc->showFood($food_query);
                     $errors['error'] = "食材登録に失敗しました。";
                 }
                 echo '<p>登録が完了しました。</p>';
+                echo '<br><button type="submit" class="btn btn-outline-success btn-block">他の食材も追加する</button><br>';
             }
         }
+
+        //echo '<br><button type="submit" class="btn btn-outline-success btn-block" id="btn">登録する</button><br>';
+
         ?>
+
     </form>
+    </div>
+    </div>
+    </div>
     </body>
 <?php
 require_once __DIR__ . ' /../components/footer.php';

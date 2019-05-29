@@ -60,3 +60,8 @@ body, html {
 .center {
   text-align: center;
 }
+
+/* その他細やかなものについて -------------------------------*/
+#input_vol{
+  width:350px;
+}
