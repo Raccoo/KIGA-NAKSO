@@ -24,8 +24,10 @@
   </style>
 </head>
 <body>
+  <br>
 	<div class="container">
     <?php 
+
       echo '<h1>' . $recipe['r_name'] . '</h1>';
       echo '<div class="row">';
       echo '<div class="col-sm-7">';
@@ -63,15 +65,20 @@
         }
         echo '</th></tr>';
       };
-      echo '</tbody></table>※ ';
+      echo '</tbody></table>';
 
+
+      echo '<table class="table table-sm">';
+      echo '<tr class="table-danger"><td>';
       foreach ($items as $item) {
         if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
-          echo $item['f_name'] . ', ';
+          echo  $item['f_name'] . ', ';
         }
       }
-
-      echo ' が足りません</div></div><br>';
+      echo ' が足りません';
+      echo '</td></tr>';
+      echo '</table>';
+      echo '</div></div><br>';
 
       echo $recipe['cuisine'];
       echo '</div></div><br>';
