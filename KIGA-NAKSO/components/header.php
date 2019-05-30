@@ -23,28 +23,28 @@
         <ul class="navbar-nav mr-auto">
           <!-- Home page -->
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">ホーム</a>
+            <a class="nav-link" href="../index.php"><i class="fas fa-home"> ホーム</i></a>
           </li>
           
           <!-- Foodstuff page -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="../food/search_food.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              冷蔵庫
+            <i class="fas fa-door-closed"> 冷蔵庫</i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../food/stock_food.php">一覧</a>
-              <a class="dropdown-item" href="../food/add_food.php">追加</a>
+              <a class="dropdown-item" href="../food/stock_food.php"><i class="fas fa-list-ul"> 一覧</i></a>
+              <a class="dropdown-item" href="../food/add_food.php"><i class="fas fa-cart-arrow-down"> 追加</i></a>
             </div>
           </li>
           
           <!-- Search page -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="../menu/recipe_search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              検索
+            <i class="fas fa-search-plus"> 検索</i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../menu/recipe_search.php">レシピ</a>
-              <a class="dropdown-item" href="../menu/recommended.php">おすすめ</a>
+              <a class="dropdown-item" href="../menu/recipe_search.php"><i class="fas fa-utensils"> レシピ</i></a>
+              <a class="dropdown-item" href="../menu/recommended.php"><i class="far fa-thumbs-up"> おすすめ</i></a>
             </div>
           </li>
         </ul>
@@ -59,11 +59,11 @@
   header("X-Content-Type-Options: nosniff");
 
   if( !isset($_SESSION['user_id']) ) {
-    echo '<li class="nav-item"><a class="nav-link" href="../user/create-user.php">新規作成</a></li>';
-    echo '<li class="nav-item"><a class="nav-link" href="../user/login.php">ログイン</a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="../user/create-user.php"><i class="fas fa-user"> 新規作成</i></a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="../user/login.php"><i class="fas fa-sign-in-alt"> ログイン</i></a></li>';
   }
   else {
-    echo '<li class="nav-item"><a class="nav-link" href="#">ログアウト</a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-sign-out-alt"> ログアウト</i></a></li>';
   }
 ?>
         </ul>
