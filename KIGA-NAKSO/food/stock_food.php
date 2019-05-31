@@ -19,7 +19,7 @@
           
           // refrigerator query
           $all_refrigerator_food = 
-            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day 
+            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
             FROM refrigerator, master_food 
             WHERE master_food.f_name LIKE "%' . $search_word . '%" AND refrigerator.f_id = master_food.f_id 
             ORDER BY end_day';
@@ -27,7 +27,7 @@
         }
         else {
           $all_refrigerator_food = 
-            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day 
+            'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
             FROM refrigerator, master_food 
             WHERE refrigerator.f_id = master_food.f_id 
             ORDER BY end_day';
