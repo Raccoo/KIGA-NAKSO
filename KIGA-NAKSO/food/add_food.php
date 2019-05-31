@@ -34,8 +34,8 @@ $results = $dbc->showFood($food_query);
 
         <?php
         //echo '<input type="number" name="vol" placeholder="数量を入力">';
-        echo '<input type="number" id="input_vol" class="form-control" name="vol" placeholder="数量を入力">';
-        //echo '<br>※肉はグラム 魚は切り身 液体はmL 単位で 「正の数」で 登録してください。<br>';
+        echo '<input type="number" step="0.5" min="0" id="input_vol" class="form-control" name="vol" placeholder="数量を入力">';
+        //echo '<br>※野菜は 個数 肉はグラム 魚は切り身 液体はmL 単位で登録してください。<br>';
         echo '<small class="text-muted">※肉はグラム 魚は切り身 液体はmL 単位で 「正の数」で 登録してください。</small><br>';
         $fid = $_POST['food'];
         $sql = "select f_name, expiry_date from master_food where f_id ='" . $fid . "'";
