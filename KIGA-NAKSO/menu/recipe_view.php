@@ -1,6 +1,7 @@
 <?php
   require_once __DIR__ . '/../components/header.php';
   require_once __DIR__ . '/../db/dbdata.php';
+  require_once __DIR__ . '/../db/food.php';
 
   $recipe_id = htmlspecialchars($_POST['recipe']);
   if ( empty($recipe_id) ) {
@@ -51,6 +52,10 @@
         ' AND recipe_food.f_id = master_food.f_id';
 
 			$items = $dbc->searchRecipe($foods_name_query);
+
+      // call Food->getUniqueFoodArray
+      $a = new Food();
+      $items = $a->getUniqueFoodArray($items);
 
       // process to display ingredients.
 			foreach ($items as $item) {
