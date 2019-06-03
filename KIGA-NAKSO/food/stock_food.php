@@ -62,7 +62,6 @@
 
           $cards_count = 0;
 					
-          //if ( !empty( $results ) ) {
           if( !empty( $disp_data ) ) {
             echo '
               <table class="table">
