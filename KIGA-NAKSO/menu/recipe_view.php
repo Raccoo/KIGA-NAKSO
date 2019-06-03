@@ -1,6 +1,7 @@
 <?php
   require_once __DIR__ . '/../components/header.php';
   require_once __DIR__ . '/../db/dbdata.php';
+  require_once __DIR__ . '/../db/food.php';
 
   $recipe_id = htmlspecialchars($_POST['recipe']);
   if ( empty($recipe_id) ) {
@@ -52,12 +53,16 @@
 
 			$items = $dbc->searchRecipe($foods_name_query);
 
+      // call Food->getUniqueFoodArray
+      $a = new Food();
+      $items = $a->getUniqueFoodArray($items);
+
       // process to display ingredients.
 			foreach ($items as $item) {
         echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
         
         // regtigetor not in food
-        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
+        if ( $item['f_id'] != 9 && ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) ) {
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
