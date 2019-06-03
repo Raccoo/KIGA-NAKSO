@@ -22,4 +22,9 @@ class  DbData {    // DbDataクラスの宣言
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $items;
   }
+
+  public function execQuery($sql) {
+    $stmt = $this->$pdo->query($sql);
+    $stmt->exec();
+  }
 }       

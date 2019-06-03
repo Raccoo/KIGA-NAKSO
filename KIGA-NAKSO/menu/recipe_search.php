@@ -3,6 +3,7 @@
 	require_once __DIR__ . '/../db/dbdata.php';
 	
 	$search_word = htmlspecialchars($_POST['search_word']);
+	$error = htmlspecialchars($_GET['error']);
 	$dbc = new DbData();
 ?>
 <head>
@@ -17,6 +18,11 @@
 		<hr><br>
 		<div class="row justify-content-center">
 			<?php
+				if ( !empty($error) ) {
+					echo '<div class="col-9 text-center alert alert-danger" role="alert"><a class="alert-link">冷蔵庫</a>の材料が足りていません</div>';
+					unset($error);
+				}
+				
 				if ( !empty($search_word) ) {
 					echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'
 						. $search_word . '」 </a>で検索しました</div>';
