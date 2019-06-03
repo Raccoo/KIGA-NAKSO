@@ -11,14 +11,15 @@
   <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <a class="navbar-brand" href="../index.php">KIGA-NAKSO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ <div class="header sticky-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+   <a class="navbar-brand" href="../index.php">KIGA-NAKSO</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- header contents -->
+    </button>
+    
+     <!--<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"> -->
+       <!--header contents -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <!-- Home page -->
@@ -48,8 +49,8 @@
             </div>
           </li>
         </ul>
-      </div>
-      <div class="navbar-collapse collapse order-3 dual-collapse2">
+      <!-- </div>
+      <div class="navbar-collapse collapse order-3 dual-collapse2"> -->
         <ul class="navbar-nav ml-auto">
 
 <?php
@@ -71,6 +72,7 @@
   </nav><br><br>
 </div>
 </nav>
+</div>
 </body>
 
 
