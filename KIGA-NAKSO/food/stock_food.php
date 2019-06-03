@@ -6,7 +6,7 @@
 	$dbc = new DbData();
 ?>
 <head>
-	<title>食材検索ページ</title>
+	<title>マイ冷蔵庫ページ</title>
 </head>
 <body>
   <br>
@@ -48,7 +48,22 @@
     <div class="row justify-content-md-center text-center">
       <div class="col-md-7">
         <?php
-          if ( !empty( $results ) ) {
+					define('MAX', '10');
+
+					$result_count = count($results);
+					$max_page = ceil($result_count / MAX);
+					if(!isset($_GET['page_id'])){
+							$now = 1;
+					}else{
+							$now = $_GET['page_id'];
+					}
+					$start_no = ($now - 1) * MAX;
+					$disp_data = array_slice($results, $start_no, MAX, true);
+
+          $cards_count = 0;
+					
+          //if ( !empty( $results ) ) {
+          if( !empty( $disp_data ) ) {
             echo '
               <table class="table">
                 <thead>
@@ -59,9 +74,10 @@
                   </tr>
                 </thead>
                 <tbody>';
-            foreach( $results as $result ) {
+            foreach( $disp_data as $data ) {
               // 食材名, 保存量, 消費期限を表示
-              echo '<tr class="table-warning"><th>' . $result['f_name'] . '</th><th>' . $result['ref_int'] . '</th><th>' . $result['end_day'] . 'まで</th></tr>';
+              echo '<tr class="table-warning"><th>' . $data['f_name'] . '</th><th>' . $data['ref_int'] . '</th><th>' . $data['end_day'] . 'まで</th></tr>';
+              $cards_count += 1;
             }
             echo '
                 </tbody>
@@ -72,7 +88,31 @@
           }
         ?>
       </div>
+      <br>
     </div>
+    <br>
+    <nav>
+			<ul class="pagination justify-content-center">
+			<?php
+				$prev = $now - 1;
+				$next = $now + 1;
+				if ( $now != 1 ) {
+					echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id=' . $prev . '"><i class="fas fa-angle-left"></i></a></li>';
+				}
+				for( $i = 1; $i <= $max_page; $i++ ){
+					if ( $i != $now ) {
+						echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
+					}
+					else {
+						echo '<li class="page-item active"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
+					}
+				}
+				if ( $now != $max_page ) {
+					echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $next . '"><i class="fas fa-angle-right"></i></a></li>';
+				}
+			?>
+			</ul>
+		</nav>
   </div>
 <?php
   require_once __DIR__ . '/../components/footer.php'
