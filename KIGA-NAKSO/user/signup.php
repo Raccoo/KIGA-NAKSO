@@ -13,27 +13,23 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <form>
+                <form method="POST" action="">
                     <div class="form-group">
-                        <label for="CreateUserName">ユーザー名</label>
-                        <input type="name" class="form-control" id="CreateUserName" required placeholder="きが　なくそう">
-                    </div>
-                    <div class="form-group">
-                        <label for="CreateUserId">ユーザーid</label>
-                        <input type="text" class="form-control" id="CreateUserName" required placeholder="kiganakso">
+                        <label>ユーザー名</label>
+                        <input type="name" class="form-control" name="u_name" required placeholder="きが　なくそう">
                     </div>
                     <div class="form-group">
                         <label for="CreateEmail2">Eメールアドレス</label>
-                        <input type="email" class="form-control" id="CreateEmail2" required placeholder="example@email.com">
+                        <input type="email" class="form-control" name="address" required placeholder="example@email.com">
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
                     <div class="form-group">
-                        <label for="CreatePassword2">パスワード</label>
-                        <input type="password" class="form-control" id="CreatePassword2" required placeholder="パスワード">
+                        <label>パスワード</label>
+                        <input type="password" class="form-control" name="password" required placeholder="パスワード">
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="CreateCheck">
-                        <label class="form-check-label" for="CreateCheck">記憶する</label>
+                        <input type="checkbox" class="form-check-input" id="check_user">
+                        <label class="form-check-label">記憶する</label>
                     </div>
                         <button type="submit" class="btn btn-primary">新規登録</button>
                     </form>
