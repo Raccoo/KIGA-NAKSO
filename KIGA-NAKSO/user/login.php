@@ -13,24 +13,24 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <form>
+                <form method="POST" action="">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Eメールアドレス</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" required placeholder="example@email.com">
+                        <label >Eメールアドレス</label>
+                        <input type="text" class="form-control" name="address" required placeholder="example@email.com">
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">パスワード</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required placeholder="パスワード">
+                        <label>パスワード</label>
+                        <input type="password" class="form-control" name="password" required placeholder="パスワード">
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">記憶する</label>
+                        <input type="checkbox" class="form-check-input" name="check_user">
+                        <label class="form-check-label">記憶する</label>
                     </div>
                         <button type="submit" class="btn btn-primary">ログイン</button>
                     </form>
                     <div class="center">
-                        <a href="create-user.php">新規登録はこちら</a>
+                        <a href="signup.php">新規登録はこちら</a>
                     </div>
                 
                 </p>
