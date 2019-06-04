@@ -32,7 +32,7 @@
     }
 
     $uid = 1;//$_SESSION['uid'];
-    
+    /*
     foreach ( $reffoods_and_query as $one_query ) {
       $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = :f_id";
       $dbc->DeleteRefrigator($ref_delete_query, $one_query['f_id']);
@@ -41,5 +41,6 @@
     }
     
     header("Location: ./recipe_search.php?alert=1");
+    */
   }
   catch( Exception $e ) {}
