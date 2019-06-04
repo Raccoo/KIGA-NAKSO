@@ -71,9 +71,12 @@
 
       echo '<table class="table table-sm">';
       echo '<tr class="table-danger"><td>';
+      
+      $made_dissable_flag = false;
       foreach ($items as $item) {
         if ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
           echo  $item['f_name'] . ', ';
+          $made_dissable_flag = true;
         }
       }
       echo ' が足りません';
@@ -85,12 +88,21 @@
       echo '</div></div><br>';
     ?>
     <div class="row justify-content-md-center">
-        <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
-        <div class="pl-5"></div>
-        <form action="./made_a_dish.php" method="POST">
-          <input type="hidden" name="recipe_id"value="<?php echo $recipe_id ?>">
-          <input type="submit" class="btn btn-warning" value="作った！">
-        </form>
+      <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
+      <div class="pl-5"></div>
+      <?php
+        if ( $made_dissable_flag ) {
+          echo '<input type="submit" class="btn btn-warning" value="作った！" disabled>';
+        } else {
+          echo '
+          <form action="./made_a_dish.php" method="POST">
+            <input type="hidden" name="recipe_id"value="';
+          echo $recipe_id;
+          echo '">
+            <input type="submit" class="btn btn-warning" value="作った！">
+          </form>';
+        }
+      ?>
     </div>
     <br>
   </div>
