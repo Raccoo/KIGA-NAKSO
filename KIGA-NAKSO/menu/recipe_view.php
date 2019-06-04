@@ -93,6 +93,7 @@
       <?php
         if ( $made_dissable_flag ) {
           echo '<input type="submit" class="btn btn-warning" value="作った！" disabled>';
+          unset( $made_dissable_flag );
         } else {
           echo '
           <form action="./made_a_dish.php" method="POST">
