@@ -30,6 +30,8 @@ create table master_food(
 	f_id int not null primary key auto_increment,
 	f_name	varchar(50) not null,
 	expiry_date	int not null,
+	unit varchar(5) not null,
+	c_id int,
 	note text
 );
 
@@ -51,14 +53,18 @@ create table refrigerator(
 );
 
 # テーブルREFRIGERATORへデータを入力
-insert into refrigerator(u_id, f_id, end_day, ref_int)
-	values(1, 1, "2019-6-15", 400);
-insert into refrigerator(u_id, f_id, end_day, ref_int)
-	values(1, 2, "2019-6-15", 6);
-insert into refrigerator(u_id, f_id, end_day, ref_int)
-	values(1, 3, "2019-6-15", 4);
-insert into refrigerator(u_id, f_id, end_day, ref_int)
-	values(1, 5, "2019-6-15", 500);
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,1 ,400);
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,2 ,6 );
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,3 ,4);
+insert into refrigerator(u_id, f_id, ref_int)
+	values(1000 ,5 ,500 );
+#insert into refrigerator(u_id, f_id, ref_int)
+#	values( , , );
+
+
 
 
 # テーブルrecipe_foodへデータを入力
@@ -164,117 +170,116 @@ insert into recipe(r_name,r_picture,cuisine)
 
 
 # テーブルmaster_foodへデータを入力
-insert into master_food(f_name, expiry_date )
-	values('豚こま',2);
-insert into master_food(f_name, expiry_date )
-	values('ジャガイモ',14);
-insert into master_food(f_name, expiry_date )
-	values('にんじん',14);
-insert into master_food(f_name, expiry_date )
-	values('たまねぎ',14);
-insert into master_food(f_name, expiry_date )
-	values('ごま油',999);
-insert into master_food(f_name, expiry_date )
-	values('砂糖',999);
-insert into master_food(f_name, expiry_date )
-	values('味醂',999);
-insert into master_food(f_name, expiry_date )
-	values('醤油',999);
-insert into master_food(f_name, expiry_date )
-	values('水',999);
-insert into master_food(f_name, expiry_date )
-	values('薄切り肉',2);
-insert into master_food(f_name, expiry_date )
-	values('サラダ油',999);
-insert into master_food(f_name, expiry_date )
-	values('カレールー',999);
-insert into master_food(f_name, expiry_date )
-	values('塩',999);
-insert into master_food(f_name, expiry_date )
-	values('胡椒',999);
-insert into master_food(f_name, expiry_date )
-	values('ローレル',999);
-insert into master_food(f_name, expiry_date )
-	values('ケチャップ',999);
-insert into master_food(f_name, expiry_date )
-	values('ウスターソース',999);
-insert into master_food(f_name, expiry_date )
-	values('とんかつソース',999);
-insert into master_food(f_name, expiry_date )
-	values('ご飯',1);
-insert into master_food(f_name, expiry_date )
-	values('厚揚げ',7);
-insert into master_food(f_name, expiry_date )
-	values('味噌',999);
-insert into master_food(f_name, expiry_date )
-	values('生銀鮭',2);
-insert into master_food(f_name, expiry_date )
-	values('小麦粉',999);
-insert into master_food(f_name, expiry_date )
-	values('オリーブオイル',999);
-insert into master_food(f_name, expiry_date )
-	values('バター',14);
-insert into master_food(f_name, expiry_date )
-	values('レモン',7);
-insert into master_food(f_name, expiry_date )
-	values('パスタ',999);
-insert into master_food(f_name, expiry_date )
-	values('ベーコン',14);
-insert into master_food(f_name, expiry_date )
-	values('ピーマン',7);
-insert into master_food(f_name, expiry_date )
-	values('マッシュルーム',14);
-insert into master_food(f_name, expiry_date )
-	values('牛乳',7);
-insert into master_food(f_name, expiry_date )
-	values('鶏もも肉',2);
-insert into master_food(f_name, expiry_date )
-	values('にんにくチューブ',30);
-insert into master_food(f_name, expiry_date )
-	values('生姜チューブ',30);
-insert into master_food(f_name, expiry_date )
-	values('酒',999);
-insert into master_food(f_name, expiry_date )
-	values('ラー油',999);
-insert into master_food(f_name, expiry_date )
-	values('卵',7);
-insert into master_food(f_name, expiry_date )
-	values('片栗粉',999);
-insert into master_food(f_name, expiry_date )
-	values('たこ焼きの粉',999);
-insert into master_food(f_name, expiry_date )
-	values('だしの素',999);
-insert into master_food(f_name, expiry_date )
-	values('山芋',7);
-insert into master_food(f_name, expiry_date )
-	values('こねぎ',7);
-insert into master_food(f_name, expiry_date )
-	values('キャベツ',7);
-insert into master_food(f_name, expiry_date )
-	values('紅ショウガ',7);
-insert into master_food(f_name, expiry_date )
-	values('天かす',999);
-insert into master_food(f_name, expiry_date )
-	values('青ネギ',7);
-insert into master_food(f_name, expiry_date )
-	values('豚バラ薄切り',2);
-insert into master_food(f_name, expiry_date )
-	values('鰹節',999);
-insert into master_food(f_name, expiry_date )
-	values('天ぷら粉',999);
-insert into master_food(f_name, expiry_date )
-	values('昆布茶',999);
-insert into master_food(f_name, expiry_date )
-	values('中農ソース',999);
-insert into master_food(f_name, expiry_date )
-	values('マヨネーズ',999);
-insert into master_food(f_name, expiry_date )
-	values('青のり',999);
-insert into master_food(f_name, expiry_date )
-	values('チキンライス',1);
-insert into master_food(f_name, expiry_date )
-	values('薄力粉',999);
-
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('豚こま',2,'g',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ジャガイモ',14,'個',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('にんじん',14,'本',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('たまねぎ',14,'玉',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ごま油',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('砂糖',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('味醂',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('醤油',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('水',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('薄切り肉',2,'g',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('サラダ油',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('カレールー',999,'個',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('塩',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('胡椒',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ローレル',999,'枚',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ケチャップ',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ウスターソース',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('とんかつソース',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ご飯',1,'g',4);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('厚揚げ',7,'g',6);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('味噌',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('生銀鮭',2,'切れ',2);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('小麦粉',999,'g',7);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('オリーブオイル',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('バター',14,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('レモン',7,'個',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('パスタ',999,'g',6);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ベーコン',14,'g',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ピーマン',7,'個',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('マッシュルーム',14,'個',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('牛乳',7,'ml',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('鶏もも肉',2,'g',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('にんにくチューブ',30,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('生姜チューブ',30,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('酒',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('ラー油',999,'ml',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('卵',7,'個',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('片栗粉',999,'g',7);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('たこ焼きの粉',999,'g',7);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('だしの素',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('山芋',7,'g',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('こねぎ',7,'本',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('キャベツ',7,'個',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('紅ショウガ',7,'g',6);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('天かす',999,'g',6);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('青ネギ',7,'g',3);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('豚バラ薄切り',2,'g',1);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('鰹節',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('天ぷら粉',999,'g',7);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('昆布茶',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('中農ソース',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('マヨネーズ',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('青のり',999,'g',5);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('チキンライス',1,'g',6);
+insert into master_food(f_name, expiry_date, unit, c_id )
+	values('薄力粉',999,'g',7);
 # テーブルrecipe_foodへデータを入力
 insert into recipe_food(r_id,f_id,f_volume,f_volume_int)
 	values(1,54,'適量',250);
