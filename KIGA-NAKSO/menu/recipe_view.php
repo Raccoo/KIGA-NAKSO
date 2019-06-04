@@ -44,24 +44,21 @@
           <tbody>';
 
       // Get the ingredients used in the recipe from db.
-      $foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, refrigerator.ref_int 
-        FROM (recipe_food, master_food, recipe) LEFT OUTER JOIN refrigerator ON refrigerator.f_id = recipe_food.f_id
+      $foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, SUM(refrigerator.ref_int) as sum_ref
+        FROM (recipe_food, master_food) LEFT OUTER JOIN refrigerator ON refrigerator.f_id = recipe_food.f_id
         WHERE recipe_food.r_id = ' 
-        . $recipe['r_id'] . 
-        ' AND recipe_food.f_id = master_food.f_id';
+        . $recipe_id .
+        ' AND recipe_food.f_id = master_food.f_id
+        GROUP BY master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int';
 
-			$items = $dbc->searchRecipe($foods_name_query);
-
-      // call Food->getUniqueFoodArray
-      $fd = new Food();
-      $items = $fd->getUniqueFoodArray($items);
+      $items = $dbc->searchRecipe($foods_name_query);
 
       // process to display ingredients.
 			foreach ($items as $item) {
         echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
         
         // regtigetor not in food
-        if ( $item['f_id'] != 9 && ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) ) {
+        if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
@@ -75,7 +72,7 @@
       echo '<table class="table table-sm">';
       echo '<tr class="table-danger"><td>';
       foreach ($items as $item) {
-        if ( empty($item['ref_int']) || $item['ref_int'] < $item['f_volume_int'] ) {
+        if ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
           echo  $item['f_name'] . ', ';
         }
       }
