@@ -24,7 +24,11 @@ class  DbData {    // DbDataクラスの宣言
   }
 
   public function execQuery($sql) {
-    $stmt = $this->$pdo->query($sql);
-    $stmt->exec();
+    try {
+      $stmt = $this->$pdo->query($sql);
+    }
+    catch ( PDOException $e ) {
+      echo $e;
+    }
   }
 }       
