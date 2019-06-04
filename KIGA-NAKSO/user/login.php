@@ -13,7 +13,14 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <form method="POST" action="">
+                <?php 
+                    if(isset($_SESSION['login_error'])){
+                        echo '<p id="error_call">' . $_SESSION['login_error'] . '</p>';
+                        unset($_SESSION['login_error']);
+
+                    }
+                ?>
+                <form method="POST" action="login_db.php">
                     <div class="form-group">
                         <label >Eメールアドレス</label>
                         <input type="text" class="form-control" name="address" required placeholder="example@email.com">

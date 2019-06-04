@@ -59,7 +59,7 @@
   header("X-FRAME-OPTIONS: DENY");
   header("X-Content-Type-Options: nosniff");
 
-  if( !isset($_SESSION['user_id']) ) {
+  if( !isset($_SESSION['address']) ) {
     echo '<li class="nav-item"><a class="nav-link" href="../user/signup.php"><i class="fas fa-user"> 新規作成</i></a></li>';
     echo '<li class="nav-item"><a class="nav-link" href="../user/login.php"><i class="fas fa-sign-in-alt"> ログイン</i></a></li>';
   }
