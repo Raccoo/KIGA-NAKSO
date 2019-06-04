@@ -17,7 +17,7 @@
            echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'. $search_word . '」 </a>で検索しました</div>';           
           // refrigerator query
           $all_refrigerator_food = 
-          'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
+          'SELECT master_food.f_id, master_food.f_name, master_food.unit, refrigerator.end_day,refrigerator.ref_int
           FROM refrigerator, master_food 
           WHERE master_food.f_name LIKE "%' . $search_word . '%" AND refrigerator.f_id = master_food.f_id 
           ORDER BY end_day';
@@ -25,7 +25,7 @@
         }
         else {
           $all_refrigerator_food = 
-          'SELECT master_food.f_id, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
+          'SELECT master_food.f_id, master_food.unit, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
           FROM refrigerator, master_food 
           WHERE refrigerator.f_id = master_food.f_id 
           ORDER BY end_day';
@@ -84,7 +84,7 @@
                 <tbody>';
             foreach( $disp_data as $data ) {
               // 食材名, 保存量, 消費期限を表示
-              echo '<tr class="table-warning"><th>' . $data['f_name'] . '</th><th>' . $data['ref_int'] . '</th><th>' . $data['end_day'] . 'まで</th></tr>';
+              echo '<tr class="table-warning"><th>' . $data['f_name'] . '</th><th>' . $data['ref_int'] . $data['unit'] . '</th><th>' . $data['end_day'] . 'まで</th></tr>';
               $cards_count += 1;
             }
             echo '
