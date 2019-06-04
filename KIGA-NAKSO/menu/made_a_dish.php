@@ -14,45 +14,32 @@
     . $recipe_id . 
     " GROUP BY refrigerator.f_id, recipe_food.f_volume_int, refrigerator.end_day";
   
+  try{
+    $dbc = new DbData();
+    $items = $dbc->searchRecipe($query);
 
-  $dbc = new DbData();
-  $items = $dbc->searchRecipe($query);
-
-  // debug
-  foreach($items as $item) {
-    echo "f_id : " . $item['f_id'] . "<br>";
-    echo "ref_int : " . $item['sum_ref'] . "<br>";
-    echo "f_volume_int : " . $item['f_volume_int'] . "<br>";
-    echo "end_day : " . $item['end_day'] . "<br><br>";
-  }
-
-  echo "<hr>";
-
-  $reffoods_and_query = [];
-  foreach ($items as $item) {
-    /*
-    if ( empty($item) || $item['ref_int'] - $item['f_volume_int'] < 0 ) {
-      header("Location: ./recipe_search.php?error=1");
-	    exit;
+    $reffoods_and_query = [];
+    foreach ($items as $item) {
+      if ( empty($item) || $item['ref_int'] - $item['f_volume_int'] < 0 ) {
+        header("Location: ./recipe_search.php?alert=2");
+        exit;
+      }
+      else {
+        $temp['query'] = "INSERT INTO refrigerator (u_id, f_id, end_day, ref_int)
+          VALUES (:u_id, :f_id, :end_day, :ref_int)";
+        $reffoods_and_query[] = array_merge($item, $temp);
+      }
     }
-    else {
-    */
-      $temp['query'] = "UPDATE refrigerator SET ref_int = " 
-        . ($item['sum_ref'] - $item['f_volume_int']) 
-        . " WHERE f_id = " . $item['f_id'];
-      $reffoods_and_query[] = array_merge($item, $temp);
-      //$dbc->execQuery($query);
-    //}
-  }
 
-  print_r($reffoods_and_query);
-  echo "<br><hr><br>";
+    $uid = 1;//$_SESSION['uid'];
+    
+    foreach ( $reffoods_and_query as $one_query ) {
+      $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = :f_id";
+      $dbc->DeleteRefrigator($ref_delete_query, $one_query['f_id']);
 
-  foreach ( $reffoods_and_query as $one_reffood_and_query ) {
-    echo $$one_reffood_and_query['query'] . "<br>";
-    $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = " . $$one_reffood_and_query['f_id'] ;
-    echo $ref_delete_query . "<br>";
+      $dbc->InsertRefrigator($one_query['query'], $uid, $one_query['f_id'], $one_query['end_day'], $one_query['sum_ref'] - $one_query['f_volume_int']);
+    }
+    
+    header("Location: ./recipe_search.php?alert=1");
   }
-  //$query = "DELETE FROM refrigerator WHERE ref_int <= 0";
-  //$dbc->execQuery($query);
-  
+  catch( Exception $e ) {}
