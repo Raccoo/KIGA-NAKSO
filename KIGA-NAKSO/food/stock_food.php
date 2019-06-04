@@ -69,8 +69,7 @@
           $disp_data = array_slice($results, $start_no, MAX, true);
 
           $cards_count = 0;
-          
-          //if ( !empty( $results ) ) {
+
           if( !empty( $disp_data ) ) {
             echo '
               <table class="table">

@@ -28,7 +28,6 @@
   <br>
 	<div class="container">
     <?php 
-
       echo '<h1>' . $recipe['r_name'] . '</h1>';
       echo '<div class="row">';
       echo '<div class="col-sm-7">';
@@ -54,8 +53,8 @@
 			$items = $dbc->searchRecipe($foods_name_query);
 
       // call Food->getUniqueFoodArray
-      $a = new Food();
-      $items = $a->getUniqueFoodArray($items);
+      $fd = new Food();
+      $items = $fd->getUniqueFoodArray($items);
 
       // process to display ingredients.
 			foreach ($items as $item) {
@@ -91,7 +90,10 @@
     <div class="row justify-content-md-center">
         <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
         <div class="pl-5"></div>
-        <button class="btn btn-warning">作った！</button>
+        <form action="./made_a_dish.php" method="POST">
+          <input type="hidden" name="recipe_id"value="<?php echo $recipe_id ?>">
+          <input type="submit" class="btn btn-warning" value="作った！">
+        </form>
     </div>
     <br>
   </div>
