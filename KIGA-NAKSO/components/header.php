@@ -1,3 +1,6 @@
+<?php
+ require_once __DIR__ . '/pre.php';
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -59,18 +62,18 @@
   header("X-FRAME-OPTIONS: DENY");
   header("X-Content-Type-Options: nosniff");
 
-  if( !isset($_SESSION['u_id']) ) {
+  if( $_SESSION['u_id']==null) {
     echo '<li class="nav-item"><a class="nav-link" href="../user/signup.php"><i class="fas fa-user"> 新規作成</i></a></li>';
     echo '<li class="nav-item"><a class="nav-link" href="../user/login.php"><i class="fas fa-sign-in-alt"> ログイン</i></a></li>';
   }
   else {
-    echo '<li class="nav-item"><a class="nav-link" href="#">' . $u_name . 'さん</i></a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="#">' . $u_name . 'さん</a></li>';
     echo '<li class="nav-item"><a class="nav-link" href="../user/logout.php"><i class="fas fa-sign-out-alt"> ログアウト</i></a></li>';
   }
 ?>
         </ul>
-      </div>
-  </nav><br><br>
+      <!-- </div>  -->
+  </nav><br>
 </div>
 </nav>
 </div>

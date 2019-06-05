@@ -1,10 +1,12 @@
 <?php
+
   require_once __DIR__ . '/../components/header.php';
+
 ?>
 
 <html>
 <body>
-    
+
 <div class="container">
     <div class="mx-auto" style="width: 550px;">
         <div class="card" id="simple-card">
@@ -13,26 +15,31 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <form method="POST" action="">
+                <form method="POST" action="signup_db.php">
                     <div class="form-group">
                         <label>ユーザー名</label>
-                        <input type="name" class="form-control" name="u_name" required placeholder="きが　なくそう">
-                    </div>
-                    <div class="form-group">
-                        <label for="CreateEmail2">Eメールアドレス</label>
-                        <input type="email" class="form-control" name="address" required placeholder="example@email.com">
-                        <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
+                        <input type="text" class="form-control" name="u_name" value="<?=$u_name?>" required placeholder="きが　なくそう">
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input type="password" class="form-control" name="password" required placeholder="パスワード">
+                        <input type="password" class="form-control" name="password" value="<?=$password?>" required placeholder="パスワード">
+                    </div>
+                    <div class="form-group">
+                        <label>パスワード <span class="badge badge-danger">確認 </span></label>
+                        <input type="password" class="form-control" name="password2" required placeholder="確認のパスワード">
+                    </div>
+                    <div class="form-group">
+                        <label>Eメールアドレス</label>
+                        <input type="email" class="form-control" name="address" value="<?=$address?>" required placeholder="example@email.com">
+                        <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="check_user">
-                        <label class="form-check-label">記憶する</label>
+                        <input type="checkbox" class="form-check-input" name="CreateCheck">
+                        <label class="form-check-label" for="CreateCheck">記憶する</label>
+
                     </div>
-                        <button type="submit" class="btn btn-primary">新規登録</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary" name="CreateUser">新規登録</button>
+                </form>
                 
                 </p>
             </div>

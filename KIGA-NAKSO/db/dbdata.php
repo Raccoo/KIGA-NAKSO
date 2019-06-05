@@ -33,4 +33,23 @@ class  DbData {    // DbDataクラスの宣言
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $items;
   }
+
+  // INSERT INTO refrigerator (u_id, f_id, end_day, ref_int) VALUES (:u_id, :f_id, :end_day, :ref_int)
+  public function InsertRefrigator($sql, $u_id, $f_id, $end_day, $ref_int) {
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':u_id', $u_id, PDO::PARAM_INT);
+    $stmt->bindValue(':f_id', $f_id, PDO::PARAM_INT);
+    $stmt->bindParam(':end_day', $end_day, PDO::PARAM_STR);
+    $stmt->bindValue(':ref_int', $ref_int, PDO::PARAM_INT);
+    
+    $stmt->execute();
+  }
+
+  // DELETE FROM refrigerator WHERE f_id = :f_id
+  public function DeleteRefrigator($sql, $f_id) {
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':f_id', $f_id, PDO::PARAM_INT);
+    
+    $stmt->execute();
+  }
 }       
