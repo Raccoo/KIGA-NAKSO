@@ -15,29 +15,35 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
+                <?php 
+                    //if(isset($_SESSION['signup_error'])){
+                    //    echo '<p id="error_call">' . $_SESSION['signup_error'] . '</p>';
+                    //    unset($_SESSION['signup_error']);
+                    //
+                    //}
+                ?>
                 <form method="POST" action="signup_db.php">
                     <div class="form-group">
                         <label>ユーザー名</label>
-                        <input type="text" class="form-control" name="u_name" value="<?=$u_name?>" required placeholder="きが　なくそう">
+                        <input type="text" class="form-control" name="u_name" required placeholder="きが　なくそう">
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input type="password" class="form-control" name="password" value="<?=$password?>" required placeholder="パスワード">
+                        <input type="password" class="form-control" name="password" required placeholder="パスワード">
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label>パスワード <span class="badge badge-danger">確認 </span></label>
                         <input type="password" class="form-control" name="password2" required placeholder="確認のパスワード">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Eメールアドレス</label>
-                        <input type="email" class="form-control" name="address" value="<?=$address?>" required placeholder="example@email.com">
+                        <input type="email" class="form-control" name="address" required placeholder="example@email.com">
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
-                    <div class="form-group form-check">
+                    <!-- <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" name="CreateCheck">
                         <label class="form-check-label" for="CreateCheck">記憶する</label>
-
-                    </div>
+                    </div> -->
                         <button type="submit" class="btn btn-primary" name="CreateUser">新規登録</button>
                 </form>
                 
