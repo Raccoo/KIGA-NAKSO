@@ -52,4 +52,4 @@ class  DbData {    // DbDataクラスの宣言
     
     $stmt->execute();
   }
-}       
+}
