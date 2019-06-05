@@ -27,17 +27,17 @@ function h($data){
  $result = $user->signUp($u_name,$password,$address);
 
  //データベースからu_idを取り出す
- $u_id = $result['u_id'];
+
 
 //ユーザー情報をセッションに保持
- $_SESSION['u_id'] = $u_id;
- $_SESSION['u_name'] = $u_name;
- $_SESSION['password'] = $password;
- $_SESSION['address'] = $address;
+ //$_SESSION['u_id'] = $u_id;
+ //$_SESSION['u_name'] = $u_name;
+ //$_SESSION['password'] = $password;
+ //$_SESSION['address'] = $address;
 
  //クッキーに保持
-  setcookie("u_id",$u_id,time()+60*60*24*14,'/');
-  setcookie("u_name",$u_name,time()+60*60*24*14,'/');
+  //setcookie("u_id",$u_id,time()+60*60*24*14,'/');
+  //setcookie("u_name",$u_name,time()+60*60*24*14,'/');
 
   require_once __DIR__ . '/../components/header.php';
 
@@ -53,21 +53,20 @@ function h($data){
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <div class="form-group">
-                        <label>ユーザーid</label>
-                        <input type="text" class="form-control" disabled name="u_id" value="<?=$u_id?>">
-                    </div>
                     <div class="form-group">
                         <label>ユーザー名</label>
                         <input type="text" class="form-control" disabled name="u_name" value="<?=$u_name?>">
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input type="text" class="form-control" disabled name="password" value="<?=$password?>">
+                        <input type="text" class="form-control" disabled name="password" value="****">
                     </div>
                     <div class="form-group">
                         <label>Eメールアドレス</label>
                         <input type="email" class="form-control" disabled name="address" value="<?=$address?>">
+                    </div><br>
+                    <div class="center">
+                        <a class="btn btn-primary" href="login.php" role="button">ログインする</a>
                     </div>
                 </p>
             </div>

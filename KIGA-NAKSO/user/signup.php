@@ -44,7 +44,9 @@
                         <input type="checkbox" class="form-check-input" name="CreateCheck">
                         <label class="form-check-label" for="CreateCheck">記憶する</label>
                     </div> -->
+                    <div class="center">
                         <button type="submit" class="btn btn-primary" name="CreateUser">新規登録</button>
+                    </div>
                 </form>
                 
                 </p>

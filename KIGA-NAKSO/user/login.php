@@ -36,7 +36,9 @@
                         <input type="checkbox" class="form-check-input" name="CookieCheck">
                         <label class="form-check-label">記憶する</label>
                     --></div>
+                    <div class="center">
                         <button type="submit" class="btn btn-primary">ログイン</button><br><br>
+                    </div>
                     </form>
                     <div class="center">
                         <a href="signup.php">新規登録はこちら</a>
