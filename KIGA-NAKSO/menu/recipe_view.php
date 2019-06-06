@@ -41,8 +41,10 @@
                   <th>使用料</th>
               </tr>
           </thead>
-          <tbody>';
+          <tbody>
+          </div>';
 
+        echo '<div class="col-sm-7">';
       // Get the ingredients used in the recipe from db.
       $foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, SUM(refrigerator.ref_int) as sum_ref
         FROM (recipe_food, master_food) LEFT OUTER JOIN refrigerator ON refrigerator.f_id = recipe_food.f_id
@@ -67,25 +69,25 @@
         echo '</th></tr>';
       };
       echo '</tbody></table>';
-
-
-      echo '<table class="table table-sm">';
-      echo '<tr class="table-danger"><td>';
-      
+      echo '</div>';
+      echo '<div class="col-sm-5">';
       $made_dissable_flag = false;
       foreach ($items as $item) {
         if ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
-          echo  $item['f_name'] . ', ';
+      echo '<table class="table table-sm">';
+      echo '<tr class="table-danger"><td>';
+          echo  $item['f_name'];
           $made_dissable_flag = true;
+      echo 'が足りません';
         }
-      }
-      echo ' が足りません';
       echo '</td></tr>';
       echo '</table>';
-      echo '</div></div><br>';
-
+      }
+      echo '</div><br>';
+      echo '<div class="col-sm-12">';
       echo $recipe['cuisine'];
-      echo '</div></div><br>';
+      echo '</div>';
+      echo '</div><br>';
     ?>
     <div class="row justify-content-md-center">
       <button onclick="history.back()" class="btn btn-success">レシピ検索に戻る</button>
