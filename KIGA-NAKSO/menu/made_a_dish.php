@@ -20,7 +20,7 @@
 
     $reffoods_and_query = [];
     foreach ($items as $item) {
-      if ( empty($item) || $item['ref_int'] - $item['f_volume_int'] < 0 ) {
+      if ( $item['f_id'] != 9 && ( $item['sum_ref'] - $item['f_volume_int'] < 0 ) ) {
         header("Location: ./recipe_search.php?alert=2");
         exit;
       }
@@ -32,7 +32,7 @@
     }
 
     $uid = 1;//$_SESSION['uid'];
-    /*
+    
     foreach ( $reffoods_and_query as $one_query ) {
       $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = :f_id";
       $dbc->DeleteRefrigator($ref_delete_query, $one_query['f_id']);
@@ -41,6 +41,5 @@
     }
     
     header("Location: ./recipe_search.php?alert=1");
-    */
   }
   catch( Exception $e ) {}
