@@ -52,6 +52,19 @@ create table refrigerator(
 	ref_int float
 );
 
+# テーブルGRAPHの作成
+CREATE TABLE graph (
+    u_id int not null,
+    purchase_volume float not null,
+    consumption_volume float not null,
+    disposal_valume float not null,
+    graph_date date,
+    c_id int
+);
+# テーブルGRAPHへデータを入力
+insert into graph(u_id,purchase_volume,consumption_volume,disposal_valume,graph_date)
+	values(1000,1000,830,100,20190606);
+
 # テーブルREFRIGERATORへデータを入力
 insert into refrigerator(u_id, f_id, end_day, ref_int)
 	values(1, 1, '2019-06-06', 400);
