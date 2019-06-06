@@ -46,12 +46,12 @@
 
         echo '<div class="col-sm-7">';
       // Get the ingredients used in the recipe from db.
-      $foods_name_query = 'SELECT DISTINCT master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, SUM(refrigerator.ref_int) as sum_ref
+      $foods_name_query = 'SELECT DISTINCT master_food.f_id, master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int, SUM(refrigerator.ref_int) as sum_ref
         FROM (recipe_food, master_food) LEFT OUTER JOIN refrigerator ON refrigerator.f_id = recipe_food.f_id
         WHERE recipe_food.r_id = ' 
         . $recipe_id .
         ' AND recipe_food.f_id = master_food.f_id
-        GROUP BY master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int';
+        GROUP BY master_food.f_id, master_food.f_name, recipe_food.f_volume, recipe_food.f_volume_int';
 
       $items = $dbc->searchRecipe($foods_name_query);
 
@@ -60,7 +60,7 @@
         echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
         
         // regtigetor not in food
-        if ( $item['f_id'] == 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
+        if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
@@ -73,12 +73,12 @@
       echo '<div class="col-sm-5">';
       $made_dissable_flag = false;
       foreach ($items as $item) {
-        if ( item['f_id'] == 9 && empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
-      echo '<table class="table table-sm">';
-      echo '<tr class="table-danger"><td>';
+        if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
+          echo '<table class="table table-sm">';
+          echo '<tr class="table-danger"><td>';
           echo  $item['f_name'];
           $made_dissable_flag = true;
-      echo 'が足りません';
+          echo 'が足りません';
         }
       echo '</td></tr>';
       echo '</table>';
