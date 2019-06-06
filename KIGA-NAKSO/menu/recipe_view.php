@@ -60,7 +60,7 @@
         echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
         
         // regtigetor not in food
-        if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
+        if ( $item['f_id'] == 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
@@ -73,7 +73,7 @@
       echo '<div class="col-sm-5">';
       $made_dissable_flag = false;
       foreach ($items as $item) {
-        if ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
+        if ( item['f_id'] == 9 && empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) {
       echo '<table class="table table-sm">';
       echo '<tr class="table-danger"><td>';
           echo  $item['f_name'];
