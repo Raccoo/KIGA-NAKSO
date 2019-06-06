@@ -57,13 +57,18 @@
 
       // process to display ingredients.
 			foreach ($items as $item) {
-        echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
-        
         // regtigetor not in food
         if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
+          echo '<tr class="table-warning"><th>' 
+            . '<a href="https://www.amazon.co.jp/s?k=' 
+            . $item['f_name'] 
+            . '&i=food-beverage" class="fas fa-shopping-cart" title="Amazonで購入する" target="_blank" style="color: #FF3333"></a> '
+            . $item['f_name'] 
+            . '</th><th>'; 
           echo '<p style="color: gray">' . $item['f_volume'] . '</p>';
         }
         else {
+          echo '<tr class="table-warning"><th>' . $item['f_name'] . '</th><th>'; 
           echo $item['f_volume'];
         }
         echo '</th></tr>';
