@@ -23,7 +23,9 @@ function h($data){
 
  //パスワードと確認パスワードの合致
  if( $Re_password != $password){
-    $_SESSION['signup_error']='確認パスワードが違います';
+    $_SESSION['signup_error']='確認パスワードが一致しません';
+    header('location:signup.php');
+    exit();
  }
 
  //Userオブジェクトの生成

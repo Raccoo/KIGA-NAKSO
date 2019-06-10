@@ -16,11 +16,11 @@
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
                 <?php 
-                    //if(isset($_SESSION['signup_error'])){
-                    //    echo '<p id="error_call">' . $_SESSION['signup_error'] . '</p>';
-                    //    unset($_SESSION['signup_error']);
-                    //
-                    //}
+                    if(isset($_SESSION['signup_error'])){
+                        echo '<p id="error_call">' . $_SESSION['signup_error'] . '</p>';
+                        unset($_SESSION['signup_error']);
+                    
+                    }
                 ?>
                 <form method="POST" action="signup_db.php">
                     <div class="form-group">
