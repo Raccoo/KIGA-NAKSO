@@ -63,6 +63,11 @@ body, html {
 }
 
 /* その他細やかなものについて -------------------------------*/
-#input_vol {
-    width: 350px;
+
+#input_vol{
+  width:350px;
+}
+
+#error_call {
+  color:red;
 }

@@ -19,9 +19,9 @@
 	session_start();
 	
 	// debug
-	$_SESSION['user_id'] = 1;
+	//$_SESSION['user_id'] = 1;
 	
-	$user_id = $_SESSION['user_id'];
+	$user_id = $_SESSION['u_id'];
 	$query = 'SELECT DISTINCT recipe.r_name, recipe.r_picture, recipe.r_id FROM recipe_food, refrigerator, recipe 
 		WHERE recipe_food.f_id = refrigerator.f_id 
 		AND recipe.r_id = recipe_food.r_id
