@@ -10,7 +10,7 @@ function h($data){
  //変数に代入、エスケープ処理
  $u_name = h($_POST['u_name']);
  $password = h($_POST['password']);
- //$password2 = h($_POST['password2']);
+ $Re_password = h($_POST['Re_password']);
  $address = h($_POST['address']);
 
  //セッションスタート
@@ -21,6 +21,11 @@ function h($data){
  //　$_SESSION['signup_error']='正しいメールアドレスを入力してください';
  //}
 
+ //パスワードと確認パスワードの合致
+ if( $Re_password != $password){
+    $_SESSION['signup_error']='確認パスワードが違います';
+ }
+
  //Userオブジェクトの生成
  require_once __DIR__ . '/../db/user.php';
  $user = new User();
@@ -30,10 +35,9 @@ function h($data){
 
 
 //ユーザー情報をセッションに保持
- //$_SESSION['u_id'] = $u_id;
- //$_SESSION['u_name'] = $u_name;
- //$_SESSION['password'] = $password;
- //$_SESSION['address'] = $address;
+ $_SESSION['u_name'] = $u_name;
+ $_SESSION['password'] = $password;
+ $_SESSION['address'] = $address;
 
  //クッキーに保持
   //setcookie("u_id",$u_id,time()+60*60*24*14,'/');
@@ -55,7 +59,7 @@ function h($data){
                 <p class="card-text">
                     <div class="form-group">
                         <label>ユーザー名</label>
-                        <input type="text" class="form-control" disabled name="u_name" value="<?=$u_name?>">
+                        <input type="text" class="form-control" disabled name="u_name" value="<?=$_SESSION['u_name']?>">
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>

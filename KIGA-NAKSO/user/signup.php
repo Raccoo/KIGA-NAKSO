@@ -31,10 +31,10 @@
                         <label>パスワード</label>
                         <input type="password" class="form-control" name="password" required placeholder="パスワード">
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <label>パスワード <span class="badge badge-danger">確認 </span></label>
-                        <input type="password" class="form-control" name="password2" required placeholder="確認のパスワード">
-                    </div> -->
+                        <input type="password" class="form-control" name="Re_password" required placeholder="パスワード">
+                    </div> 
                     <div class="form-group">
                         <label>Eメールアドレス</label>
                         <input type="email" class="form-control" name="address" required placeholder="example@email.com">
