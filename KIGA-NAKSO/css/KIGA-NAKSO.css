@@ -3,65 +3,66 @@
 
 /*　body,html　--------------------------*/
 body, html {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  font-family: 'Noto Sans JP', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 /*コンテナについて　----------------------------*/
 .container {
-  position: relative;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  padding-bottom: 30px;
+    position: relative;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    padding-bottom: 30px;
 }
 
 /* フッターについて　--------------------- */
 .footer {
-  /*相対位置指定*/
-  position: relative;
-  bottom: 0;
-  /* 横幅 */
-  width: 100%;
-  /* フッダーの固定の高さ */
-  height: 120px;
-  /* 背景色 */
-  background-color: #444444;
-  /*文字色*/
-  color: white;
+    /*相対位置指定*/
+    position: relative;
+    bottom: 0;
+    /* 横幅 */
+    width: 100%;
+    /* フッダーの固定の高さ */
+    height: 120px;
+    /* 背景色 */
+    background-color: #444444;
+    /*文字色*/
+    color: white;
 }
- 
- .f-contents {
-  width: auto;
-  max-width: 500px;
-  padding: 0 60px;
+
+.f-contents {
+    width: auto;
+    max-width: 500px;
+    padding: 0 60px;
 }
+
 .f-contents .text {
-  margin: 15px 0 0 0 15px;
+    margin: 15px 0 0 0 15px;
 }
 
 
 /* カードについて -------------------------------*/
 .card-body {
-  background-color: #FFCC99;
+    background-color: #FFCC99;
 }
 
-#simple-card{
-  margin-top:40px; 
+#simple-card {
+    margin-top: 40px;
 }
 
-#simple-card-body{
-  background: white;
+#simple-card-body {
+    background: white;
 }
 
 /* テキストについて -------------------------------*/
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 /* その他細やかなものについて -------------------------------*/
-#input_vol{
-  width:350px;
+#input_vol {
+    width: 350px;
 }
