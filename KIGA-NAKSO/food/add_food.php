@@ -57,7 +57,7 @@ $results = $dbc->showFood($food_query);
 
         if ($_POST['vol'] > 0) {
             $vol = $_POST['vol'];
-            $uid = 1; // $_SESSION['$uid']; debug用の仮のuser_id
+            $uid = $_SESSION['u_id'];
             if ($uid != Null && $fid != Null && $food_end_day && $vol != Null) {
                 $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (:uid,:fid,:food_end_day,:ref_int)';
                 $stmt = $dbc->set_food($ref_insert);
