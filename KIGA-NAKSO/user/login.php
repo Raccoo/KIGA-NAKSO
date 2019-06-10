@@ -1,5 +1,6 @@
 <?php
   require_once __DIR__ . '/../components/header.php';
+
 ?>
 
 <html>
@@ -13,21 +14,31 @@
             </div>
             <div class="card-body" id="simple-card-body">
                 <p class="card-text">
-                <form method="POST" action="">
+                <?php 
+                    if(isset($_SESSION['login_error'])){
+                        echo '<p id="error_call">' . $_SESSION['login_error'] . '</p>';
+                        unset($_SESSION['login_error']);
+
+                    }
+                ?>
+                <form method="POST" action="login_db.php">
                     <div class="form-group">
-                        <label >Eメールアドレス</label>
-                        <input type="text" class="form-control" name="address" required placeholder="example@email.com">
+                        <label>Eメールアドレス</label>
+                        <input type="text" class="form-control" name="address" required placeholder="example@gmail.com">
+
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input type="password" class="form-control" name="password" required placeholder="パスワード">
+                        <input type="password" class="form-control" name="password" required placeholder="パスワード"><br>
                     </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="check_user">
+                    <div class="form-group"><!--
+                        <input type="checkbox" class="form-check-input" name="CookieCheck">
                         <label class="form-check-label">記憶する</label>
+                    --></div>
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary">ログイン</button><br><br>
                     </div>
-                        <button type="submit" class="btn btn-primary">ログイン</button>
                     </form>
                     <div class="center">
                         <a href="signup.php">新規登録はこちら</a>
