@@ -11,23 +11,23 @@
 		<div class="container">
 			<ul class="nav nav-tabs">
 				<li class="nav-item">
-					<a href="#tab1" class="nav-link active" data-toggle="tab">肉類</a>			
+					<a href="#1" class="nav-link active" data-toggle="tab">肉類</a>
 				</li>
 				<li class="nav-item">
-					<a href="#tab2" class="nav-link" data-toggle="tab">野菜・フルーツ</a>
+					<a href="#2" class="nav-link" data-toggle="tab">野菜・フルーツ</a>
 				</li>
 				<li class="nav-item">
-					<a href="#tab3" class="nav-link" data-toggle="tab">穀物類</a>
+					<a href="#3" class="nav-link" data-toggle="tab">穀物類</a>
 				</li>
 				<li class="nav-item">
-					<a href="#tab4" class="nav-link" data-toggle="tab">水産類</a>
+					<a href="#4" class="nav-link" data-toggle="tab">水産類</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<div class="p-3">
 		<div class="tab-content">
-			<div id="tab1" class="tab-pane active">
+			<div id="1" class="tab-pane active">
 				<!--肉類-->
 				<div class="container">
 					<div class="row">
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="tab2" class="tab-pane">
+			<div id="2" class="tab-pane">
 				<!--野菜・フルーツ-->
 				<div class="container">
 					<div class="row">
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="tab3" class="tab-pane">
+			<div id="3" class="tab-pane">
 				<!--穀物類-->
 				<div class="container">
 					<div class="row">
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="tab4" class="tab-pane">
+			<div id="4" class="tab-pane">
 				<!--水産類-->
 				<div class="container">
 					<div class="row">
