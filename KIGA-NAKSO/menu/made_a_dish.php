@@ -20,19 +20,21 @@
 
     $reffoods_and_query = [];
     foreach ($items as $item) {
-      if ( empty($item) || $item['ref_int'] - $item['f_volume_int'] < 0 ) {
-        header("Location: ./recipe_search.php?alert=2");
-        exit;
-      }
-      else {
-        $temp['query'] = "INSERT INTO refrigerator (u_id, f_id, end_day, ref_int)
-          VALUES (:u_id, :f_id, :end_day, :ref_int)";
-        $reffoods_and_query[] = array_merge($item, $temp);
+      if ( $item['f_id'] != 9 ) {
+        if ( $item['sum_ref'] - $item['f_volume_int'] < 0 ) {
+          header("Location: ./recipe_search.php?alert=2");
+          exit;
+        }
+        else {
+          $temp['query'] = "INSERT INTO refrigerator (u_id, f_id, end_day, ref_int)
+            VALUES (:u_id, :f_id, :end_day, :ref_int)";
+          $reffoods_and_query[] = array_merge($item, $temp);
+        }
       }
     }
 
     $uid = 1;//$_SESSION['uid'];
-    /*
+    
     foreach ( $reffoods_and_query as $one_query ) {
       $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = :f_id";
       $dbc->DeleteRefrigator($ref_delete_query, $one_query['f_id']);
@@ -41,6 +43,5 @@
     }
     
     header("Location: ./recipe_search.php?alert=1");
-    */
   }
   catch( Exception $e ) {}
