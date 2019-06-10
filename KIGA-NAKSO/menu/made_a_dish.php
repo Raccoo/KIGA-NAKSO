@@ -22,7 +22,7 @@
     foreach ($items as $item) {
       if ( $item['f_id'] != 9 ) {
         if ( $item['sum_ref'] - $item['f_volume_int'] < 0 ) {
-          header("Location: ./recipe_search.php?alert=2");
+          //header("Location: ./recipe_search.php?alert=2");
           exit;
         }
         else {
@@ -33,7 +33,7 @@
       }
     }
 
-    $uid = 1;//$_SESSION['uid'];
+    $uid = $_SESSION['u_id'];
     
     foreach ( $reffoods_and_query as $one_query ) {
       $ref_delete_query = "DELETE FROM refrigerator WHERE f_id = :f_id";
