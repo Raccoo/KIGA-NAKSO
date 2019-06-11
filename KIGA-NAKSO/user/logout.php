@@ -8,10 +8,6 @@
     
 	session_destroy();
 
-	//ユーザーIDと名前のクッキー情報も破棄する
-	//setcookie('address',   '' , time() - 1000,'/');
-	//setcookie('password', '' , time() - 1000,'/');
-
 	//強制遷移
     header("Location:login.php");  
 

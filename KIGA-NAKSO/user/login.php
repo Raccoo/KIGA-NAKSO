@@ -32,10 +32,6 @@
                         <label>パスワード</label>
                         <input type="password" class="form-control" name="password" required placeholder="パスワード"><br>
                     </div>
-                    <div class="form-group"><!--
-                        <input type="checkbox" class="form-check-input" name="CookieCheck">
-                        <label class="form-check-label">記憶する</label>
-                    --></div>
                     <div class="center">
                         <button type="submit" class="btn btn-primary">ログイン</button><br><br>
                     </div>

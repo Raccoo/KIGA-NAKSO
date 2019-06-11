@@ -15,8 +15,6 @@
  $user = new User();
  $result = $user->authUser($address);
 
- //$password=$result['password'];
-
  //セッションスタート
  session_start();
 
@@ -41,14 +39,7 @@
  //ユーザー情報をセッションに保持
  $_SESSION['u_id'] = $u_id;
  $_SESSION['u_name'] = $u_name;
-
- //クッキーに保持
-  //setcookie("address",$u_id,time()+60*60*24*14,'/');
-  //setcookie("password",$password,time()+60*60*24*14,'/');
-
-  //require_once __DIR__ . '/../components/header.php';
-
+ 
   header('location:../food/stock_food.php');
 
-  //require_once __DIR__ . '/../components/footer.php';
 ?>
