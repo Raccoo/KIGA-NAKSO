@@ -40,10 +40,6 @@
                         <input type="email" class="form-control" name="address" required placeholder="example@email.com">
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
-                    <!-- <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" name="CreateCheck">
-                        <label class="form-check-label" for="CreateCheck">記憶する</label>
-                    </div> -->
                     <div class="center">
                         <button type="submit" class="btn btn-primary" name="CreateUser">新規登録</button>
                     </div>
