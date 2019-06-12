@@ -21,7 +21,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     
-     <!--<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"> -->
        <!--header contents -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -30,6 +29,7 @@
             <a class="nav-link" href="../index.php"><i class="fas fa-home"> ホーム</i></a>
           </li>
           
+          <?php if($_SESSION['u_id']>0){?>
           <!-- Foodstuff page -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="../food/search_food.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,6 +40,7 @@
               <a class="dropdown-item" href="../food/add_food.php"><i class="fas fa-cart-arrow-down"> 追加</i></a>
             </div>
           </li>
+          <?php }?>
           
           <!-- Search page -->
           <li class="nav-item dropdown">
@@ -48,12 +49,12 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../menu/recipe_search.php"><i class="fas fa-utensils"> レシピ</i></a>
+              <?php if($_SESSION['u_id']>0){?>
               <a class="dropdown-item" href="../menu/recommended.php"><i class="far fa-thumbs-up"> おすすめ</i></a>
+              <?php }?>
             </div>
           </li>
         </ul>
-      <!-- </div>
-      <div class="navbar-collapse collapse order-3 dual-collapse2"> -->
         <ul class="navbar-nav ml-auto">
 
 <?php
@@ -72,7 +73,6 @@
   }
 ?>
         </ul>
-      <!-- </div>  -->
   </nav><br>
 </div>
 </nav>
