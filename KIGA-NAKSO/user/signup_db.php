@@ -9,9 +9,11 @@ function h($data){
 
  //変数に代入、エスケープ処理
  $u_name = h($_POST['u_name']);
- $password = h($_POST['password']);
+ $pass_input = h($_POST['password']);
  $Re_password = h($_POST['Re_password']);
  $address = h($_POST['address']);
+
+ $password = password_hash($pass_input, PASSWORD_DEFAULT);
 
  //セッションスタート
  session_start();
@@ -22,17 +24,16 @@ function h($data){
  //}
 
  //パスワードと確認パスワードの合致
- if( $Re_password !== $password){
-    $_SESSION['signup_error']='確認パスワードが違います';
+ if(!password_verify($Re_password,$password)){
+    $_SESSION['signup_error']='確認パスワードが一致しません';
+    header('location:signup.php');
+    exit();
  }
 
  //Userオブジェクトの生成
  require_once __DIR__ . '/../db/user.php';
  $user = new User();
  $result = $user->signUp($u_name,$password,$address);
-
- //データベースからu_idを取り出す
-
 
 //ユーザー情報をセッションに保持
  $_SESSION['u_name'] = $u_name;

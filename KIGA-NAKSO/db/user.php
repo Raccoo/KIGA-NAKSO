@@ -4,10 +4,11 @@
 
 class User extends DbData{
   //ログイン処理
-  public function authUser($address, $password){
-    $sql = "select * from user where address = ? and password = ?";
-    $stmt = $this->query($sql,[$address,$password]);
-    return $stmt->fetch();
+  public function authUser($address){
+    $sql = "select * from user where address = ?";
+    $stmt = $this->query($sql,[$address]);
+		return $stmt->fetch();
+		$result=$password;
   }
 
   public function signUP($u_name, $password, $address){
@@ -16,7 +17,9 @@ class User extends DbData{
 			$result = $stmt->fetch();
 			//登録しようしているEメールがすでに登録されている場合
 			if ($result['address']) {
-				return 'この' . $address . 'はすでに登録されています。';
+				$_SESSION['signup_error']='入力されたEメールアドレスはすでに登録されています。';
+				header('location:signup.php');
+    		exit();
 			}
 			$sql = "insert into user(u_name, password, address) values(?,?,?)";
 			$result = $this->exec($sql, [$u_name, $password, $address]);
