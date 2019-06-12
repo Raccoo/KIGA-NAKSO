@@ -45,13 +45,10 @@ $results = $dbc->showFood($food_query);
             echo "<br>" . $show[0]['f_name'] . "の";
             echo '消費期限は、およそ';
 
-            // 'Y-m-d'の形式でないとDataBaseへ格納できない
-            // Y年m月d日で表示するなら別の形で保存する必要がある
             $food_end_day = date('Y-m-d', mktime(0, 0, 0, date('n'), date('j') + $show[0]['expiry_date'], date('Y')));
             echo $food_end_day . "です。";
 
         }else{
-            //<input type="submit" name='submit' value="登録する">
             echo '<br><button type="submit" class="btn btn-outline-success btn-block">登録する</button><br>';
         }
 
