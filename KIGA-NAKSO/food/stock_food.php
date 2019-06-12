@@ -13,52 +13,52 @@
 <div class="container">
   <div class="row justify-content-center">
     <?php
-        if ( !empty($search_word) ) {
-          echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'. $search_word . '」 </a>で検索しました</div>';           
-          // refrigerator query
-          $all_refrigerator_food = 
+      if ( !empty($search_word) ) {
+        echo '<div class="col-9 text-center alert alert-primary" role="alert"><a class="alert-link">「'. $search_word . '」 </a>で検索しました</div>';           
+        // refrigerator query
+        $all_refrigerator_food = 
           'SELECT master_food.f_id, master_food.f_name, master_food.unit, refrigerator.end_day,refrigerator.ref_int
           FROM refrigerator, master_food 
           WHERE master_food.f_name LIKE "%' . $search_word . '%" 
           AND refrigerator.f_id = master_food.f_id 
           AND refrigerator.u_id = ' . $_SESSION['u_id'] . '
           ORDER BY end_day';
-          $results = $dbc->searchRecipe($all_refrigerator_food);
-        }
-        else {
-          $all_refrigerator_food = 
+        $results = $dbc->searchRecipe($all_refrigerator_food);
+      }
+      else {
+        $all_refrigerator_food = 
           'SELECT master_food.f_id, master_food.unit, master_food.f_name, refrigerator.end_day,refrigerator.ref_int
           FROM refrigerator, master_food 
           WHERE refrigerator.f_id = master_food.f_id 
           AND refrigerator.u_id = ' . $_SESSION['u_id'] . '
           ORDER BY end_day';
-          $results = $dbc->searchRecipe($all_refrigerator_food);
-        }
-      ?>
-    <div class="col-10">
-      <form class="input-group" action="stock_food.php" method="POST">
-        <input type="text" name="search_word" class="form-control" placeholder="食材検索">
-        <button type="submit" class="btn btn-success">
-          <i class="fa fa-search"></i>検索
-        </button>
-      </form>
-    </div>
+        $results = $dbc->searchRecipe($all_refrigerator_food);
+      }
+  ?>
+  <div class="col-10">
+    <form class="input-group" action="stock_food.php" method="POST">
+      <input type="text" name="search_word" class="form-control" placeholder="食材検索">
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-search"></i>検索
+      </button>
+    </form>
   </div>
-  <br>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a href="#tab1" class="nav-link active" data-toggle="tab">冷蔵庫</a>
-    </li>
-    <li class="nav-item">
-      <a href="#tab2" class="nav-link" data-toggle="tab">貢献度</a>
-    </li>
-  </ul>
-  <div class="p-3">
-    <div class="tab-content">
-      <div id="tab1" class="tab-pane active">
-        <div class="row justify-content-md-center text-center">
-          <div class="col-md-7">
-          <?php
+</div>
+<br>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#tab1" class="nav-link active" data-toggle="tab">冷蔵庫</a>
+  </li>
+  <li class="nav-item">
+    <a href="#tab2" class="nav-link" data-toggle="tab">貢献度</a>
+  </li>
+</ul>
+<div class="p-3">
+  <div class="tab-content">
+    <div id="tab1" class="tab-pane active">
+      <div class="row justify-content-md-center text-center">
+        <div class="col-md-7">
+        <?php
           define('MAX', '10');
 
           $result_count = count($results);
