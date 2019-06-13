@@ -1,6 +1,7 @@
 <!---<?php echo $result[0]['sum']; ?>-->
 <?php
-require_once __DIR__ . '/../components/header.php'
+require_once __DIR__ . '/../components/header.php';
+require_once __DIR__ . '/../json/query.php';
 ?>
 <html>
 <head>

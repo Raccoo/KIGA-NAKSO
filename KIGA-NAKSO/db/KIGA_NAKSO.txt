@@ -68,7 +68,7 @@ insert into user(u_id,u_name, password,address)
 insert into user(u_name, password,address)
 	values('大西 宗一郎','onishi','kd1196317@st.kobedenshi.ac.jp');
 insert into user(u_name, password,address)
-	values('釜本 一樹','kamamoto','kd1244057@st.kobedenshi.ac.jp');
+	values('釜元 一樹','kamamoto','kd1244057@st.kobedenshi.ac.jp');
 insert into user(u_name, password,address)
 	values('木村 太郎','kimura','kd1233681@st.kobedenshi.ac.jp');
 insert into user(u_name, password,address)
