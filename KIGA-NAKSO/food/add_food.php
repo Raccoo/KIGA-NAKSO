@@ -33,6 +33,8 @@ $results = $dbc->showFood($food_query);
 
 
         <?php
+        session_start();
+
         echo '<input type="number" step="0.5" min="0" id="input_vol" class="form-control" name="vol" placeholder="数量を入力">';
         echo '<small class="text-muted">※野菜は 個数 肉はグラム 魚は切り身 液体はmL 単位 | 1/2は0.5として、登録してください。</small><br>';
         $fid = $_POST['food'];
@@ -56,17 +58,35 @@ $results = $dbc->showFood($food_query);
             $vol = $_POST['vol'];
             $uid = $_SESSION['u_id'];
             if ($uid != Null && $fid != Null && $food_end_day && $vol != Null) {
-                $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (:uid,:fid,:food_end_day,:ref_int)';
-                $stmt = $dbc->set_food($ref_insert);
-                $stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
-                $stmt->bindValue(':fid', $fid, PDO::PARAM_INT);
-                $stmt->bindValue(':food_end_day', $food_end_day, PDO::PARAM_STR);
-                $stmt->bindValue(':ref_int', $vol, PDO::PARAM_INT);
-                if (!$stmt->execute()) {
-                    $errors['error'] = "食材登録に失敗しました。";
+                try {
+                    $ref_insert = 'insert into refrigerator (u_id, f_id, end_day, ref_int) VALUES (:uid,:fid,:food_end_day,:ref_int)';
+                    $stmt = $dbc->set_food($ref_insert);
+                    $stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
+                    $stmt->bindValue(':fid', $fid, PDO::PARAM_INT);
+                    $stmt->bindValue(':food_end_day', $food_end_day, PDO::PARAM_STR);
+                    $stmt->bindValue(':ref_int', $vol, PDO::PARAM_INT);
+
+                    if ( !$stmt->execute() ) {
+                        $errors['error'] = "食材登録に失敗しました。";
+                    }
+                    
+                    $graph_insert = 'insert into graph (u_id, purchase_volume, consumption_volume, disposal_valume, graph_date) 
+                        VALUES (:uid, :purchase_volume, 0, 0, :graph_date)';
+                    
+                    $nowtime = date('Y-m-d', mktime(0, 0, 0, date('n'), date('j'), date('Y')));
+                    $graph_stmt = $dbc->set_food($graph_insert);
+                    $graph_stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
+                    $graph_stmt->bindValue(':purchase_volume', $vol, PDO::PARAM_INT);
+                    $graph_stmt->bindValue(':graph_date', $nowtime, PDO::PARAM_STR);
+
+                    if ( !$graph_stmt->execute() ) {
+                        $errors['error'] = "食材登録に失敗しました。";
+                    }
+                    
+                    echo '<p>登録が完了しました。</p>';
+                    echo '<br><button type="submit" class="btn btn-outline-success btn-block">他の食材も追加する</button><br>';
                 }
-                echo '<p>登録が完了しました。</p>';
-                echo '<br><button type="submit" class="btn btn-outline-success btn-block">他の食材も追加する</button><br>';
+                catch ( Exception $e ) { }
             }
         }
 
