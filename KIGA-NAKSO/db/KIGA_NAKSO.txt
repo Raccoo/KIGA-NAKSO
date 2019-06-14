@@ -57,9 +57,9 @@ CREATE TABLE graph (
     u_id int not null,
     purchase_volume float not null,
     consumption_volume float not null,
-    disposal_valume float not null,
+    disposal_volume float not null,
     graph_date date,
-    c_id int
+    c_id int not null
 );
 
 #テーブルUSERへデータを入力
@@ -79,8 +79,8 @@ insert into user(u_name, password,address)
 	values('桃川 旭','momokawa','kd1164183@st.kobedenshi.ac.jp');
 
 # テーブルGRAPHへデータを入力
-insert into graph(u_id,purchase_volume,consumption_volume,disposal_valume,graph_date)
-	values(1000,1000,830,100,20190606);
+insert into graph(u_id,purchase_volume,consumption_volume,disposal_volume,graph_date,c_id)
+	values(1000,1000,830,100,20190606,1);
 
 # テーブルREFRIGERATORへデータを入力
 insert into refrigerator(u_id, f_id, end_day, ref_int)
