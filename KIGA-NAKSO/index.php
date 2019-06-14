@@ -6,7 +6,7 @@
   $dbc = new DbData();
 ?>
 <head>
-  <title>マイ冷蔵庫ページ</title>
+  <title>タイトル</title>
 </head>
 <body>
     <?php
@@ -29,37 +29,40 @@
           ORDER BY end_day';
         $results = $dbc->searchRecipe($all_refrigerator_food);
       }
-  ?>
-        <?php
-          define('MAX', '10');
 
-          $result_count = count($results);
-          $max_page = ceil($result_count / MAX);
-          if(!isset($_GET['page_id'])){
-              $now = 1;
-          }else{
-              $now = $_GET['page_id'];
-          }
-          $start_no = ($now - 1) * MAX;
-          $disp_data = array_slice($results, $start_no, MAX, true);
+      define('MAX', '10');
 
-          $cards_count = 0;
-          //本日の3日後の日付を取得する。
-          $today = strtotime( "+3 day" );
+      $result_count = count($results);
+      $max_page = ceil($result_count / MAX);
 
-          if( !empty( $disp_data ) ) {
-            foreach( $disp_data as $data ) {
-              //消費期限を取得する。
-              $time = strtotime($data['end_day']);
-              if ($today >= $time){
-              $test_alert = "<script type='text/javascript'>alert('" . $data['f_name'] . "の消費期限が3日以内になりました。');</script>";
-              echo $test_alert;
-            }
-            }
+      if ( !isset($_GET['page_id']) ){
+        $now = 1;
+      }
+      else {
+        $now = $_GET['page_id'];
+      }
+
+      $start_no = ($now - 1) * MAX;
+      $disp_data = array_slice($results, $start_no, MAX, true);
+
+      $cards_count = 0;
+      //本日の3日後の日付を取得する。
+      $today = strtotime( "+3 day" );
+
+      if( !empty( $disp_data ) ) {
+        /*
+        foreach( $disp_data as $data ) {
+          //消費期限を取得する。
+          $time = strtotime($data['end_day']);
+          if ($today >= $time){
+            $test_alert = "<script type='text/javascript'>alert('" . $data['f_name'] . "の消費期限が3日以内になりました。');</script>";
+            echo $test_alert;
           }
-          else {
-          }
-        ?>
+        }
+        */
+      }
+      else { }
+    ?>
 <html>
 	<head>
 		<title>ホーム画面</title>

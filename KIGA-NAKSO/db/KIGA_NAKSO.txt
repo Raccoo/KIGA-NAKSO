@@ -64,19 +64,7 @@ CREATE TABLE graph (
 
 #テーブルUSERへデータを入力
 insert into user(u_id,u_name, password,address)
-	values(1000,'テスト','test','kd1196317@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('大西 宗一郎','onishi','kd1196317@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('釜元 一樹','kamamoto','kd1244057@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('木村 太郎','kimura','kd1233681@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('後藤 大輝','goto','kd1229568@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('横田 健人','yokota','kd1241861@st.kobedenshi.ac.jp');
-insert into user(u_name, password,address)
-	values('桃川 旭','momokawa','kd1164183@st.kobedenshi.ac.jp');
+	values(1,'test','$2y$10$qBf6r2nYf0o3Eyflzbfn2.00/ovq8M1KYDEY/XCwRBibMyOzMbW9i','test@example.com');
 
 # テーブルGRAPHへデータを入力
 insert into graph(u_id,purchase_volume,consumption_volume,disposal_volume,graph_date,c_id)
