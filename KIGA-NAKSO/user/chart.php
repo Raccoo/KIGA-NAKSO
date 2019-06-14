@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../json/query.php';
+require_once __DIR__ . '/../json/month_json.php';
 ?>
     <html>
     <head>
@@ -68,18 +69,6 @@ require_once __DIR__ . '/../json/query.php';
                     isStacked: 'percent'
                 };
 
-                let datao = new google.visualization.arrayToDataTable([
-                    ['category', 'pv'],
-                    ['肉類', <?php echo $t_mon1['pv'] ?>],
-                    ['魚介類', <?php echo $t_mon2['pv'] ?>],
-                    ['野菜・果物', <?php echo $t_mon3['pv'] ?>],
-                    ['穀物', <?php echo $t_mon4['pv'] ?>]
-                    ['穀物', <?php echo $t_mon5['pv'] ?>],
-                    ['穀物', <?php echo $t_mon6['pv'] ?>],
-                    ['穀物', <?php echo $t_mon7['pv'] ?>]
-
-                ]);
-
                 let options2 = {
                     title: '今月の購入量',
                     is3D: true
@@ -88,12 +77,12 @@ require_once __DIR__ . '/../json/query.php';
                 const chart = new google.visualization.ColumnChart(document.getElementById('previous'));
                 const chart2 = new google.visualization.ColumnChart(document.getElementById('next'));
                 const chart3 = new google.visualization.PieChart(document.getElementById('o'));
-                const chart4 = new google.visualization.ColumnChart(document.getElementById('year_waste'));
+                // const chart4 = new google.visualization.DataTable(jsonData);
 
                 chart.draw(tm_data, options);
                 chart2.draw(lm_data, options);
                 chart3.draw(datao, options2);
-                chart4.draw(data, options);
+                // chart4.draw(..., options);
             }
         </script>
     </head>
@@ -103,7 +92,7 @@ require_once __DIR__ . '/../json/query.php';
     <div id="o" style="float: right; width: 45%; height: 40%"></div>
     <div style="clear: both"></div>
     <div id="next" style="float:left;width: 45%; height: 40%"></div>
-    <div id="year_waste" style="margin-left: auto; width: 45%; height: 40%"></div>
+<!--    <div id="year_waste" style="margin-left: auto; width: 45%; height: 40%"></div>-->
 
     </body>
     </html>
