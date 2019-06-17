@@ -63,7 +63,7 @@ function h($data){
                     </div>
                     <div class="form-group">
                         <label>パスワード</label>
-                        <input type="text" class="form-control" disabled name="password" value="****">
+                        <input type="text" class="form-control" disabled value="****">
                     </div>
                     <div class="form-group">
                         <label>Eメールアドレス</label>
