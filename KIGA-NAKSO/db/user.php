@@ -26,5 +26,12 @@ class User extends DbData{
 
 			
 		}
+
+  public function DeleteUser($u_id){
+	$sql="DELETE FROM user WHERE u_id = ?";
+	$stmt = $this->pdo->prepare($sql);
+	$stmt->execute([$u_id]);
+  }
+
 }
 

@@ -37,6 +37,7 @@ function h($data){
 
 //ユーザー情報をセッションに保持
  $_SESSION['u_name'] = $u_name;
+ $_SESSION['address'] = $address;
 
  //クッキーに保持
   //setcookie("u_id",$u_id,time()+60*60*24*14,'/');

@@ -68,7 +68,7 @@
     echo '<li class="nav-item"><a class="nav-link" href="../user/login.php"><i class="fas fa-sign-in-alt"> ログイン</i></a></li>';
   }
   else {
-    echo '<li class="nav-item"><a class="nav-link" href="#">' . $u_name . 'さん</a></li>';
+    echo '<li class="nav-item"><a class="nav-link" href="../user/userinfo.php">' . $u_name . 'さん</a></li>';
     echo '<li class="nav-item"><a class="nav-link" href="../user/logout.php"><i class="fas fa-sign-out-alt"> ログアウト</i></a></li>';
   }
 ?>
