@@ -39,6 +39,7 @@
  //ユーザー情報をセッションに保持
  $_SESSION['u_id'] = $u_id;
  $_SESSION['u_name'] = $u_name;
+ $_SESSION['address'] = $address;
  
   header('location:../food/stock_food.php');
 
