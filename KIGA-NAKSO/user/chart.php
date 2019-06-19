@@ -61,18 +61,16 @@ require_once __DIR__ . '/../json/query.php';
                 let monthly_data = google.visualization.arrayToDataTable([
                     //【急募】横軸のバグ対処['record']
                     ['monthly', '消費量', '廃棄量', '繰越量'],
-                    [<?php echo $this_m['record'] . ',' . $this_m['cv'] . ',' . $this_m['dv'] . ',' . ($this_m['pv'] - ($this_m['dv'] + $this_m['cv'])) ?>],
-                    [<?php echo $this_m1['record'] . ',' . $this_m1['cv'] . ',' . $this_m1['dv'] . ',' . ($this_m1['pv'] - ($this_m1['dv'] + $this_m1['cv'])) ?>],
-                    [<?php echo $this_m2['record'] . ',' . $this_m2['cv'] . ',' . $this_m2['dv'] . ',' . ($this_m2['pv'] - ($this_m2['dv'] + $this_m2['cv'])) ?>],
-                    [<?php echo $this_m3['record'] . ',' . $this_m3['cv'] . ',' . $this_m3['dv'] . ',' . ($this_m3['pv'] - ($this_m3['dv'] + $this_m3['cv'])) ?>],
-                    [<?php echo $this_m4['record'] . ',' . $this_m4['cv'] . ',' . $this_m4['dv'] . ',' . ($this_m4['pv'] - ($this_m4['dv'] + $this_m4['cv'])) ?>],
-                    [<?php echo $this_m5['record'] . ',' . $this_m5['cv'] . ',' . $this_m5['dv'] . ',' . ($this_m5['pv'] - ($this_m5['dv'] + $this_m5['cv'])) ?>],
-                    [<?php echo $this_m6['record'] . ',' . $this_m6['cv'] . ',' . $this_m6['dv'] . ',' . ($this_m6['pv'] - ($this_m6['dv'] + $this_m6['cv'])) ?>],
-                    [<?php echo $this_m7['record'] . ',' . $this_m7['cv'] . ',' . $this_m7['dv'] . ',' . ($this_m7['pv'] - ($this_m7['dv'] + $this_m7['cv'])) ?>],
-                    [<?php echo $this_m8['record'] . ',' . $this_m8['cv'] . ',' . $this_m8['dv'] . ',' . ($this_m8['pv'] - ($this_m8['dv'] + $this_m8['cv'])) ?>],
-                    [<?php echo $this_m9['record'] . ',' . $this_m9['cv'] . ',' . $this_m9['dv'] . ',' . ($this_m9['pv'] - ($this_m9['dv'] + $this_m9['cv'])) ?>],
-                    [<?php echo $this_m10['record'] . ',' . $this_m10['cv'] . ',' . $this_m10['dv'] . ',' . ($this_m10['pv'] - ($this_m10['dv'] + $this_m10['cv'])) ?>],
-                    [<?php echo $this_m11['record'] . ',' . $this_m11['cv'] . ',' . $this_m11['dv'] . ',' . ($this_m11['pv'] - ($this_m11['dv'] + $this_m11['cv'])) ?>]
+                    <?php
+                        foreach ( $result as $r ) {
+                            echo "['" . $r['record'] . "'," . $r['cv'] . "," . $r['dv'] . "," . ($r['pv'] - ($r['dv'] + $r['cv'])) . "],";
+                        }
+                        if ( count($result) < 12 ) {
+                            for ( $i = 1 ; $i < (12 - count($result)) ; $i++ ) {
+                                echo "['-',0,0,0],";
+                            }
+                        }
+                    ?>
                 ]);
 
                 const tm_options = {
