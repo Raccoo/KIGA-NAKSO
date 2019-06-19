@@ -84,6 +84,7 @@ $results = $dbc->showFood($food_query);
                     }
                     
                     echo '<p>登録が完了しました。</p>';
+                    echo '<br><a class="btn btn-primary btn-block" href="stock_food.php" role="button"><i class="fas fa-arrow-circle-right"></i> 冷蔵庫を確認する</a>';
                     echo '<br><button type="submit" class="btn btn-outline-success btn-block">他の食材も追加する</button><br>';
                 }
                 catch ( Exception $e ) { }
