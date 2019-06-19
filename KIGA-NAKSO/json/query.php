@@ -62,15 +62,4 @@ group by date_format(graph_date,'%Y-%m')
 order by date_format(graph_date,'%Y-%m')";
 
 $result = $dbc->showFood($record);
-$this_m = $result[0];
-$this_m1 = $result[1];
-$this_m2 = $result[2];
-$this_m3 = $result[3];
-$this_m4 = $result[4];
-$this_m5 = $result[5];
-$this_m6 = $result[6];
-$this_m7 = $result[7];
-$this_m8 = $result[8];
-$this_m9 = $result[9];
-$this_m10 = $result[10];
-$this_m11 = $result[11];
+
