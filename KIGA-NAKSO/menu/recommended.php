@@ -31,7 +31,8 @@
 	foreach ( $recipes as $recipe ) {
 		echo '
 			<div class="col-4">
-			<div class="card" style="width: 18rem;">
+			<div class="card-deck">
+			<div class="card mb-3" style="width: 18rem;">
 			<img class="card-img-top" src="' . $recipe['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
 			<div class="card-body">
 			<h5 class="card-title">' . $recipe['r_name'] . '</h5>
@@ -63,6 +64,7 @@
 			<input type="hidden" name="recipe" value="' . $recipe['r_id'] . '" />
 			<button class="btn btn-primary">材料を見る</button>
 			</form>
+			</div>
 			</div>
 			</div>
 			</div>';
