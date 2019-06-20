@@ -28,7 +28,7 @@
   <br>
 	<div class="container">
     <?php 
-      echo '<h1>' . $recipe['r_name'] . '</h1>';
+      echo '<h1><i class="fas fa-utensils  my-gray"></i> ' . $recipe['r_name'] . '</h1><hr>';
       echo '<div class="row">';
       echo '<div class="col-sm-7">';
       echo '<image class="food rounded" src="' . $recipe['r_picture'] . '">';
@@ -75,7 +75,9 @@
       };
       echo '</tbody></table>';
       echo '</div>';
-      echo '<div class="col-sm-5">';
+      //足りない食材の表示
+      echo '<div class="col-sm-3"><br>';
+      echo '<i class="fas fa-list-ul"></i> 冷蔵庫にない食材<hr>';
       $made_dissable_flag = false;
       foreach ($items as $item) {
         if ( $item['f_id'] != 9 && ( empty($item['sum_ref']) || $item['sum_ref'] < $item['f_volume_int'] ) ) {
@@ -83,13 +85,18 @@
           echo '<tr class="table-danger"><td>';
           echo  $item['f_name'];
           $made_dissable_flag = true;
-          echo 'が足りません';
+          //echo 'が足りません';
+        }else if($item['f_id']==0){
+          echo '<div class="my-gray">冷蔵の中身で作れます！</div>';
+          break;
         }
       echo '</td></tr>';
       echo '</table>';
       }
       echo '</div><br>';
-      echo '<div class="col-sm-12">';
+      //レシピフロー表示
+      echo '<div class="col-sm-9"><br>';
+      echo '<h5><i class="fas fa-arrow-circle-right"></i> 手順</h5><hr>';
       echo $recipe['cuisine'];
       echo '</div>';
       echo '</div><br>';
