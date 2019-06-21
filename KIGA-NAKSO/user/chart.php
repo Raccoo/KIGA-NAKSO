@@ -11,54 +11,38 @@ require_once __DIR__ . '/../json/query.php';
         <script type="text/javascript">
             google.load('visualization', '1', {'packages': ['corechart']});
             google.setOnLoadCallback(drawChart);
-            
-            <?php
-                // categoly names
-                define('AAA', 'a');
-                define('BBB', 'b');
-                define('CCC', 'c');
-                define('DDD', 'd');
-                define('EEE', 'e');
-                define('FFF', 'f');
-                define('GGG', 'g');
-            ?>
 
             function drawChart() {
-
                 let tm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
-                    [<?php echo $AAA, $tm[$AAA]['cv'] . ',' . $tm[$AAA]['dv'] . ',' . ($tm[$AAA]['pv'] - ($tm[$AAA]['dv'] + $tm[$AAA]['cv'])) ?>],
-                    [<?php echo $BBB, $tm[$BBB]['cv'] . ',' . $tm[$BBB]['dv'] . ',' . ($tm[$BBB]['pv'] - ($tm[$BBB]['dv'] + $tm[$BBB]['cv'])) ?>],
-                    [<?php echo $CCC, $tm[$CCC]['cv'] . ',' . $tm[$CCC]['dv'] . ',' . ($tm[$CCC]['pv'] - ($tm[$CCC]['dv'] + $tm[$CCC]['cv'])) ?>],
-                    [<?php echo $DDD, $tm[$DDD]['cv'] . ',' . $tm[$DDD]['dv'] . ',' . ($tm[$DDD]['pv'] - ($tm[$DDD]['dv'] + $tm[$DDD]['cv'])) ?>],
-                    [<?php echo $EEE, $tm[$EEE]['cv'] . ',' . $tm[$EEE]['dv'] . ',' . ($tm[$EEE]['pv'] - ($tm[$EEE]['dv'] + $tm[$EEE]['cv'])) ?>],
-                    [<?php echo $FFF, $tm[$FFF]['cv'] . ',' . $tm[$FFF]['dv'] . ',' . ($tm[$FFF]['pv'] - ($tm[$FFF]['dv'] + $tm[$FFF]['cv'])) ?>],
-                    [<?php echo $GGG, $tm[$GGG]['cv'] . ',' . $tm[$GGG]['dv'] . ',' . ($tm[$GGG]['pv'] - ($tm[$GGG]['dv'] + $tm[$GGG]['cv'])) ?>]
+                    ['a', <?php echo $tm['a']['cv'] . ',' . $tm['a']['dv'] . ',' . ($tm['a']['pv'] - ($tm['a']['dv'] + $tm['a']['cv'])) ?>],
+                    ['b', <?php echo $tm['b']['cv'] . ',' . $tm['b']['dv'] . ',' . ($tm['b']['pv'] - ($tm['b']['dv'] + $tm['b']['cv'])) ?>],
+                    ['c', <?php echo $tm['c']['cv'] . ',' . $tm['c']['dv'] . ',' . ($tm['c']['pv'] - ($tm['c']['dv'] + $tm['c']['cv'])) ?>],
+                    ['d', <?php echo $tm['d']['cv'] . ',' . $tm['d']['dv'] . ',' . ($tm['d']['pv'] - ($tm['d']['dv'] + $tm['d']['cv'])) ?>],
+                    ['e', <?php echo $tm['e']['cv'] . ',' . $tm['e']['dv'] . ',' . ($tm['e']['pv'] - ($tm['e']['dv'] + $tm['e']['cv'])) ?>],
+                    ['f', <?php echo $tm['f']['cv'] . ',' . $tm['f']['dv'] . ',' . ($tm['f']['pv'] - ($tm['f']['dv'] + $tm['f']['cv'])) ?>],
+                    ['g', <?php echo $tm['g']['cv'] . ',' . $tm['g']['dv'] . ',' . ($tm['g']['pv'] - ($tm['g']['dv'] + $tm['g']['cv'])) ?>]
                 ]);
-
                 let lm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
-                    [<?php echo $AAA, $lm[$AAA]['cv'] . ',' . $lm[$AAA]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $BBB, $lm[$BBB]['cv'] . ',' . $lm[$BBB]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $CCC, $lm[$CCC]['cv'] . ',' . $lm[$CCC]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $DDD, $lm[$DDD]['cv'] . ',' . $lm[$DDD]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $EEE, $lm[$EEE]['cv'] . ',' . $lm[$EEE]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $FFF, $lm[$FFF]['cv'] . ',' . $lm[$FFF]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>],
-                    [<?php echo $GGG, $lm[$GGG]['cv'] . ',' . $lm[$GGG]['dv'] . ',' . ($lm[$GGG]['pv'] - ($lm[$GGG]['dv'] + $lm[$GGG]['cv'])) ?>]
+                    ['a', <?php echo $lm['a']['cv'] . ',' . $lm['a']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['b', <?php echo $lm['b']['cv'] . ',' . $lm['b']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['c', <?php echo $lm['c']['cv'] . ',' . $lm['c']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['d', <?php echo $lm['d']['cv'] . ',' . $lm['d']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['e', <?php echo $lm['e']['cv'] . ',' . $lm['e']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['f', <?php echo $lm['f']['cv'] . ',' . $lm['f']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
+                    ['g', <?php echo $lm['g']['cv'] . ',' . $lm['g']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>]
                 ]);
-
                 let data = google.visualization.arrayToDataTable([
                     ['Category', 'WasteVolume'],
-                    [<?php echo $AAA, $tm[$AAA]['dv'] ?> ],
-                    [<?php echo $BBB, $tm[$BBB]['dv'] ?> ],
-                    [<?php echo $CCC, $tm[$CCC]['dv'] ?> ],
-                    [<?php echo $DDD, $tm[$DDD]['dv'] ?> ],
-                    [<?php echo $EEE, $tm[$EEE]['dv'] ?> ],
-                    [<?php echo $FFF, $tm[$FFF]['dv'] ?> ],
-                    [<?php echo $GGG, $tm[$GGG]['dv'] ?> ]
-                ]);
-
-                let monthly_data = google.visualization.arrayToDataTable([
+                    ['a', <?php echo $tm['a']['dv'] ?> ],
+                    ['b', <?php echo $tm['b']['dv'] ?> ],
+                    ['c', <?php echo $tm['c']['dv'] ?> ],
+                    ['d', <?php echo $tm['d']['dv'] ?> ],
+                    ['e', <?php echo $tm['e']['dv'] ?> ],
+                    ['f', <?php echo $tm['f']['dv'] ?> ],
+                    ['g', <?php echo $tm['g']['dv'] ?> ]
+                ]);                let monthly_data = google.visualization.arrayToDataTable([
                     //【急募】横軸のバグ対処['record']
                     ['monthly', '消費量', '廃棄量', '繰越量'],
                     <?php
