@@ -24,8 +24,7 @@
                 <form method="POST" action="login_db.php">
                     <div class="form-group">
                         <label>Eメールアドレス</label>
-                        <input type="text" class="form-control" name="address" required placeholder="example@gmail.com">
-
+                        <input type="text" class="form-control" name="address" required placeholder="example@gmail.com" value="<?=$_SESSION['address']?>">
                         <small class="text-muted">あなたのメールは他の誰とも共有しません。</small>
                     </div>
                     <div class="form-group">

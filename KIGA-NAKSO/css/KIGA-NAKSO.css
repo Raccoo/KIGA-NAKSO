@@ -71,3 +71,11 @@ body, html {
 #error_call {
   color:red;
 }
+
+.my-gray {
+    color: gray;
+}
+
+.s_f_button {
+    width: 485px;
+}

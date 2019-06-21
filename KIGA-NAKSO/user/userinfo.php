@@ -34,10 +34,10 @@
 
 <script> 
     $('#D_User').on('click', function(){
-        var result = confirm('本当に退会しますか?');
+        var result = confirm('本当に退会しますか?\n登録したユーザー情報と冷蔵庫の中身は削除されます');
         if(result){
             alert('退会しました。');
-            location.href='Unsubscribe.php';
+            location.href='unsubscribe.php';
         }
     });
 </script>

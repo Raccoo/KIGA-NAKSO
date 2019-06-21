@@ -67,7 +67,8 @@
 					foreach($disp_data as $val){
 						echo '
 							<div class="col-4">
-								<div class="card" style="width: 18rem;">
+							  <div class="card-deck">
+								<div class="card mb-3" style="width: 18rem;">
 									<img class="card-img-top" src="' . $val['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
 									<div class="card-body">
 										<h5 class="card-title">' . $val['r_name'] . '</h5>
@@ -101,6 +102,7 @@
 										</form>
 									</div>
 								</div>
+							  </div>
 							</div>';
 
 						$cards_count += 1;

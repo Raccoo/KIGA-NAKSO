@@ -31,7 +31,8 @@
 	foreach ( $recipes as $recipe ) {
 		echo '
 			<div class="col-4">
-			<div class="card" style="width: 18rem;">
+			<div class="card-deck">
+			<div class="card mb-3" style="width: 18rem;">
 			<img class="card-img-top" src="' . $recipe['r_picture'] . '" alt="カードの画像" style="height: 14rem;">
 			<div class="card-body">
 			<h5 class="card-title">' . $recipe['r_name'] . '</h5>
@@ -65,8 +66,15 @@
 			</form>
 			</div>
 			</div>
+			</div>
 			</div>';
 	}
+	echo '<div class="col-6">';
+	if(empty( $recipe['r_picture'] )){
+		echo '<p class="my-gray">冷蔵庫の中身が空なので表示するものがありません！</p>';
+		echo '<a class="btn btn-success s_f_button" href="../food/add_food.php" role="button"><i class="fas fa-arrow-circle-right"></i> 食材を追加しにいく</a>';
+	}
+	echo '</div>';
 ?>
 		</div>
 	</div>
