@@ -92,37 +92,43 @@
             echo '
                 </tbody>
               </table>';
+
+              echo '<br>
+                    <nav>
+                    <ul class="pagination justify-content-center">';
+      
+                      $prev = $now - 1;
+                      $next = $now + 1;
+                      if ( $now != 1 ) {
+                        echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id=' . $prev . '"><i class="fas fa-angle-left"></i></a></li>';
+                      }
+                        for( $i = 1; $i <= $max_page; $i++ ){
+                          if ( $i != $now ) {
+                            echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
+                          }
+                        else {
+                            echo '<li class="page-item active"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
+                        }
+                      }
+                      if ( $now != $max_page ) {
+                        echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $next . '"><i class="fas fa-angle-right"></i></a></li>';
+                      }
+                echo '</ul></nav>';
+
           }
           else {
-            echo '<div class="col-9 text-center alert alert-danger" role="alert"><a class="alert-link">冷蔵庫には入っていませんでした</div>';
+            echo '<div class="row justify-content-center">';
+            echo '<div class="col-9 text-center alert alert-danger" role="alert"><a class="alert-link">冷蔵庫には入っていませんでした</div><br>';
+            echo '<div class="col-10">
+                    <a class="btn btn-success s_f_button" href="add_food.php" role="button">
+                    <i class="fas fa-arrow-circle-right"></i> 食材を追加する</a>
+                  </div>';
+            echo '</div>';
           }
         ?>
           </div>
           <br>
         </div>
-        <br>
-        <nav>
-          <ul class="pagination justify-content-center">
-      <?php
-        $prev = $now - 1;
-        $next = $now + 1;
-        if ( $now != 1 ) {
-          echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id=' . $prev . '"><i class="fas fa-angle-left"></i></a></li>';
-        }
-        for( $i = 1; $i <= $max_page; $i++ ){
-          if ( $i != $now ) {
-            echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
-          }
-          else {
-            echo '<li class="page-item active"><a class="page-link" href="./stock_food.php?page_id='. $i. '">'. $i. '</a></li>';
-          }
-        }
-        if ( $now != $max_page ) {
-          echo '<li class="page-item"><a class="page-link" href="./stock_food.php?page_id='. $next . '"><i class="fas fa-angle-right"></i></a></li>';
-        }
-      ?>
-          </ul>
-        </nav>
       </div>
       <div id="tab2" class="tab-pane">
         <!--貢献度-->

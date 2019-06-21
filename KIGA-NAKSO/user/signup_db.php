@@ -67,7 +67,7 @@ function h($data){
                     </div>
                     <div class="form-group">
                         <label>Eメールアドレス</label>
-                        <input type="email" class="form-control" disabled name="address" value="<?=$address?>">
+                        <input type="text" class="form-control" disabled name="address" value="<?=$_SESSION['address']?>">
                     </div><br>
                     <div class="center">
                         <a class="btn btn-primary" href="login.php" role="button">ログインする</a>
