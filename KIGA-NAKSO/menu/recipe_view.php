@@ -86,7 +86,6 @@
           echo  $item['f_name'];
           $made_dissable_flag = true;
           echo 'が足りません';
-          //f_id[9]=水(水道水のため足りない判定から除外)
         }
       echo '</td></tr>';
       echo '</table>';

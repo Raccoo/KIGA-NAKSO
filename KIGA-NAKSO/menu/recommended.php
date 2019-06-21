@@ -69,6 +69,12 @@
 			</div>
 			</div>';
 	}
+	echo '<div class="col-6">';
+	if(empty( $recipe['r_picture'] )){
+		echo '<p class="my-gray">冷蔵庫の中身が空なので表示するものがありません！</p>';
+		echo '<a class="btn btn-success s_f_button" href="../food/add_food.php" role="button"><i class="fas fa-arrow-circle-right"></i> 食材を追加しにいく</a>';
+	}
+	echo '</div>';
 ?>
 		</div>
 	</div>
