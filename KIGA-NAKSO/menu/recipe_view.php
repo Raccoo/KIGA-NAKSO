@@ -85,14 +85,15 @@
           echo '<tr class="table-danger"><td>';
           echo  $item['f_name'];
           $made_dissable_flag = true;
-          //echo 'が足りません';
-        }else if($item['f_id']==0){
-          echo '<div class="my-gray">冷蔵の中身で作れます！</div>';
-          break;
+          echo 'が足りません';
+          //f_id[9]=水(水道水のため足りない判定から除外)
         }
       echo '</td></tr>';
       echo '</table>';
       }
+      if($item['f_id']==9){
+        echo '<p class="my-gray">冷蔵庫の食材で作れます！</p>';
+      } 
       echo '</div><br>';
       //レシピフロー表示
       echo '<div class="col-sm-9"><br>';

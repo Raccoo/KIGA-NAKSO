@@ -119,7 +119,10 @@
           else {
             echo '<div class="row justify-content-center">';
             echo '<div class="col-9 text-center alert alert-danger" role="alert"><a class="alert-link">冷蔵庫には入っていませんでした</div><br>';
-            echo '<div class="col-10"><a class="btn btn-outline-success s_f_button" href="add_food.php" role="button">食材を追加する</a></div>';
+            echo '<div class="col-10">
+                    <a class="btn btn-success s_f_button" href="add_food.php" role="button">
+                    <i class="fas fa-arrow-circle-right"></i> 食材を追加する</a>
+                  </div>';
             echo '</div>';
           }
         ?>
