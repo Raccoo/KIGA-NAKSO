@@ -27,12 +27,12 @@
         foreach( $results as $data ) {
           //消費期限を取得する。
           $time = strtotime($data['end_day']);
-          if ($today >= $time){
+          if ($today > $time){
             $alert_str = $alert_str . '<p>* ' . $data['f_name'] . '</p>';
+
           }
         }
-      
-        echo '
+                echo '
           <div class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -48,9 +48,9 @@
                 </div>
               </div>
             </div>
-          </div>
-          
-          <!-- call modal window -->
+          </div>';
+
+echo     '<!-- call modal window -->
           <script>
             jQuery(document).ready(function(){
               jQuery(".modal").modal("show");
