@@ -132,6 +132,9 @@
       </div>
       <div id="tab2" class="tab-pane">
         <!--貢献度-->
+        <?php
+          require_once __DIR__ . '/../user/chart.php';
+         ?>
       </div>
     </div>
   </div>

@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/../components/header.php';
 require_once __DIR__ . '/../json/query.php';
 ?>
     <html>
@@ -105,5 +104,3 @@ require_once __DIR__ . '/../json/query.php';
 
     </body>
     </html>
-<?php
-require_once __DIR__ . '/../components/footer.php';

@@ -7,7 +7,7 @@ $dbc = new Food();
 $this_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(now()) > graph_date && graph_date >= date_format(now(), \'%Y-%m-01\')
-and u_id = 1000
+and u_id = 2
 group by c_id';
 
 $result = $dbc->showFood($this_month);
@@ -32,7 +32,7 @@ $tm = array(
 $last_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
-and u_id = 1000
+and u_id = 2
 group by c_id';
 
 $result = $dbc->showFood($last_month);
