@@ -5,14 +5,13 @@ require_once __DIR__ . '/../json/query.php';
     <head>
         <link href="../css/KIGA-NAKSO.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript">
-
             google.load('visualization', '1', {'packages': ['corechart']});
             google.setOnLoadCallback(drawChart);
 
             function drawChart() {
-
                 let tm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
                     ['a', <?php echo $tm['a']['cv'] . ',' . $tm['a']['dv'] . ',' . ($tm['a']['pv'] - ($tm['a']['dv'] + $tm['a']['cv'])) ?>],
@@ -23,7 +22,6 @@ require_once __DIR__ . '/../json/query.php';
                     ['f', <?php echo $tm['f']['cv'] . ',' . $tm['f']['dv'] . ',' . ($tm['f']['pv'] - ($tm['f']['dv'] + $tm['f']['cv'])) ?>],
                     ['g', <?php echo $tm['g']['cv'] . ',' . $tm['g']['dv'] . ',' . ($tm['g']['pv'] - ($tm['g']['dv'] + $tm['g']['cv'])) ?>]
                 ]);
-
                 let lm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
                     ['a', <?php echo $lm['a']['cv'] . ',' . $lm['a']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
@@ -34,7 +32,6 @@ require_once __DIR__ . '/../json/query.php';
                     ['f', <?php echo $lm['f']['cv'] . ',' . $lm['f']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
                     ['g', <?php echo $lm['g']['cv'] . ',' . $lm['g']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>]
                 ]);
-
                 let data = google.visualization.arrayToDataTable([
                     ['Category', 'WasteVolume'],
                     ['a', <?php echo $tm['a']['dv'] ?> ],
@@ -44,9 +41,7 @@ require_once __DIR__ . '/../json/query.php';
                     ['e', <?php echo $tm['e']['dv'] ?> ],
                     ['f', <?php echo $tm['f']['dv'] ?> ],
                     ['g', <?php echo $tm['g']['dv'] ?> ]
-                ]);
-
-                let monthly_data = google.visualization.arrayToDataTable([
+                ]);                let monthly_data = google.visualization.arrayToDataTable([
                     //【急募】横軸のバグ対処['record']
                     ['monthly', '消費量', '廃棄量', '繰越量'],
                     <?php
