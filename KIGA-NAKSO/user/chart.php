@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once __DIR__ . '/../json/query.php';
 ?>
     <html>
@@ -14,33 +14,33 @@ require_once __DIR__ . '/../json/query.php';
             function drawChart() {
                 let tm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
-                    ['a', <?php echo $tm['a']['cv'] . ',' . $tm['a']['dv'] . ',' . ($tm['a']['pv'] - ($tm['a']['dv'] + $tm['a']['cv'])) ?>],
-                    ['b', <?php echo $tm['b']['cv'] . ',' . $tm['b']['dv'] . ',' . ($tm['b']['pv'] - ($tm['b']['dv'] + $tm['b']['cv'])) ?>],
-                    ['c', <?php echo $tm['c']['cv'] . ',' . $tm['c']['dv'] . ',' . ($tm['c']['pv'] - ($tm['c']['dv'] + $tm['c']['cv'])) ?>],
-                    ['d', <?php echo $tm['d']['cv'] . ',' . $tm['d']['dv'] . ',' . ($tm['d']['pv'] - ($tm['d']['dv'] + $tm['d']['cv'])) ?>],
-                    ['e', <?php echo $tm['e']['cv'] . ',' . $tm['e']['dv'] . ',' . ($tm['e']['pv'] - ($tm['e']['dv'] + $tm['e']['cv'])) ?>],
-                    ['f', <?php echo $tm['f']['cv'] . ',' . $tm['f']['dv'] . ',' . ($tm['f']['pv'] - ($tm['f']['dv'] + $tm['f']['cv'])) ?>],
-                    ['g', <?php echo $tm['g']['cv'] . ',' . $tm['g']['dv'] . ',' . ($tm['g']['pv'] - ($tm['g']['dv'] + $tm['g']['cv'])) ?>]
+                    ['畜産', <?php echo $tm['畜産']['cv'] . ',' . $tm['畜産']['dv'] . ',' . ($tm['畜産']['pv'] - ($tm['畜産']['dv'] + $tm['畜産']['cv'])) ?>],
+                    ['水産', <?php echo $tm['水産']['cv'] . ',' . $tm['水産']['dv'] . ',' . ($tm['水産']['pv'] - ($tm['水産']['dv'] + $tm['水産']['cv'])) ?>],
+                    ['野菜', <?php echo $tm['野菜']['cv'] . ',' . $tm['野菜']['dv'] . ',' . ($tm['野菜']['pv'] - ($tm['野菜']['dv'] + $tm['野菜']['cv'])) ?>],
+                    ['その他', <?php echo $tm['その他']['cv'] . ',' . $tm['その他']['dv'] . ',' . ($tm['その他']['pv'] - ($tm['その他']['dv'] + $tm['その他']['cv'])) ?>],
+                    ['調味料', <?php echo $tm['調味料']['cv'] . ',' . $tm['調味料']['dv'] . ',' . ($tm['調味料']['pv'] - ($tm['調味料']['dv'] + $tm['調味料']['cv'])) ?>],
+                    ['加工食品', <?php echo $tm['加工食品']['cv'] . ',' . $tm['加工食品']['dv'] . ',' . ($tm['加工食品']['pv'] - ($tm['加工食品']['dv'] + $tm['加工食品']['cv'])) ?>],
+                    ['粉物', <?php echo $tm['粉物']['cv'] . ',' . $tm['粉物']['dv'] . ',' . ($tm['粉物']['pv'] - ($tm['粉物']['dv'] + $tm['粉物']['cv'])) ?>]
                 ]);
                 let lm_data = google.visualization.arrayToDataTable([
                     ['カテゴリー', '消費量', '廃棄量', '繰越量'],
-                    ['a', <?php echo $lm['a']['cv'] . ',' . $lm['a']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['b', <?php echo $lm['b']['cv'] . ',' . $lm['b']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['c', <?php echo $lm['c']['cv'] . ',' . $lm['c']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['d', <?php echo $lm['d']['cv'] . ',' . $lm['d']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['e', <?php echo $lm['e']['cv'] . ',' . $lm['e']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['f', <?php echo $lm['f']['cv'] . ',' . $lm['f']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>],
-                    ['g', <?php echo $lm['g']['cv'] . ',' . $lm['g']['dv'] . ',' . ($lm['g']['pv'] - ($lm['g']['dv'] + $lm['g']['cv'])) ?>]
+                    ['畜産', <?php echo $lm['畜産']['cv'] . ',' . $lm['畜産']['dv'] . ',' . ($tm['畜産']['pv'] - ($tm['畜産']['dv'] + $tm['畜産']['cv'])) ?>],
+                    ['水産', <?php echo $lm['水産']['cv'] . ',' . $lm['水産']['dv'] . ',' . ($tm['水産']['pv'] - ($tm['水産']['dv'] + $tm['水産']['cv'])) ?>],
+                    ['野菜', <?php echo $lm['野菜']['cv'] . ',' . $lm['野菜']['dv'] . ',' . ($tm['野菜']['pv'] - ($tm['野菜']['dv'] + $tm['野菜']['cv'])) ?>],
+                    ['その他', <?php echo $lm['その他']['cv'] . ',' . $lm['その他']['dv'] . ',' . ($tm['その他']['pv'] - ($tm['その他']['dv'] + $tm['その他']['cv'])) ?>],
+                    ['調味料', <?php echo $lm['調味料']['cv'] . ',' . $lm['調味料']['dv'] . ',' . ($tm['調味料']['pv'] - ($tm['調味料']['dv'] + $tm['調味料']['cv'])) ?>],
+                    ['加工食品', <?php echo $lm['加工食品']['cv'] . ',' . $lm['加工食品']['dv'] . ',' . ($tm['加工食品']['pv'] - ($tm['加工食品']['dv'] + $tm['加工食品']['cv'])) ?>],
+                    ['粉物', <?php echo $lm['粉物']['cv'] . ',' . $lm['粉物']['dv'] . ',' . ($lm['粉物']['pv'] - ($lm['粉物']['dv'] + $lm['粉物']['cv'])) ?>]
                 ]);
                 let data = google.visualization.arrayToDataTable([
                     ['Category', 'WasteVolume'],
-                    ['a', <?php echo $tm['a']['dv'] ?> ],
-                    ['b', <?php echo $tm['b']['dv'] ?> ],
-                    ['c', <?php echo $tm['c']['dv'] ?> ],
-                    ['d', <?php echo $tm['d']['dv'] ?> ],
-                    ['e', <?php echo $tm['e']['dv'] ?> ],
-                    ['f', <?php echo $tm['f']['dv'] ?> ],
-                    ['g', <?php echo $tm['g']['dv'] ?> ]
+                    ['畜産', <?php echo $tm['畜産']['dv'] ?> ],
+                    ['水産', <?php echo $tm['水産']['dv'] ?> ],
+                    ['野菜', <?php echo $tm['野菜']['dv'] ?> ],
+                    ['その他', <?php echo $tm['その他']['dv'] ?> ],
+                    ['調味料', <?php echo $tm['調味料']['dv'] ?> ],
+                    ['加工食品', <?php echo $tm['加工食品']['dv'] ?> ],
+                    ['粉物', <?php echo $tm['粉物']['dv'] ?> ]
                 ]);                let monthly_data = google.visualization.arrayToDataTable([
                     //【急募】横軸のバグ対処['record']
                     ['monthly', '消費量', '廃棄量', '繰越量'],
