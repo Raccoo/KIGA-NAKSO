@@ -7,8 +7,17 @@ $dbc = new Food();
 $this_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(now()) > graph_date && graph_date >= date_format(now(), \'%Y-%m-01\')
-and u_id = 2
+and u_id = 1000
 group by c_id';
+
+$compare_this_month_all_category = 'select ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
+from graph
+where LAST_DAY(now()) > graph_date && graph_date >= date_format(now(), \'%Y-%m-01\')
+  and u_id = 1000';
+
+$comp = $dbc->showFood($compare_this_month_all_category);
+$ctmac_cv = $comp[0]['cv'];
+$ctmac_dv = $comp[0]['dv'];
 
 $result = $dbc->showFood($this_month);
 $t_mon1 = $result[0];
@@ -32,7 +41,7 @@ $tm = array(
 $last_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
-and u_id = 2
+and u_id = 1000
 group by c_id';
 
 $result = $dbc->showFood($last_month);
@@ -52,6 +61,31 @@ $lm = array(
     'e' => array('pv' => (int)$l_mon5['pv'], 'cv' => (int)$l_mon5['cv'], 'dv' => (int)$l_mon5['dv']),
     'f' => array('pv' => (int)$l_mon6['pv'], 'cv' => (int)$l_mon6['cv'], 'dv' => (int)$l_mon6['dv']),
     'g' => array('pv' => (int)$l_mon7['pv'], 'cv' => (int)$l_mon7['cv'], 'dv' => (int)$l_mon7['dv'])
+);
+
+$year_ago = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
+from graph
+where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 12 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
+and u_id = 1000
+group by c_id';
+
+$result = $dbc->showFood($year_ago);
+$ya1 = $result[0];
+$ya2 = $result[1];
+$ya3 = $result[2];
+$ya4 = $result[3];
+$ya5 = $result[4];
+$ya6 = $result[5];
+$ya7 = $result[6];
+
+$year_ago_cv = array(
+    'a' => array('cv' => (int)$ya1['cv'], 'dv' => (int)$ya1['dv']),
+    'b' => array('cv' => (int)$ya2['cv'], 'dv' => (int)$ya2['dv']),
+    'c' => array('cv' => (int)$ya3['cv'], 'dv' => (int)$ya3['dv']),
+    'd' => array('cv' => (int)$ya4['cv'], 'dv' => (int)$ya4['dv']),
+    'e' => array('cv' => (int)$ya5['cv'], 'dv' => (int)$ya5['dv']),
+    'f' => array('cv' => (int)$ya6['cv'], 'dv' => (int)$ya6['dv']),
+    'g' => array('cv' => (int)$ya7['cv'], 'dv' => (int)$ya7['dv'])
 );
 
 $record = "select date_format(graph_date,'%Y-%m') as record, sum(purchase_volume) as pv, sum(consumption_volume) as cv, sum(disposal_volume) as dv
