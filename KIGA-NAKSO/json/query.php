@@ -7,13 +7,13 @@ $dbc = new Food();
 $this_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(now()) > graph_date && graph_date >= date_format(now(), \'%Y-%m-01\')
-and u_id = 1000
+and u_id = ' . $_SESSION['u_id'] . '
 group by c_id';
 
 $compare_this_month_all_category = 'select ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(now()) > graph_date && graph_date >= date_format(now(), \'%Y-%m-01\')
-  and u_id = 1000';
+  and u_id = ' . $_SESSION['u_id'];
 
 $comp = $dbc->showFood($compare_this_month_all_category);
 $ctmac_cv = $comp[0]['cv'];
@@ -41,7 +41,7 @@ $tm = array(
 $last_month = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
-and u_id = 1000
+and u_id = ' . $_SESSION['u_id'] . '.
 group by c_id';
 
 $result = $dbc->showFood($last_month);
@@ -66,7 +66,7 @@ $lm = array(
 $year_ago = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
 where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 12 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
-and u_id = 1000
+and u_id = ' . $_SESSION['u_id'] . '
 group by c_id';
 
 $result = $dbc->showFood($year_ago);
