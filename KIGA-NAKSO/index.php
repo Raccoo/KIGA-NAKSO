@@ -72,5 +72,5 @@ echo     '<!-- call modal window -->
 	</body>
 </html>
 <?php
-  require_once __DIR__ . '/../components/footer.php'
+  require_once __DIR__ . '/components/footer.php'
 ?>

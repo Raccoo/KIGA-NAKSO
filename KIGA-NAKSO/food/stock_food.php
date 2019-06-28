@@ -130,7 +130,12 @@
           <br>
         </div>
       </div>
-      <div id="tab2" class="tab-pane">
+      <div id="tab2" class="tab-pane"><br>
+      <div class="row">
+        <div class="col-12">
+            <h3 id="sub_title"><?php echo date("n");?>月の貢献度</h3>
+        </div>
+      </div>
         <!--貢献度-->
         <?php
           require_once __DIR__ . '/../user/chart.php';
