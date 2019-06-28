@@ -92,25 +92,29 @@ require_once __DIR__ . '/../json/query.php';
             const options_cd = {
                 title: '今月の食材別消費・廃棄した比率',
                 <!-- ジャンル別 -->
-                width: 800,
+                width: 750,
                 height: 350,
                 isStacked: 'percent',
             };
 
             const options_pie = {
                 title: '今月の食材別購入比率',
-                pieHole: 0.4,
+                //pieHole: 0.4,
+                width: 450,
+                height: 350,
             };
 
             const options_pie_all = {
                 title: '今月の全食材 消費・廃棄した比率',
-                pieHole: 0.4,
+                //pieHole: 0.4,
+                width: 450,
+                height: 350,
             };
 
             const options_con = {
                 title: '今月の食材別消費比率',
-                width: 600,
-                height: 400,
+                width: 750,
+                height: 350,
                 legend: {position: 'right', maxLines: 3},
                 bar: {groupWidth: '75%'},
                 isStacked: 'percent'
@@ -118,8 +122,8 @@ require_once __DIR__ . '/../json/query.php';
 
             const options_year = {
                 title: '１年間の食材の消費・廃棄した比率',
-                width: 600,
-                height: 350,
+                width: 1200,
+                height: 400,
                 isStacked: 'percent',
             };
 
@@ -137,11 +141,28 @@ require_once __DIR__ . '/../json/query.php';
     </script>
 </head>
 <body>
-<div id="per" style="float: left; width: 45%; height: 40%"></div>
-<div id="piePV" style="float: right; width: 45%; height: 40%"></div>
-<div id="pieAll" style="float: right; width: 45%; height: 40%"></div>
-<div style="clear: both"></div>
-<div id="cv" style="float:left;width: 45%; height: 40%"></div>
-<div id="year" style="margin-left: auto; width: 45%; height: 40%"></div>
+<div class="row">
+    <div class="col-8">
+        <div id="cv" style=""></div>
+    </div>
+    <div class="col-4">
+        <div id="pieAll" style=""></div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-8">
+        <div id="per" style=""></div>
+    </div>
+    <div class="col-4">
+        <div id="piePV" style=""></div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <div id="year" style=""></div>
+    </div>
+</div>
 </body>
 </html>
