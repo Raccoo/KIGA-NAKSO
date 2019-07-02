@@ -65,7 +65,7 @@ $lm = array(
 
 $year_ago = 'select c_id, ifnull(sum(purchase_volume),0) as pv, ifnull(sum(consumption_volume),0) as cv, ifnull(sum(disposal_volume),0) as dv
 from graph
-where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 12 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 1 MONTH), \'%Y-%m-01\')
+where LAST_DAY(DATE_SUB(CURRENT_DATE(),INTERVAL 12 MONTH)) > graph_date && graph_date >= date_format(DATE_SUB(CURRENT_DATE(),INTERVAL 12 MONTH), \'%Y-%m-01\')
 and u_id = ' . $_SESSION['u_id'] . '
 group by c_id';
 
